@@ -13,12 +13,16 @@ export function ModeChip() {
   const [configured, setConfigured] = useState<boolean>();
   const [mode, setMode] = useState<Mode>();
   const [help, setHelp] = useState(false);
+  const [modeError, setModeError] = useState<string>();
 
   useEffect(() => {
     const done = (c: boolean) => { setConfigured(c); setMode(c && !preferSample() ? 'live' : 'sample'); };
     if (HOSTED_EXAMPLE) return done(false);
-    fetch('/api/mode').then((r) => r.json()).then((j) => done(j.mode === 'live')).catch(() => done(false));
+    // A failed mode check is shown, not treated as Sample mode.
+    fetch('/api/mode').then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then((j) => done(j.mode === 'live')).catch((e) => setModeError(e instanceof Error ? e.message : String(e)));
   }, []);
+  if (modeError) return <span role="alert" className="mono text-[11px] text-fraud" title="GET /api/mode failed">Mode check failed: {modeError}</span>;
   if (!mode) return null;
 
   const choose = (next: Mode) => {

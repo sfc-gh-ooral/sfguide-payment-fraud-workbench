@@ -31,7 +31,11 @@ let modePromise: Promise<boolean> | undefined;
 /** True when the server has a Snowflake connection and the reader hasn't chosen Sample. */
 export function isLive(): Promise<boolean> {
   if (HOSTED_EXAMPLE) return Promise.resolve(false);
-  modePromise ??= fetch('/api/mode').then((r) => r.json()).then((j) => j.mode === 'live' && !preferSample()).catch(() => false);
+  // If the mode check fails, every screen shows that error: it never silently falls back to Sample.
+  modePromise ??= fetch('/api/mode')
+    .then((r) => { if (!r.ok) throw new Error(`Couldn't check Live or Sample mode (GET /api/mode: HTTP ${r.status}).`); return r.json(); })
+    .then((j) => j.mode === 'live' && !preferSample(),
+      (e) => { modePromise = undefined; throw e instanceof TypeError ? new Error(`Couldn't check Live or Sample mode (GET /api/mode: ${e.message}).`) : e; });
   return modePromise;
 }
 
