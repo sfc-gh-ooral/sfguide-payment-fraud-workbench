@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment Fraud Investigation Workbench · Snowflake example</title>
+<meta name="description" content="Help fraud analysts score card and real-time payments, see linked accounts and devices, and close cases faster with an AI case summary. A Snowflake example on synthetic data.">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#f6f7fb, #0d1220);
+  --card: light-dark(#ffffff, #141b2d);
+  --card-2: light-dark(#f0f2f8, #1b2439);
+  --border: light-dark(#dde1ec, #2a3550);
+  --text: light-dark(#141a2e, #e8ecf6);
+  --text-2: light-dark(#4a5373, #aab3cc);
+  --muted: light-dark(#6b7493, #8590ad);
+  --accent: light-dark(#1a6fd1, #5aa7f5);
+  --accent-soft: light-dark(rgba(26,111,209,.1), rgba(90,167,245,.14));
+  --warn-soft: light-dark(#fff6e6, #2b2414);
+  --warn-border: light-dark(#f0c36d, #6b5420);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+img, svg { max-width: 100%; height: auto; }
+.wrap { max-width: 1080px; width: 100%; margin: 0 auto; padding: 0 clamp(16px, 4vw, 28px); }
+header.top { border-bottom: 1px solid var(--border); background: var(--card); }
+header.top .wrap { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
+.mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); display: grid; place-items: center; }
+.brand { font-weight: 650; }
+.brand small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+nav.links { margin-left: auto; display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+nav.links a { text-decoration: none; color: var(--text-2); }
+nav.links a:hover { color: var(--accent); }
+.hero { padding-top: clamp(36px, 7vw, 72px); padding-bottom: 28px; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.15; margin: 10px 0 16px; letter-spacing: -.01em; }
+.lede { font-size: clamp(17px, 2.2vw, 19px); color: var(--text-2); max-width: 760px; margin: 0 0 24px; }
+.cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+.btn { display: inline-block; padding: 10px 16px; border-radius: 9px; border: 1px solid var(--border); background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.fact { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 14px; }
+.fact b { display: block; font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.note { background: var(--warn-soft); border: 1px solid var(--warn-border); border-radius: 10px; padding: 12px 16px; font-size: 14px; margin: 22px 0 0; }
+section { padding: 44px 0; border-top: 1px solid var(--border); }
+h2 { font-size: clamp(24px, 3.4vw, 30px); margin: 0 0 10px; }
+h3 { font-size: 18px; margin: 0 0 6px; }
+.sub { color: var(--text-2); max-width: 760px; margin: 0 0 24px; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.card p { margin: 0; color: var(--text-2); font-size: 15px; }
+figure { margin: 0 0 34px; }
+figure img { display: block; width: 100%; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+figcaption { margin-top: 10px; font-size: 15px; color: var(--text-2); }
+figcaption .cap { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 1px 9px; margin-right: 6px; }
+.step { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; align-items: start; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--card-2); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
+code { background: var(--card-2); padding: 1px 5px; border-radius: 4px; }
+pre { background: var(--card-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 0 0 14px; }
+pre code { background: none; padding: 0; }
+ul { padding-left: 20px; }
+li { margin: 4px 0; }
+footer { border-top: 1px solid var(--border); padding: 28px 0 44px; color: var(--muted); font-size: 14px; }
+@media (max-width: 560px) { nav.links { margin-left: 0; width: 100%; gap: 12px; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+    </div>
+    <div class="brand">Payment Fraud Investigation Workbench<small>A Snowflake example on synthetic data</small></div>
+    <nav class="links" aria-label="Page sections">
+      <a href="#walkthrough">Walkthrough</a><a href="#how">How it works</a><a href="#run">Run it</a>
+      <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <div class="eyebrow">Payments · Risk · Financial crime</div>
+  <h1>Catch payment fraud faster, from first alert to closed case</h1>
+  <p class="lede">A fraud analyst at a bank starts the day with hundreds of alerts across card and instant payments. This example puts the score, the reasons, the linked accounts and devices, and an AI-drafted case note on one screen, so the analyst can confirm fraud, clear a false positive, or escalate with the evidence in front of them. Model training, feature engineering, link analysis, and AI all run in Snowflake on the same data.</p>
+  <div class="cta">
+    <a class="btn primary" href="try/">Try the example</a>
+    <a class="btn" href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">View the repository</a>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>No account needed</b>The example runs in your browser on synthetic data</div>
+    <div class="fact"><b>Live mode setup</b>About 3 minutes on an XSMALL warehouse</div>
+    <div class="fact"><b>Measured cost</b>0.41 warehouse credits for setup plus a full walkthrough, plus AI tokens</div>
+    <div class="fact"><b>Requires</b>Standard Edition, Cortex AI in your region or cross-region inference</div>
+  </div>
+  <p class="note"><strong>Synthetic data, illustrative logic.</strong> Not a production fraud system, and not regulatory, compliance, or legal advice. Every name, account, and payment is invented. Model results describe this synthetic data set only.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What analysts can do</h2>
+    <p class="sub">Five screens cover the daily workflow. The synthetic data has five planted stories so the walkthrough has something to find.</p>
+    <div class="grid3">
+      <div class="card"><h3>See where fraud is</h3><p>Fraud rate in basis points, losses, alert volume, and precision on worked alerts, with a map of fraud by H3 cell.</p></div>
+      <div class="card"><h3>Work the queue</h3><p>Alerts ranked by priority with model score, reason codes, rule hits, and an SLA timer. Confirm, clear, or escalate in one click.</p></div>
+      <div class="card"><h3>Investigate a case</h3><p>A timeline of payments and logins, a map of the card&rsquo;s swipes, and a link graph of the accounts, devices, and IPs around it.</p></div>
+      <div class="card"><h3>Close with an AI case note</h3><p>AI_COMPLETE drafts a summary, the signals, and a next step from the case facts, for the analyst to review.</p></div>
+      <div class="card"><h3>Tune the threshold</h3><p>See how precision, recall, and alert volume move as the model threshold changes, on labeled data.</p></div>
+      <div class="card"><h3>Ask in plain language</h3><p>&ldquo;Which merchants had card-testing patterns this week?&rdquo; answered by a Cortex Agent over a semantic view of alerts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="walkthrough">
+  <div class="wrap">
+    <h2>Walkthrough</h2>
+    <p class="sub">Screenshots of the running app in Sample mode. Every number comes from the synthetic data set, and the AI text was captured from a live run.</p>
+    <figure>
+      <img src="images/01-fraud-overview.png" width="2000" height="1250" alt="Fraud overview: 14.0 bps fraud rate, $282K losses, 2,774 alerts, 30% precision on worked alerts, a daily chart with alert spikes on Nov 8 and Nov 12, and a US map of fraud bubbles by H3 cell">
+      <figcaption><span class="cap">Snowflake SQL · Geospatial H3</span>The overview: fraud rate, losses, alert volume, and precision on worked alerts. Alerts spike on Nov 8 (a legitimate promotion) and Nov 12 (a card-testing burst). The map aggregates confirmed fraud to H3 cells with H3_LATLNG_TO_CELL_STRING.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/02-alert-queue.png" width="2000" height="1250" alt="Alert queue: story cases to start with, then open alerts with amount, channel, model score, reason codes such as new device and recent password reset, an overdue SLA tag, and confirm, false positive, and escalate buttons">
+      <figcaption><span class="cap">Snowpark ML · Model Registry</span>The alert queue. Scores come from an XGBoost model registered in the Model Registry and run in batch with model.run. Reason codes come from the feature values, and rules for card testing, impossible travel, and shared devices run alongside the model.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/03-case-takeover.png" width="2000" height="1250" alt="Account takeover case: a sample AI case summary describing a new-device login, a password reset, three new payees, and six P2P transfers totaling $9,800, with signals and a recommended next step, next to the decision panel">
+      <figcaption><span class="cap">Cortex AI_COMPLETE</span>An account takeover: a new device, a password reset, then a $9,800 P2P drain. AI_COMPLETE drafts the case note and next step from the facts on the page. The analyst records the decision, which Live mode writes to an actions table.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/04-case-impossible-travel.png" width="2000" height="1250" alt="Impossible travel case: a link graph for the account and a map showing swipes in Boston at 14:02 and Miami at 14:30, joined by a dashed line, with the timeline below">
+      <figcaption><span class="cap">ST_DISTANCE · Recursive CTE</span>Impossible travel: two swipes 2,025 km apart in 28 minutes, measured with ST_DISTANCE. The link graph walks accounts, devices, and IPs with a recursive CTE; on the takeover case it reaches a 12-account mule ring.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/05-model-threshold.png" width="2000" height="1250" alt="Model and rules: a threshold slider with precision, recall, alerts per day, and fraud caught, a precision and recall curve, feature importance led by new device, and the three rules">
+      <figcaption><span class="cap">Feature Store · Dynamic Tables</span>Model &amp; rules: move the threshold to see the precision / recall trade-off and alert volume. The 14 velocity features live in a Feature Store view backed by a Dynamic Table.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/06-ask-agent.png" width="2000" height="1250" alt="Ask screen: the question which merchants had card-testing patterns this week, answered with Zentrova Digital Goods, 396 card-testing alerts on 396 cards, labeled as a sample AI response">
+      <figcaption><span class="cap">Cortex Agents · Semantic view</span>Ask: a Cortex Agent uses Cortex Analyst over the ALERTS_SV semantic view to answer questions about alerts, merchants, channels, and rules.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works in Snowflake</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Step</th><th>Snowflake capability</th><th>What it does here</th></tr></thead>
+        <tbody>
+          <tr><td>Features</td><td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/feature-store/overview">Feature Store</a> on <a href="https://docs.snowflake.com/en/user-guide/dynamic-tables-about">Dynamic Tables</a></td><td>14 velocity features per payment: card and account velocity, amount versus the 30-day average, new and shared devices, merchant small-authorization bursts, first-time payees, recent password resets, and distance and speed since the last swipe</td></tr>
+          <tr><td>Model</td><td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/overview">Snowpark ML</a> and the <a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/overview">Model Registry</a></td><td>XGBoost trained in a Snowpark Python procedure on October labels, tested on November, registered as FRAUD_XGB, and run in batch with model.run. A daily task (created suspended) re-scores.</td></tr>
+          <tr><td>Geospatial</td><td><a href="https://docs.snowflake.com/en/sql-reference/functions/st_distance">ST_DISTANCE</a>, <a href="https://docs.snowflake.com/en/sql-reference/functions/h3_latlng_to_cell_string">H3 functions</a></td><td>Impossible travel between consecutive swipes, and the fraud map by H3 cell</td></tr>
+          <tr><td>Link analysis</td><td><a href="https://docs.snowflake.com/en/user-guide/queries-cte">Recursive CTEs</a></td><td>Walks account to device or IP to account to find linked accounts and mule rings</td></tr>
+          <tr><td>Case note</td><td><a href="https://docs.snowflake.com/en/sql-reference/functions/ai_complete">AI_COMPLETE</a></td><td>Drafts a summary, the signals, and a next step from the case facts</td></tr>
+          <tr><td>Ask</td><td><a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents">Cortex Agents</a>, <a href="https://docs.snowflake.com/en/user-guide/views-semantic/overview">semantic views</a></td><td>Answers questions with SQL that Cortex Analyst generates over ALERTS_SV</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:18px">Scoring is batch in this example. Real-time authorization scoring would use <a href="https://docs.snowflake.com/en/user-guide/snowpipe-streaming/data-load-snowpipe-streaming-overview">Snowpipe Streaming</a> and model serving on Snowpark Container Services, which this example doesn&rsquo;t build.</p>
+  </div>
+</section>
+
+<section id="run">
+  <div class="wrap">
+    <h2>Run it</h2>
+    <div class="two">
+      <div>
+        <h3>Sample mode, no account</h3>
+<pre><code>git clone https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench.git
+cd sfguide-payment-fraud-workbench
+npm install
+npm run dev</code></pre>
+        <p class="sub">Or open the <a href="try/">hosted example</a>. AI answers are labeled Sample AI response.</p>
+      </div>
+      <div>
+        <h3>Live mode, your account</h3>
+        <ol>
+          <li>Run <code>sql/setup.sql</code> in a Snowsight worksheet as ACCOUNTADMIN. It creates its own database, an XSMALL warehouse, and a least-privilege role.</li>
+          <li>Set up key-pair auth and copy <code>.env.example</code> to <code>.env.local</code>.</li>
+          <li><code>npm run dev</code> and switch the header to Live.</li>
+          <li>When you&rsquo;re done, run <code>sql/cleanup.sql</code>.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="sub">The <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench#readme">README</a> lists every object created, measured cost and time, known limitations, and Cortex Code prompts to adapt it to your own authorization feed and chargeback labels.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Owner: Oz Oral · Last reviewed: November 2026 · Apache 2.0. An illustrative example on synthetic data: not an official Snowflake product, not supported by Snowflake Support, and not production, regulatory, or compliance advice.
+  </div>
+</footer>
+</body>
+</html>
