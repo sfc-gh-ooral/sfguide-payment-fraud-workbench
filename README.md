@@ -9,9 +9,9 @@ A fraud operations app on Snowflake for a fictional bank, Northwind Financial. I
 | Screen | What the analyst does | Snowflake capability |
 | --- | --- | --- |
 | Fraud overview | Fraud rate in basis points, losses, alert volume, precision on worked alerts, and a map of fraud by H3 cell | Snowflake SQL, geospatial H3 functions |
-| Alert queue | Works alerts by priority with score, reason codes, and an SLA timer; confirms fraud, marks a false positive, or escalates | Snowpark ML (XGBoost) scores from the Model Registry |
-| Case detail | Reads the transaction and login timeline, a map of the card's swipes, and the account-device-IP link graph; drafts a case note with AI; records the decision | Recursive CTE, `ST_DISTANCE`, Cortex `AI_COMPLETE` |
-| Model & rules | Moves a threshold slider to see the precision / recall trade-off and alert volume on labeled data | Feature Store (velocity features on a Dynamic Table), Model Registry |
+| Alert queue | Works alerts by priority with score, reason codes, and an SLA timer; confirms fraud, marks a false positive, or escalates | Snowpark ML (XGBoost) scores; the drawer reads the alert's feature row from the Feature Store view (a Dynamic Table) and re-scores it live with the Model Registry version's `predict_proba` |
+| Case detail | Reads the transaction and login timeline, a map of the card's swipes, and the account-device-IP link graph; drafts a case note with AI; records the decision | Recursive CTE, `ST_DISTANCE` (distance and speed between the card's swipes, computed per case), Cortex `AI_COMPLETE` |
+| Model & rules | Moves a threshold slider to see the precision / recall trade-off and alert volume on labeled data | Snowflake SQL over the precision / recall table that setup computes from the model's scores |
 | Ask | Asks questions such as "Which merchants had card-testing patterns this week?" | Cortex Agents with Cortex Analyst over a semantic view |
 
 All data is synthetic, with five planted stories (card testing, account takeover, a 12-account mule ring, impossible travel, and a false-positive cluster after a promotion). See [data/README.md](data/README.md).
@@ -24,7 +24,7 @@ All data is synthetic, with five planted stories (card testing, account takeover
 - **Live mode:** a Snowflake account (Standard Edition is enough) where you can use ACCOUNTADMIN, or USERADMIN + SECURITYADMIN and SYSADMIN, to run `sql/setup.sql`.
   - Cortex AI available in your region, or cross-region inference enabled, for `AI_COMPLETE` (default model `claude-sonnet-4-5`) and Cortex Agents.
   - Anaconda packages for Snowpark Python (`snowflake-ml-python`, `xgboost`, `scikit-learn`), which setup uses inside stored procedures.
-  - Key-pair authentication (or a programmatic access token) for the user that runs the app.
+  - Key-pair authentication for the user that runs the app (the only method Live mode supports).
 - Tested with Node.js 22, Next.js 16, and snowflake-sdk 3.4 in November 2026 on an AWS US West account.
 
 ## Quick start: Sample mode (no account)
@@ -81,9 +81,10 @@ Measured on an XSMALL warehouse in November 2026:
 ## Known limitations
 
 - **Batch, not real time.** Payments are scored in batch with the registered model, and a daily task is created suspended. Real-time authorization scoring would use Snowpipe Streaming for ingestion and model serving on Snowpark Container Services; this example doesn't build either.
-- **Synthetic signals are clean.** The model scores an AUC of 0.9996 and 70% precision at 92% recall (threshold 0.5) on November data, only because the synthetic fraud is easy to separate. Expect much lower numbers on real data, and labels that arrive weeks after the payment.
+- **Synthetic signals are clean.** In our latest run the model scored an AUC of 0.9996 and 69% precision at 85% recall (threshold 0.5) on November data (scores can move slightly between setup runs), only because the synthetic fraud is easy to separate. Expect much lower numbers on real data, and labels that arrive weeks after the payment.
 - **Labels are complete.** Every fraudulent synthetic payment has a chargeback or issuer confirmation; real chargebacks are partial and late.
 - **The Feature Store view refreshes in full.** The velocity windows use range window frames, so the Dynamic Table can't refresh incrementally.
+- **Re-scoring one alert takes about 18 seconds** in our run on an XSMALL warehouse: `predict_proba` from the Model Registry loads the model in the warehouse on each call. It reuses the stored feature row, so the score matches the batch score.
 - **Link analysis is bounded.** The case graph walks two account hops through shared devices and IPs with a recursive CTE, and skips devices or IPs used by more than 50 accounts. It isn't a graph database.
 - **The password-reset feature uses each account's latest reset**, which is enough for this data set.
 - **The SLA clock is fixed** to the data set's "now" (2026-11-15 09:00), so timers match the screenshots.

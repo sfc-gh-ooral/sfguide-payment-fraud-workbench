@@ -7,11 +7,11 @@ import sample from '@/lib/mock/sample.json';
 import { HOSTED_EXAMPLE } from '@/lib/hosted';
 import { preferSample } from '@/lib/mode';
 import { SAMPLE_DELAY_MS } from '@/lib/sample-timing';
-import type { AiText, AlertQueue, CaseDetail, ModelInfo, Overview } from '@/lib/types';
+import type { AiText, AlertFeatures, AlertQueue, Rescore, CaseDetail, ModelInfo, Overview } from '@/lib/types';
 
 interface SampleBundle {
   capturedAt: string; overview: Overview; queues: Record<string, AlertQueue>; cases: Record<string, CaseDetail>;
-  model: ModelInfo; summaries: Record<string, string>; answers: { question: string; text: string; sql?: string }[];
+  model: ModelInfo; summaries: Record<string, string>; features: Record<string, AlertFeatures>; rescores: Record<string, Rescore>; answers: { question: string; text: string; sql?: string }[];
 }
 const S = sample as unknown as SampleBundle;
 export const CAPTURED_AT = S.capturedAt;
@@ -96,4 +96,20 @@ export async function ask(question: string): Promise<AiText> {
   await wait(jitter(SAMPLE_DELAY_MS.ask));
   if (!hit) return { text: 'This hosted example only has scripted answers for the suggested questions. Pick one of them, or run Live mode to ask the Cortex Agent anything about the alerts.', latencyMs: 0, model: 'scripted', source: 'sample' };
   return { text: hit.text, sql: hit.sql, latencyMs: 0, model: 'scripted', source: 'sample' };
+}
+
+export async function fetchFeatures(alert: string): Promise<AlertFeatures> {
+  if (await isLive()) return api(`/api/features?alert=${encodeURIComponent(alert)}`);
+  const f = S.features[alert];
+  if (!f) throw new Error('No sample feature row is bundled for this alert. Open a story case, or run Live mode.');
+  return { ...f, source: 'captured' };
+}
+
+/** Live: the registered model's predict_proba on the alert's feature row. Sample: the captured result, paced like a live call. */
+export async function rescoreAlert(alert: string): Promise<Rescore> {
+  if (await isLive()) return api('/api/rescore', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ alert }) });
+  const r = S.rescores[alert];
+  if (!r) throw new Error('No sample re-score is bundled for this alert. Open a story case, or run Live mode.');
+  await wait(jitter(SAMPLE_DELAY_MS.rescore));
+  return { ...r, ms: 0, source: 'sample' };
 }

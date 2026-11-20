@@ -36,7 +36,7 @@ function CaseView() {
 
   if (c.error) return <ErrorBox error={c.error} />;
   if (c.loading || !c.data) return <PageSkeleton label="Loading the case" />;
-  const { alert: a, timeline, nodes, edges, actions } = c.data;
+  const { alert: a, timeline, nodes, edges, actions, travel = [] } = c.data;
   const s = sla(a.SLA_MIN_LEFT);
   const pts = [...timeline].filter((t) => t.KIND === 'TXN' && t.LAT != null).reverse();
   const path = pts.filter((t) => t.CHANNEL === 'CARD_PRESENT').slice(-4).map((t) => ({ lat: t.LAT!, lon: t.LON!, text: t.TS.slice(11, 16), bad: t.FLAGGED }));
@@ -139,7 +139,12 @@ function CaseView() {
         </Panel>
         <Panel eyebrow="Geography" title="Where the card was used" right={<PoweredBy>Geospatial ST_DISTANCE</PoweredBy>}>
           {cities.data ? <FraudMap cities={cities.data} path={path} label="Map of the case's recent in-store transactions, in time order" /> : <div className="skel h-64" />}
-          <p className="text-xs muted mt-2">{path.length > 1 ? 'Recent in-store swipes on this card, joined in time order; magenta = flagged. Distance and implied speed come from ST_DISTANCE between consecutive swipes.' : 'No in-store swipes in this window; card-not-present and P2P payments geolocate to the customer’s IP.'}</p>
+          {travel.length > 0 ? (
+            <ul className="mt-2 space-y-1" aria-label="Distance between consecutive in-store swipes">
+              {travel.map((h) => <li key={h.TXN_ID} className="text-xs flex flex-wrap gap-x-2"><span className="mono muted">{h.TS.slice(5, 16)}</span><span className="mono font-semibold">{h.KM.toLocaleString()} km</span><span className="muted">in {h.MINUTES.toLocaleString()} min</span><span className={`mono ${h.KMH > 900 ? 'text-fraud font-bold' : 'muted'}`}>{h.KMH.toLocaleString()} km/h</span></li>)}
+            </ul>
+          ) : null}
+          <p className="text-xs muted mt-2">{path.length > 1 ? 'Recent in-store swipes on this card, joined in time order; magenta = flagged. Distance and implied speed between consecutive swipes are computed for this case with ST_DISTANCE.' : 'No in-store swipes in this window; card-not-present and P2P payments geolocate to the customer’s IP.'}</p>
         </Panel>
       </div>
 

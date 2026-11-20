@@ -14,7 +14,8 @@ const go = async (path) => { await p.goto(BASE + path); await p.waitForTimeout(2
 const scrollTo = async (text) => { await p.getByText(text, { exact: true }).first().evaluate((el) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 120)); await p.waitForTimeout(700); };
 
 await go('/'); await shot('01-fraud-overview');
-await go('/alerts/'); await p.click('tbody tr'); await p.waitForTimeout(600); await shot('02-alert-queue');
+await go('/alerts/'); await p.click('tbody tr'); await p.waitForTimeout(1200);
+await p.click('text=Re-score this alert'); await p.waitForTimeout(7500); await shot('02-alert-queue');
 await go('/case/?id=AL9200001'); await p.click('text=Summarize case'); await p.waitForTimeout(3000); await shot('03a-case-reasoning');
 await p.waitForTimeout(8000); await shot('03-case-takeover');
 await go('/case/?id=AL9400084'); await scrollTo('Link analysis'); await shot('04-case-mule-ring');

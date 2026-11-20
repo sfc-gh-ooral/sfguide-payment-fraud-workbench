@@ -17,7 +17,7 @@ const get = async (path, init) => {
   return j;
 };
 
-const out = { capturedAt: new Date().toISOString().slice(0, 10), overview: await get('/api/overview'), queues: {}, cases: {}, summaries: {}, answers: [] };
+const out = { capturedAt: new Date().toISOString().slice(0, 10), overview: await get('/api/overview'), queues: {}, cases: {}, summaries: {}, features: {}, rescores: {}, answers: [] };
 out.model = await get('/api/model');
 for (const s of ['OPEN', 'CONFIRMED_FRAUD', 'FALSE_POSITIVE']) out.queues[s] = await get(`/api/alerts?status=${s}`);
 // Bundle the story cases plus the first rows of the open queue, so every queue row on screen opens.
@@ -26,6 +26,8 @@ const ids = [...new Set([...STORIES, ...out.queues.OPEN.rows.slice(0, 12).map((r
 for (const id of ids) {
   out.cases[id] = await get(`/api/case?alert=${id}`);
   out.summaries[id] = (await get(`/api/summary?alert=${id}`)).text;
+  out.features[id] = await get(`/api/features?alert=${id}`);
+  out.rescores[id] = await get('/api/rescore', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ alert: id }) });
   console.log('captured case', id);
 }
 // Queues show the bundled cases only, so each row opens in Sample mode; totals stay as captured.

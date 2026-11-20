@@ -113,7 +113,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 14p
         <span class="chip"><i>●</i> card testing · 420 cards</span>
         <span class="chip"><i>●</i> account takeover · $9,800 P2P</span>
         <span class="chip"><i>●</i> mule ring · 12 accounts</span>
-        <span class="chip"><i>●</i> impossible travel · 2,025 km</span>
+        <span class="chip"><i>●</i> impossible travel · 2,019 km</span>
         <span class="chip">promo false positives · 434</span>
       </div>
     </div>
@@ -150,8 +150,8 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 14p
     <h2>Signal, evidence, decision</h2>
     <p class="sub">Five screens follow one analyst through a shift: what is happening, what to work first, why a payment looks wrong, and what to do about it.</p>
     <div class="steps">
-      <div><div class="n">01 · SIGNAL</div><h3>Score and queue</h3><p>An XGBoost model from the Model Registry scores every payment on Feature Store velocity features; three SQL rules add card testing, impossible travel, and shared devices. Alerts land in a queue ranked by score with an SLA timer.</p></div>
-      <div><div class="n">02 · EVIDENCE</div><h3>See the links</h3><p>Each case shows the payment and login timeline, a map of in-store swipes with distances from <span class="mono">ST_DISTANCE</span>, and a link graph of accounts, devices, and IPs found with a recursive CTE.</p></div>
+      <div><div class="n">01 · SIGNAL</div><h3>Score and queue</h3><p>An XGBoost model from the Model Registry scores every payment on Feature Store velocity features; three SQL rules add card testing, impossible travel, and shared devices. Alerts land in a queue ranked by score with an SLA timer; open one to see its Feature Store row and re-score it with the registered model.</p></div>
+      <div><div class="n">02 · EVIDENCE</div><h3>See the links</h3><p>Each case shows the payment and login timeline, a map of in-store swipes with the distance and speed between them computed by <span class="mono">ST_DISTANCE</span>, and a link graph of accounts, devices, and IPs found with a recursive CTE.</p></div>
       <div><div class="n">03 · DECISION</div><h3>Draft, then decide</h3><p><span class="mono">AI_COMPLETE</span> drafts the case summary and next step from the facts on the page, citing what it used. The analyst confirms fraud, marks a false positive, or escalates; the decision is written back to Snowflake.</p></div>
     </div>
   </div>
@@ -165,18 +165,18 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 14p
     <div class="gallery">
       <figure class="wide"><img src="images/01-fraud-overview.jpg" width="1440" height="900" loading="lazy" alt="Fraud overview in dark theme: KPI tiles for fraud rate of 14.0 basis points, losses, alerts raised, and precision on worked alerts, a daily chart of alerts and fraud rate, and a ranked list of reason codes.">
         <figcaption><span class="cap">Snowflake SQL · Geospatial H3</span>Fraud overview: fraud rate in basis points, losses, alert volume, and precision on worked alerts. The Nov 8 alert spike with no fraud is a legitimate promotion; the Nov 12 fraud spike is a card-testing burst.</figcaption></figure>
-      <figure><img src="images/02-alert-queue.jpg" width="1440" height="900" loading="lazy" alt="Alert queue table with priority, payment, amount, score bars, reason code tags, overdue SLA pills, and action buttons, with a detail drawer open on the right.">
-        <figcaption><span class="cap">Snowpark ML · Model Registry</span>Alert queue: sort and filter by score, amount, and SLA; open a drawer for the reasons, then confirm fraud, mark a false positive, or escalate.</figcaption></figure>
+      <figure><img src="images/02-alert-queue.jpg" width="1440" height="900" loading="lazy" alt="Alert queue table with priority, payment, amount, score bars, reason code tags, overdue SLA pills, and action buttons, with a detail drawer open on the right showing the alert's Feature Store inputs and a re-score result labeled Sample model response.">
+        <figcaption><span class="cap">Feature Store · Model Registry</span>Alert queue: sort and filter by score, amount, and SLA; open a drawer for the reasons and the payment's Feature Store row, re-score it with the registered model, then confirm fraud, mark a false positive, or escalate.</figcaption></figure>
       <figure><img src="images/03a-case-reasoning.jpg" width="1440" height="900" loading="lazy" alt="Case for an account takeover with the AI case summary panel showing staged reasoning steps: reading 15 timeline items, linking 9 accounts, weighing 4 signals, drafting the summary.">
         <figcaption><span class="cap">Cortex AI_COMPLETE</span>The AI case summary shows its steps while it reads the timeline, link graph, and reason codes for the case.</figcaption></figure>
       <figure class="wide"><img src="images/03-case-takeover.jpg" width="1440" height="900" loading="lazy" alt="Account takeover case: an AI case summary labeled Sample AI response describing a new device login, a password reset, three new payees, and six P2P transfers totaling 9,800 dollars, with evidence citations, next to the analyst decision panel and checklist.">
         <figcaption><span class="cap">Cortex AI_COMPLETE</span>Account takeover: a new device, a password reset, three new payees, then a $9,800 P2P drain in 34 minutes. The draft cites the evidence it used; the analyst decides.</figcaption></figure>
       <figure><img src="images/04-case-mule-ring.jpg" width="1440" height="900" loading="lazy" alt="Link graph for a mule-ring case: 13 accounts in magenta connected through shared devices and IP addresses, laid out in rings by hops from the alerted account.">
         <figcaption><span class="cap">Recursive CTE in SQL</span>Mule ring: twelve new accounts share three devices and two IPs. The graph walks two hops through shared devices and IPs.</figcaption></figure>
-      <figure><img src="images/05-case-impossible-travel.jpg" width="1440" height="900" loading="lazy" alt="Impossible travel case: a US map with a dashed path from a Boston swipe at 14:02 to a flagged Miami swipe, and the card's single-account link graph.">
-        <figcaption><span class="cap">Geospatial ST_DISTANCE</span>Impossible travel: a Boston swipe, then a Miami swipe 28 minutes later, 2,025 km apart by <span class="mono">ST_DISTANCE</span>.</figcaption></figure>
+      <figure><img src="images/05-case-impossible-travel.jpg" width="1440" height="900" loading="lazy" alt="Impossible travel case: a US map with a dashed path from a Boston swipe at 14:02 to a flagged Miami swipe, the distances and speeds between swipes (2,019.2 km in 28 min, 4,400 km/h), and the card's single-account link graph.">
+        <figcaption><span class="cap">Geospatial ST_DISTANCE</span>Impossible travel: a Boston swipe, then a Miami swipe 28 minutes later, 2,019 km apart (4,400 km/h), computed for the case by <span class="mono">ST_DISTANCE</span>.</figcaption></figure>
       <figure><img src="images/06-model-threshold.jpg" width="1440" height="900" loading="lazy" alt="Model and rules screen with the threshold slider at 0.80, precision, recall, alerts per day, and fraud caught compared with the 0.50 baseline, and a chart of precision, recall, and alert volume by threshold.">
-        <figcaption><span class="cap">Feature Store · Model Registry</span>Model &amp; rules: move the threshold to see precision, recall, and daily alert volume change, measured on labeled synthetic payments.</figcaption></figure>
+        <figcaption><span class="cap">Snowflake SQL</span>Model &amp; rules: move the threshold to see precision, recall, and daily alert volume change, measured on labeled synthetic payments.</figcaption></figure>
       <figure><img src="images/07-ask-agent.jpg" width="1440" height="900" loading="lazy" alt="Ask screen: the question which merchants had card-testing patterns this week, and an answer labeled Sample AI response naming one digital goods merchant with 396 card-testing alerts, with the semantic view cited as the source.">
         <figcaption><span class="cap">Cortex Agents · Cortex Analyst</span>Ask: “Which merchants had card-testing patterns this week?” The agent answers from a semantic view of alerts and shows the SQL it ran.</figcaption></figure>
     </div>

@@ -1,7 +1,7 @@
 // Live-mode queries against PAYMENT_FRAUD_WB (created by sql/setup.sql). Server only.
 // All inputs are validated and passed as bind variables.
 import { COMPLETE_MODEL, query } from '@/lib/snowflake';
-import type { AiText, Alert, AlertQueue, CaseDetail, GraphEdge, GraphNode, ModelInfo, Overview, TimelineItem } from '@/lib/types';
+import type { AiText, Alert, AlertFeatures, Rescore, TravelHop, AlertQueue, CaseDetail, GraphEdge, GraphNode, ModelInfo, Overview, TimelineItem } from '@/lib/types';
 
 /** "Now" in the synthetic data set. SLA timers count down from here. */
 export const DATA_NOW = '2026-11-15 09:00:00';
@@ -94,7 +94,8 @@ export async function getCase(alertId: string): Promise<CaseDetail> {
     const key = [g.SRC, g.DST].sort().join('|');
     if (!seen.has(key)) { seen.add(key); edges.push({ a: g.SRC, b: g.DST }); }
   }
-  return { alert, timeline: timeline.map((t) => ({ ...t, FLAGGED: Boolean(t.FLAGGED) })), nodes: [...nodes.values()], edges, actions, ms: Date.now() - t0, source: 'live' };
+  const travel = await getTravel(alertId);
+  return { alert, timeline: timeline.map((t) => ({ ...t, FLAGGED: Boolean(t.FLAGGED) })), nodes: [...nodes.values()], edges, actions, travel, ms: Date.now() - t0, source: 'live' };
 }
 
 const ACTIONS: Record<string, string> = { CONFIRM_FRAUD: 'CONFIRMED_FRAUD', FALSE_POSITIVE: 'FALSE_POSITIVE', ESCALATE: 'OPEN' };
@@ -163,4 +164,41 @@ export async function askAgent(question: string): Promise<AiText> {
   const text = parts.filter(Boolean).join('\n\n');
   if (!text) throw new Error('The Cortex Agent returned no text. Check that sql/setup.sql ran.');
   return { text, sql, latencyMs: Date.now() - t0, model: 'Cortex Agent (orchestration: auto)', source: 'live' };
+}
+
+/** The model's input columns, in training order (sql/setup.sql TRAIN_MODEL). */
+export const FEATURE_COLS = ['AMOUNT', 'IS_CNP', 'IS_P2P', 'HOUR_OF_DAY', 'CARD_TXN_1H', 'ACCT_AMT_24H', 'AMT_TO_AVG', 'NEW_DEVICE',
+  'DEVICE_ACCOUNTS', 'MERCH_SMALL_1H', 'KM_FROM_PREV', 'KMH_FROM_PREV', 'FIRST_TIME_PAYEE', 'PW_RESET_24H'] as const;
+
+/** The alert's feature row, read from the Feature Store view (a Dynamic Table). */
+export async function getFeatures(alertId: string): Promise<AlertFeatures> {
+  const t0 = Date.now();
+  const r = await query<Record<string, number>>(`SELECT ${FEATURE_COLS.map((c) => `f.${c}::FLOAT AS ${c}`).join(', ')}
+    FROM PAYMENT_FRAUD_WB.FEATURES."TXN_VELOCITY$1" f JOIN ALERTS a ON a.TXN_ID = f.TXN_ID WHERE a.ALERT_ID = ?`, [alertId]);
+  if (!r[0]) throw new Error(`No feature row for ${alertId}`);
+  return { features: Object.fromEntries(FEATURE_COLS.map((c) => [c, Number(r[0][c])])), view: 'FEATURES.TXN_VELOCITY$1', ms: Date.now() - t0, source: 'live' };
+}
+
+/** Re-scores the alert's feature row with the registered model version's predict_proba, in the warehouse. */
+export async function rescore(alertId: string): Promise<Rescore> {
+  const t0 = Date.now();
+  const r = await query<{ P: number; STORED: number }>(`WITH m AS MODEL PAYMENT_FRAUD_WB.ML.FRAUD_XGB VERSION V1
+    SELECT m!PREDICT_PROBA(${FEATURE_COLS.map((c) => `f.${c}`).join(', ')}):output_feature_1::FLOAT AS P, a.SCORE::FLOAT AS STORED
+    FROM PAYMENT_FRAUD_WB.FEATURES."TXN_VELOCITY$1" f JOIN ALERTS a ON a.TXN_ID = f.TXN_ID WHERE a.ALERT_ID = ?`, [alertId]);
+  if (!r[0]) throw new Error(`No feature row for ${alertId}`);
+  return { score: Number(r[0].P), stored: Number(r[0].STORED), model: 'ML.FRAUD_XGB', version: 'V1', ms: Date.now() - t0, source: 'live' };
+}
+
+/** Distance and implied speed between consecutive in-store swipes on the alert's card, with ST_DISTANCE. */
+export async function getTravel(alertId: string): Promise<TravelHop[]> {
+  return query<TravelHop>(`WITH a AS (SELECT CARD_ID, CREATED_TS FROM ALERTS WHERE ALERT_ID = ?),
+    s AS (SELECT t.TXN_ID, t.TS, t.LAT, t.LON, LAG(t.TS) OVER (ORDER BY t.TS) AS PTS,
+            LAG(t.LAT) OVER (ORDER BY t.TS) AS PLAT, LAG(t.LON) OVER (ORDER BY t.TS) AS PLON
+          FROM PAYMENT_FRAUD_WB.RAW.TRANSACTIONS t, a
+          WHERE t.CARD_ID = a.CARD_ID AND t.CHANNEL = 'CARD_PRESENT'
+            AND t.TS BETWEEN DATEADD(HOUR, -48, a.CREATED_TS) AND DATEADD(HOUR, 12, a.CREATED_TS))
+    SELECT TXN_ID, TO_VARCHAR(TS, 'YYYY-MM-DD HH24:MI:SS') AS TS, DATEDIFF(MINUTE, PTS, TS) AS MINUTES,
+      ROUND(ST_DISTANCE(ST_MAKEPOINT(LON, LAT), ST_MAKEPOINT(PLON, PLAT)) / 1000, 1)::FLOAT AS KM,
+      ROUND(ST_DISTANCE(ST_MAKEPOINT(LON, LAT), ST_MAKEPOINT(PLON, PLAT)) / 1000 / GREATEST(DATEDIFF(SECOND, PTS, TS), 60) * 3600)::FLOAT AS KMH
+    FROM s WHERE PTS IS NOT NULL ORDER BY TS DESC LIMIT 4`, [alertId]);
 }

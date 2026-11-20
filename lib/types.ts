@@ -26,8 +26,12 @@ export interface CaseDetail {
   alert: Alert & { DEVICE_ID: string | null; IP_ID: string | null; LAT: number | null; LON: number | null; MERCHANT_CATEGORY: string | null };
   timeline: TimelineItem[]; nodes: GraphNode[]; edges: GraphEdge[];
   actions: { ACTION: string; NOTE: string | null; ACTED_AT: string }[];
+  travel: TravelHop[];
   ms: number; source: Source;
 }
+export interface TravelHop { TXN_ID: string; TS: string; MINUTES: number; KM: number; KMH: number }
+export interface AlertFeatures { features: Record<string, number>; view: string; ms: number; source: Source }
+export interface Rescore { score: number; stored: number; model: string; version: string; ms: number; source: Source | 'sample' }
 
 export interface PrPoint { THRESHOLD: number; ALERTS: number; TRUE_POS: number; PRECISION: number; RECALL: number; ALERTS_PER_DAY: number }
 export interface ModelInfo {

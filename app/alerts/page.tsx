@@ -5,6 +5,7 @@
 import { ArrowDownUp, ArrowRight, Search, ShieldAlert, ShieldCheck, Siren, X } from 'lucide-react';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import { AlertModel } from '@/components/AlertModel';
 import { Empty, ErrorBox, PageHead, Panel, PoweredBy, Skeleton, SourceChip, Tag, nice, priorityTone, sla, statusTone, usd } from '@/components/ui';
 import { useAsync } from '@/components/useAsync';
 import { fetchAlerts, sendAction } from '@/lib/client';
@@ -72,7 +73,7 @@ export default function AlertQueue() {
     <div className="space-y-4">
       <PageHead eyebrow="Work queue" title="Alert queue"
         sub="Highest risk first. SLA: 4 h for high priority, 12 h for medium, 24 h for low, counted to the data set's “now” (Nov 15, 09:00)."
-        right={<><PoweredBy>Snowpark ML · Model Registry</PoweredBy><SourceChip ms={q.data?.ms} source={q.data?.source} /></>} />
+        right={<><PoweredBy>Snowflake SQL</PoweredBy><SourceChip ms={q.data?.ms} source={q.data?.source} /></>} />
 
       <div className="flex flex-wrap items-center gap-2">
         <div className="seg" role="tablist" aria-label="Alert status">
@@ -143,6 +144,7 @@ export default function AlertQueue() {
               <div className="inset p-2.5"><div className="eyebrow">Linked accounts</div><div className={`mono font-bold ${sel.LINKED_ACCOUNTS > 2 ? 'text-fraud' : ''}`}>{sel.LINKED_ACCOUNTS}</div></div>
             </div>
             <div><div className="eyebrow mb-1.5">Why it fired</div><div className="flex flex-wrap gap-1">{sel.RULES.map((r) => <Tag key={r} tone="warn">Rule · {nice(r)}</Tag>)}{sel.REASON_CODES.map((r) => <Tag key={r}>{nice(r)}</Tag>)}</div></div>
+            <AlertModel alertId={sel.ALERT_ID} />
             <div className="text-xs muted mono">{sel.MERCHANT_NAME ?? 'Instant payment'} · {sel.CREATED_TS}</div>
             <div className="flex items-center justify-between gap-2"><SlaPill min={sel.SLA_MIN_LEFT} open={status === 'OPEN'} />{actionCell(sel)}</div>
             <Link href={`/case/?id=${sel.ALERT_ID}`} className="btn btn-primary w-full justify-center">Open case: timeline, map, link graph, AI summary<ArrowRight className="w-4 h-4" aria-hidden /></Link>

@@ -54,7 +54,7 @@ export default function ModelPage() {
         ))}
       </div>
 
-      <Panel eyebrow="Threshold tuning" title="Precision, recall, and alert volume" right={<PoweredBy>Snowpark ML · Model Registry</PoweredBy>}>
+      <Panel eyebrow="Threshold tuning" title="Precision, recall, and alert volume" right={<PoweredBy>Snowflake SQL</PoweredBy>}>
         <div className="flex items-center gap-4 flex-wrap">
           <label htmlFor="thr" className="eyebrow">Alert when score ≥</label>
           <span className="mono text-[28px] font-bold text-signal">{p.THRESHOLD.toFixed(2)}</span>
@@ -87,7 +87,7 @@ export default function ModelPage() {
       </Panel>
 
       <div className="grid lg:grid-cols-2 gap-3">
-        <Panel eyebrow="Explainability" title="Feature importance" right={<PoweredBy>Feature Store · Dynamic Tables</PoweredBy>}>
+        <Panel eyebrow="Explainability" title="Feature importance" right={<PoweredBy>Snowpark ML · XGBoost</PoweredBy>}>
           <ul className="space-y-2">
             {e.importance.slice(0, 10).map((f, i) => (
               <li key={f.feature} className="text-[13px]">
@@ -96,7 +96,7 @@ export default function ModelPage() {
               </li>
             ))}
           </ul>
-          <p className="text-xs muted mt-3">{e.features.length} velocity features from the Feature Store view <span className="mono">{e.featureView}</span>, a Dynamic Table.</p>
+          <p className="text-xs muted mt-3">Gain importance from training, over {e.features.length} velocity features in the Feature Store view <span className="mono">{e.featureView}</span>. Open an alert in the queue to read its feature row live and re-score it with the registered model.</p>
         </Panel>
         <Panel eyebrow="Deterministic controls" title="Rules that run alongside the model" right={<PoweredBy>Snowflake SQL</PoweredBy>}>
           <ul className="space-y-3">

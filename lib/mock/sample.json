@@ -5,10 +5,10 @@
    "txns": 925414,
    "fraudBps": 13.96,
    "fraudLoss": 282200.68,
-   "alerts": 2779,
+   "alerts": 2772,
    "open": 795,
-   "precision": 0.296371,
-   "worked": 1984
+   "precision": 0.29742,
+   "worked": 1977
   },
   "days": [
    {
@@ -17,7 +17,7 @@
     "FRAUD_TXNS": 47,
     "FRAUD_BPS": 7.08,
     "FRAUD_LOSS": 10354.32,
-    "ALERTS": 110
+    "ALERTS": 108
    },
    {
     "DAY": "2026-11-02",
@@ -25,7 +25,7 @@
     "FRAUD_TXNS": 54,
     "FRAUD_BPS": 8.17,
     "FRAUD_LOSS": 14998.08,
-    "ALERTS": 130
+    "ALERTS": 129
    },
    {
     "DAY": "2026-11-03",
@@ -33,7 +33,7 @@
     "FRAUD_TXNS": 61,
     "FRAUD_BPS": 9.2,
     "FRAUD_LOSS": 16315.34,
-    "ALERTS": 149
+    "ALERTS": 147
    },
    {
     "DAY": "2026-11-04",
@@ -41,7 +41,7 @@
     "FRAUD_TXNS": 64,
     "FRAUD_BPS": 9.69,
     "FRAUD_LOSS": 19865.3,
-    "ALERTS": 134
+    "ALERTS": 133
    },
    {
     "DAY": "2026-11-05",
@@ -49,7 +49,7 @@
     "FRAUD_TXNS": 69,
     "FRAUD_BPS": 10.48,
     "FRAUD_LOSS": 25851.03,
-    "ALERTS": 133
+    "ALERTS": 132
    },
    {
     "DAY": "2026-11-06",
@@ -57,7 +57,7 @@
     "FRAUD_TXNS": 77,
     "FRAUD_BPS": 11.71,
     "FRAUD_LOSS": 23691.51,
-    "ALERTS": 133
+    "ALERTS": 132
    },
    {
     "DAY": "2026-11-07",
@@ -65,7 +65,7 @@
     "FRAUD_TXNS": 53,
     "FRAUD_BPS": 8.03,
     "FRAUD_LOSS": 18434.8,
-    "ALERTS": 123
+    "ALERTS": 121
    },
    {
     "DAY": "2026-11-08",
@@ -73,7 +73,7 @@
     "FRAUD_TXNS": 56,
     "FRAUD_BPS": 8.37,
     "FRAUD_LOSS": 20294.42,
-    "ALERTS": 589
+    "ALERTS": 590
    },
    {
     "DAY": "2026-11-09",
@@ -81,7 +81,7 @@
     "FRAUD_TXNS": 55,
     "FRAUD_BPS": 8.32,
     "FRAUD_LOSS": 18285.08,
-    "ALERTS": 139
+    "ALERTS": 140
    },
    {
     "DAY": "2026-11-10",
@@ -89,7 +89,7 @@
     "FRAUD_TXNS": 56,
     "FRAUD_BPS": 8.52,
     "FRAUD_LOSS": 16911.52,
-    "ALERTS": 136
+    "ALERTS": 138
    },
    {
     "DAY": "2026-11-11",
@@ -97,7 +97,7 @@
     "FRAUD_TXNS": 73,
     "FRAUD_BPS": 11.03,
     "FRAUD_LOSS": 24913.04,
-    "ALERTS": 166
+    "ALERTS": 165
    },
    {
     "DAY": "2026-11-12",
@@ -113,7 +113,7 @@
     "FRAUD_TXNS": 81,
     "FRAUD_BPS": 12.29,
     "FRAUD_LOSS": 27052.11,
-    "ALERTS": 160
+    "ALERTS": 159
    },
    {
     "DAY": "2026-11-14",
@@ -121,7 +121,7 @@
     "FRAUD_TXNS": 64,
     "FRAUD_BPS": 9.68,
     "FRAUD_LOSS": 24114.13,
-    "ALERTS": 128
+    "ALERTS": 129
    }
   ],
   "hex": [
@@ -273,13 +273,6 @@
     "FRAUD_LOSS": 4461.02
    },
    {
-    "H3_CELL": "8328d5fffffffff",
-    "LAT": 47.530659583,
-    "LON": -122.817398956,
-    "FRAUD_TXNS": 21,
-    "FRAUD_LOSS": 4491.7
-   },
-   {
     "H3_CELL": "83441afffffffff",
     "LAT": 28.192684449,
     "LON": -82.425383169,
@@ -294,11 +287,11 @@
     "FRAUD_LOSS": 4701.42
    },
    {
-    "H3_CELL": "832830fffffffff",
-    "LAT": 38.193208955,
-    "LON": -122.196196757,
+    "H3_CELL": "8328d5fffffffff",
+    "LAT": 47.530659583,
+    "LON": -122.817398956,
     "FRAUD_TXNS": 21,
-    "FRAUD_LOSS": 5067.59
+    "FRAUD_LOSS": 4491.7
    },
    {
     "H3_CELL": "83489efffffffff",
@@ -306,6 +299,13 @@
     "LON": -97.319137227,
     "FRAUD_TXNS": 21,
     "FRAUD_LOSS": 4979.98
+   },
+   {
+    "H3_CELL": "832830fffffffff",
+    "LAT": 38.193208955,
+    "LON": -122.196196757,
+    "FRAUD_TXNS": 21,
+    "FRAUD_LOSS": 5067.59
    },
    {
     "H3_CELL": "832752fffffffff",
@@ -544,7 +544,7 @@
    },
    {
     "REASON": "NIGHT_TIME",
-    "N": 507
+    "N": 509
    },
    {
     "REASON": "DEVICE_SHARED_BY_ACCOUNTS",
@@ -560,7 +560,7 @@
    },
    {
     "REASON": "AMOUNT_SPIKE",
-    "N": 68
+    "N": 67
    },
    {
     "REASON": "FIRST_TIME_PAYEE",
@@ -571,7 +571,7 @@
     "N": 6
    }
   ],
-  "ms": 511,
+  "ms": 1240,
   "source": "live"
  },
  "queues": {
@@ -699,7 +699,7 @@
      "CHANNEL": "CARD_NOT_PRESENT",
      "MERCHANT_NAME": "Varnell Gift Cards",
      "AMOUNT": 1494.93,
-     "SCORE": 0.9994,
+     "SCORE": 0.9998,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -719,7 +719,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1470.97,
-     "SCORE": 0.9987,
+     "SCORE": 0.9995,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -739,7 +739,7 @@
      "CHANNEL": "CARD_NOT_PRESENT",
      "MERCHANT_NAME": "Varnell Gift Cards",
      "AMOUNT": 1464.75,
-     "SCORE": 0.9994,
+     "SCORE": 0.9997,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -759,7 +759,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1463.58,
-     "SCORE": 0.9957,
+     "SCORE": 0.996,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -779,7 +779,7 @@
      "CHANNEL": "CARD_NOT_PRESENT",
      "MERCHANT_NAME": "Varnell Gift Cards",
      "AMOUNT": 1463.42,
-     "SCORE": 0.9987,
+     "SCORE": 0.9991,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -800,7 +800,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1454.85,
-     "SCORE": 0.9982,
+     "SCORE": 0.9992,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -820,7 +820,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1445.62,
-     "SCORE": 0.9986,
+     "SCORE": 0.9996,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -840,7 +840,7 @@
      "CHANNEL": "CARD_PRESENT",
      "MERCHANT_NAME": "Jorvane Fuel",
      "AMOUNT": 639.99,
-     "SCORE": 0.9,
+     "SCORE": 0.6526,
      "PRIORITY": "HIGH",
      "RULES": [
       "IMPOSSIBLE_TRAVEL"
@@ -887,7 +887,7 @@
      "CHANNEL": "CARD_NOT_PRESENT",
      "MERCHANT_NAME": "Zentrova Digital Goods",
      "AMOUNT": 1.85,
-     "SCORE": 0.6603,
+     "SCORE": 0.4992,
      "PRIORITY": "HIGH",
      "RULES": [
       "CARD_TESTING",
@@ -911,7 +911,7 @@
     }
    ],
    "total": 795,
-   "ms": 358,
+   "ms": 481,
    "source": "live"
   },
   "CONFIRMED_FRAUD": {
@@ -948,7 +948,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1060.69,
-     "SCORE": 0.9995,
+     "SCORE": 0.9996,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -970,7 +970,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1049.7,
-     "SCORE": 0.9993,
+     "SCORE": 0.9995,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -992,7 +992,7 @@
      "CHANNEL": "P2P",
      "MERCHANT_NAME": null,
      "AMOUNT": 1029.94,
-     "SCORE": 0.9991,
+     "SCORE": 0.999,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -1007,7 +1007,7 @@
     }
    ],
    "total": 588,
-   "ms": 674,
+   "ms": 695,
    "source": "live"
   },
   "FALSE_POSITIVE": {
@@ -1021,7 +1021,7 @@
      "CHANNEL": "CARD_PRESENT",
      "MERCHANT_NAME": "Rosvane Electronics",
      "AMOUNT": 330.93,
-     "SCORE": 0.8827,
+     "SCORE": 0.8636,
      "PRIORITY": "HIGH",
      "RULES": [
       "IMPOSSIBLE_TRAVEL"
@@ -1044,7 +1044,7 @@
      "CHANNEL": "CARD_PRESENT",
      "MERCHANT_NAME": "Tavron Electronics",
      "AMOUNT": 268.83,
-     "SCORE": 0.9572,
+     "SCORE": 0.9626,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -1056,21 +1056,21 @@
      "LAST_ACTION": null
     },
     {
-     "ALERT_ID": "AL02523179",
-     "TXN_ID": "T02523179",
-     "CREATED_TS": "2026-11-09 16:36:29",
-     "ACCOUNT_ID": "A049631",
-     "CUSTOMER_NAME": "Noah Corwin",
+     "ALERT_ID": "AL02670282",
+     "TXN_ID": "T02670282",
+     "CREATED_TS": "2026-11-09 03:55:38",
+     "ACCOUNT_ID": "A019074",
+     "CUSTOMER_NAME": "Felix Delacroix",
      "CHANNEL": "CARD_PRESENT",
-     "MERCHANT_NAME": "Jorvane Pharmacy",
-     "AMOUNT": 268.75,
-     "SCORE": 0.9138,
+     "MERCHANT_NAME": "Lumenor Electronics",
+     "AMOUNT": 245.44,
+     "SCORE": 0.9602,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
-      "AMOUNT_SPIKE"
+      "NIGHT_TIME"
      ],
-     "SLA_MIN_LEFT": -7944,
+     "SLA_MIN_LEFT": -8705,
      "STATUS": "FALSE_POSITIVE",
      "LINKED_ACCOUNTS": 1,
      "LAST_ACTION": null
@@ -1084,7 +1084,7 @@
      "CHANNEL": "CARD_NOT_PRESENT",
      "MERCHANT_NAME": "Quillmont Outfitters",
      "AMOUNT": 179,
-     "SCORE": 0.9965,
+     "SCORE": 0.9954,
      "PRIORITY": "HIGH",
      "RULES": [],
      "REASON_CODES": [
@@ -1096,8 +1096,8 @@
      "LAST_ACTION": null
     }
    ],
-   "total": 1396,
-   "ms": 574,
+   "total": 1389,
+   "ms": 602,
    "source": "live"
   }
  },
@@ -1208,7 +1208,7 @@
      "TS": "2026-11-14 09:08:30",
      "KIND": "EVENT",
      "ID": "E0000005",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060007",
+     "LABEL": "PAYEE ADDED · Payee A060007",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -1220,7 +1220,7 @@
      "TS": "2026-11-14 09:07:52",
      "KIND": "EVENT",
      "ID": "E0000004",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060004",
+     "LABEL": "PAYEE ADDED · Payee A060004",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -1232,7 +1232,7 @@
      "TS": "2026-11-14 09:07:05",
      "KIND": "EVENT",
      "ID": "E0000003",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060001",
+     "LABEL": "PAYEE ADDED · Payee A060001",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -1244,7 +1244,7 @@
      "TS": "2026-11-14 09:04:40",
      "KIND": "EVENT",
      "ID": "E0000002",
-     "LABEL": "PASSWORD RESET \u00b7 Reset via email link",
+     "LABEL": "PASSWORD RESET · Reset via email link",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -1256,7 +1256,7 @@
      "TS": "2026-11-14 09:02:11",
      "KIND": "EVENT",
      "ID": "E0000001",
-     "LABEL": "LOGIN NEW DEVICE \u00b7 First login from this device",
+     "LABEL": "LOGIN NEW DEVICE · First login from this device",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -1280,7 +1280,7 @@
      "TS": "2026-11-13 10:16:16",
      "KIND": "TXN",
      "ID": "T01148402",
-     "LABEL": "Norbeck Digital \u00b7 Detroit",
+     "LABEL": "Norbeck Digital · Detroit",
      "AMOUNT": 13.2,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.30303,
@@ -1292,7 +1292,7 @@
      "TS": "2026-11-13 09:39:13",
      "KIND": "TXN",
      "ID": "T00094660",
-     "LABEL": "Rosvane Pharmacy \u00b7 Detroit",
+     "LABEL": "Rosvane Pharmacy · Detroit",
      "AMOUNT": 6.82,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.37851,
@@ -1304,7 +1304,7 @@
      "TS": "2026-11-12 15:04:46",
      "KIND": "TXN",
      "ID": "T00524900",
-     "LABEL": "Orlaith Digital Online \u00b7 Denver",
+     "LABEL": "Orlaith Digital Online · Denver",
      "AMOUNT": 62.91,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 42.35823,
@@ -1469,11 +1469,11 @@
      "b": "A060008"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE1",
      "b": "A060010"
     },
     {
-     "a": "DMULE1",
+     "a": "IPMULE2",
      "b": "A060010"
     },
     {
@@ -1482,7 +1482,8 @@
     }
    ],
    "actions": [],
-   "ms": 544,
+   "travel": [],
+   "ms": 725,
    "source": "live"
   },
   "AL9400084": {
@@ -1495,7 +1496,7 @@
     "CHANNEL": "CARD_NOT_PRESENT",
     "MERCHANT_NAME": "Varnell Gift Cards",
     "AMOUNT": 1494.93,
-    "SCORE": 0.9994,
+    "SCORE": 0.9998,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -1516,7 +1517,7 @@
      "TS": "2026-11-12 22:00:00",
      "KIND": "EVENT",
      "ID": "E1000060",
-     "LABEL": "LOGIN \u00b7 Login",
+     "LABEL": "LOGIN · Login",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -1528,7 +1529,7 @@
      "TS": "2026-11-12 14:12:00",
      "KIND": "TXN",
      "ID": "T9400084",
-     "LABEL": "Varnell Gift Cards \u00b7 Dallas",
+     "LABEL": "Varnell Gift Cards · Dallas",
      "AMOUNT": 1494.93,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 32.78,
@@ -1540,7 +1541,7 @@
      "TS": "2026-11-11 03:36:00",
      "KIND": "TXN",
      "ID": "T9400072",
-     "LABEL": "Varnell Gift Cards \u00b7 Dallas",
+     "LABEL": "Varnell Gift Cards · Dallas",
      "AMOUNT": 618.18,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 32.78,
@@ -1737,11 +1738,11 @@
      "b": "IPATO1"
     },
     {
-     "a": "A060010",
+     "a": "A060004",
      "b": "IPMULE2"
     },
     {
-     "a": "A060004",
+     "a": "A060010",
      "b": "IPMULE2"
     },
     {
@@ -1761,11 +1762,11 @@
      "b": "A060002"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE3",
      "b": "A060006"
     },
     {
-     "a": "DMULE3",
+     "a": "IPMULE2",
      "b": "A060006"
     },
     {
@@ -1786,7 +1787,8 @@
     }
    ],
    "actions": [],
-   "ms": 862,
+   "travel": [],
+   "ms": 864,
    "source": "live"
   },
   "AL9500002": {
@@ -1799,7 +1801,7 @@
     "CHANNEL": "CARD_PRESENT",
     "MERCHANT_NAME": "Jorvane Fuel",
     "AMOUNT": 639.99,
-    "SCORE": 0.9,
+    "SCORE": 0.6526,
     "PRIORITY": "HIGH",
     "RULES": [
      "IMPOSSIBLE_TRAVEL"
@@ -1823,7 +1825,7 @@
      "TS": "2026-11-13 14:41:55",
      "KIND": "TXN",
      "ID": "T9500003",
-     "LABEL": "Jorvane Electronics \u00b7 Miami",
+     "LABEL": "Jorvane Electronics · Miami",
      "AMOUNT": 412.5,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 25.77393,
@@ -1835,7 +1837,7 @@
      "TS": "2026-11-13 14:30:09",
      "KIND": "TXN",
      "ID": "T9500002",
-     "LABEL": "Jorvane Fuel \u00b7 Miami",
+     "LABEL": "Jorvane Fuel · Miami",
      "AMOUNT": 639.99,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 25.80265,
@@ -1847,7 +1849,7 @@
      "TS": "2026-11-13 14:02:37",
      "KIND": "TXN",
      "ID": "T9500001",
-     "LABEL": "Brindle Digital \u00b7 Boston",
+     "LABEL": "Brindle Digital · Boston",
      "AMOUNT": 42.18,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.37827,
@@ -1887,7 +1889,23 @@
     }
    ],
    "actions": [],
-   "ms": 826,
+   "travel": [
+    {
+     "TXN_ID": "T9500003",
+     "TS": "2026-11-13 14:41:55",
+     "MINUTES": 11,
+     "KM": 3.4,
+     "KMH": 17
+    },
+    {
+     "TXN_ID": "T9500002",
+     "TS": "2026-11-13 14:30:09",
+     "MINUTES": 28,
+     "KM": 2019.2,
+     "KMH": 4400
+    }
+   ],
+   "ms": 763,
    "source": "live"
   },
   "AL90000200": {
@@ -1900,7 +1918,7 @@
     "CHANNEL": "CARD_NOT_PRESENT",
     "MERCHANT_NAME": "Zentrova Digital Goods",
     "AMOUNT": 1.85,
-    "SCORE": 0.6603,
+    "SCORE": 0.4992,
     "PRIORITY": "HIGH",
     "RULES": [
      "CARD_TESTING",
@@ -1927,7 +1945,7 @@
      "TS": "2026-11-12 02:52:40",
      "KIND": "TXN",
      "ID": "T90000200",
-     "LABEL": "Zentrova Digital Goods \u00b7 Las Vegas",
+     "LABEL": "Zentrova Digital Goods · Las Vegas",
      "AMOUNT": 1.85,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 36.17,
@@ -1967,7 +1985,8 @@
     }
    ],
    "actions": [],
-   "ms": 731,
+   "travel": [],
+   "ms": 789,
    "source": "live"
   },
   "AL9600948": {
@@ -1980,7 +1999,7 @@
     "CHANNEL": "CARD_NOT_PRESENT",
     "MERCHANT_NAME": "Quillmont Outfitters",
     "AMOUNT": 179,
-    "SCORE": 0.9965,
+    "SCORE": 0.9954,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -2001,7 +2020,7 @@
      "TS": "2026-11-08 19:58:49",
      "KIND": "TXN",
      "ID": "T9600948",
-     "LABEL": "Quillmont Outfitters \u00b7 Portland",
+     "LABEL": "Quillmont Outfitters · Portland",
      "AMOUNT": 179,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 25.762,
@@ -2061,7 +2080,8 @@
     }
    ],
    "actions": [],
-   "ms": 1113,
+   "travel": [],
+   "ms": 1888,
    "source": "live"
   },
   "AL91000015": {
@@ -2099,7 +2119,7 @@
      "TS": "2026-11-13 15:15:00",
      "KIND": "TXN",
      "ID": "T91000015",
-     "LABEL": "Kestrin Electronics Online \u00b7 Charlotte",
+     "LABEL": "Kestrin Electronics Online · Charlotte",
      "AMOUNT": 382.29,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 36.17,
@@ -2111,7 +2131,7 @@
      "TS": "2026-11-13 13:38:06",
      "KIND": "TXN",
      "ID": "T00506411",
-     "LABEL": "Jorvane Travel \u00b7 Salt Lake City",
+     "LABEL": "Jorvane Travel · Salt Lake City",
      "AMOUNT": 79.21,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 40.70305,
@@ -2123,7 +2143,7 @@
      "TS": "2026-11-12 03:23:36",
      "KIND": "TXN",
      "ID": "T90000345",
-     "LABEL": "Zentrova Digital Goods \u00b7 Las Vegas",
+     "LABEL": "Zentrova Digital Goods · Las Vegas",
      "AMOUNT": 0.59,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 36.17,
@@ -2135,7 +2155,7 @@
      "TS": "2026-11-11 22:29:14",
      "KIND": "TXN",
      "ID": "T01455314",
-     "LABEL": "Kestrin Market \u00b7 Salt Lake City",
+     "LABEL": "Kestrin Market · Salt Lake City",
      "AMOUNT": 8.93,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 40.80749,
@@ -2147,7 +2167,7 @@
      "TS": "2026-11-11 19:27:19",
      "KIND": "TXN",
      "ID": "T00457779",
-     "LABEL": "Kestrin Outfitters Online \u00b7 Washington",
+     "LABEL": "Kestrin Outfitters Online · Washington",
      "AMOUNT": 97.01,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 40.79549,
@@ -2267,7 +2287,16 @@
     }
    ],
    "actions": [],
-   "ms": 876,
+   "travel": [
+    {
+     "TXN_ID": "T00506411",
+     "TS": "2026-11-13 13:38:06",
+     "MINUTES": 2349,
+     "KM": 12,
+     "KMH": 0
+    }
+   ],
+   "ms": 854,
    "source": "live"
   },
   "AL9200002": {
@@ -2376,7 +2405,7 @@
      "TS": "2026-11-14 09:08:30",
      "KIND": "EVENT",
      "ID": "E0000005",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060007",
+     "LABEL": "PAYEE ADDED · Payee A060007",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2388,7 +2417,7 @@
      "TS": "2026-11-14 09:07:52",
      "KIND": "EVENT",
      "ID": "E0000004",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060004",
+     "LABEL": "PAYEE ADDED · Payee A060004",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2400,7 +2429,7 @@
      "TS": "2026-11-14 09:07:05",
      "KIND": "EVENT",
      "ID": "E0000003",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060001",
+     "LABEL": "PAYEE ADDED · Payee A060001",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2412,7 +2441,7 @@
      "TS": "2026-11-14 09:04:40",
      "KIND": "EVENT",
      "ID": "E0000002",
-     "LABEL": "PASSWORD RESET \u00b7 Reset via email link",
+     "LABEL": "PASSWORD RESET · Reset via email link",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2424,7 +2453,7 @@
      "TS": "2026-11-14 09:02:11",
      "KIND": "EVENT",
      "ID": "E0000001",
-     "LABEL": "LOGIN NEW DEVICE \u00b7 First login from this device",
+     "LABEL": "LOGIN NEW DEVICE · First login from this device",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2448,7 +2477,7 @@
      "TS": "2026-11-13 10:16:16",
      "KIND": "TXN",
      "ID": "T01148402",
-     "LABEL": "Norbeck Digital \u00b7 Detroit",
+     "LABEL": "Norbeck Digital · Detroit",
      "AMOUNT": 13.2,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.30303,
@@ -2460,7 +2489,7 @@
      "TS": "2026-11-13 09:39:13",
      "KIND": "TXN",
      "ID": "T00094660",
-     "LABEL": "Rosvane Pharmacy \u00b7 Detroit",
+     "LABEL": "Rosvane Pharmacy · Detroit",
      "AMOUNT": 6.82,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.37851,
@@ -2472,7 +2501,7 @@
      "TS": "2026-11-12 15:04:46",
      "KIND": "TXN",
      "ID": "T00524900",
-     "LABEL": "Orlaith Digital Online \u00b7 Denver",
+     "LABEL": "Orlaith Digital Online · Denver",
      "AMOUNT": 62.91,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 42.35823,
@@ -2637,11 +2666,11 @@
      "b": "A060008"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE1",
      "b": "A060010"
     },
     {
-     "a": "DMULE1",
+     "a": "IPMULE2",
      "b": "A060010"
     },
     {
@@ -2650,7 +2679,8 @@
     }
    ],
    "actions": [],
-   "ms": 983,
+   "travel": [],
+   "ms": 782,
    "source": "live"
   },
   "AL9200003": {
@@ -2759,7 +2789,7 @@
      "TS": "2026-11-14 09:08:30",
      "KIND": "EVENT",
      "ID": "E0000005",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060007",
+     "LABEL": "PAYEE ADDED · Payee A060007",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2771,7 +2801,7 @@
      "TS": "2026-11-14 09:07:52",
      "KIND": "EVENT",
      "ID": "E0000004",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060004",
+     "LABEL": "PAYEE ADDED · Payee A060004",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2783,7 +2813,7 @@
      "TS": "2026-11-14 09:07:05",
      "KIND": "EVENT",
      "ID": "E0000003",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060001",
+     "LABEL": "PAYEE ADDED · Payee A060001",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2795,7 +2825,7 @@
      "TS": "2026-11-14 09:04:40",
      "KIND": "EVENT",
      "ID": "E0000002",
-     "LABEL": "PASSWORD RESET \u00b7 Reset via email link",
+     "LABEL": "PASSWORD RESET · Reset via email link",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2807,7 +2837,7 @@
      "TS": "2026-11-14 09:02:11",
      "KIND": "EVENT",
      "ID": "E0000001",
-     "LABEL": "LOGIN NEW DEVICE \u00b7 First login from this device",
+     "LABEL": "LOGIN NEW DEVICE · First login from this device",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -2831,7 +2861,7 @@
      "TS": "2026-11-13 10:16:16",
      "KIND": "TXN",
      "ID": "T01148402",
-     "LABEL": "Norbeck Digital \u00b7 Detroit",
+     "LABEL": "Norbeck Digital · Detroit",
      "AMOUNT": 13.2,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.30303,
@@ -2843,7 +2873,7 @@
      "TS": "2026-11-13 09:39:13",
      "KIND": "TXN",
      "ID": "T00094660",
-     "LABEL": "Rosvane Pharmacy \u00b7 Detroit",
+     "LABEL": "Rosvane Pharmacy · Detroit",
      "AMOUNT": 6.82,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.37851,
@@ -2855,7 +2885,7 @@
      "TS": "2026-11-12 15:04:46",
      "KIND": "TXN",
      "ID": "T00524900",
-     "LABEL": "Orlaith Digital Online \u00b7 Denver",
+     "LABEL": "Orlaith Digital Online · Denver",
      "AMOUNT": 62.91,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 42.35823,
@@ -3020,11 +3050,11 @@
      "b": "A060008"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE1",
      "b": "A060010"
     },
     {
-     "a": "DMULE1",
+     "a": "IPMULE2",
      "b": "A060010"
     },
     {
@@ -3033,7 +3063,8 @@
     }
    ],
    "actions": [],
-   "ms": 687,
+   "travel": [],
+   "ms": 738,
    "source": "live"
   },
   "AL9200004": {
@@ -3141,7 +3172,7 @@
      "TS": "2026-11-14 09:08:30",
      "KIND": "EVENT",
      "ID": "E0000005",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060007",
+     "LABEL": "PAYEE ADDED · Payee A060007",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3153,7 +3184,7 @@
      "TS": "2026-11-14 09:07:52",
      "KIND": "EVENT",
      "ID": "E0000004",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060004",
+     "LABEL": "PAYEE ADDED · Payee A060004",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3165,7 +3196,7 @@
      "TS": "2026-11-14 09:07:05",
      "KIND": "EVENT",
      "ID": "E0000003",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060001",
+     "LABEL": "PAYEE ADDED · Payee A060001",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3177,7 +3208,7 @@
      "TS": "2026-11-14 09:04:40",
      "KIND": "EVENT",
      "ID": "E0000002",
-     "LABEL": "PASSWORD RESET \u00b7 Reset via email link",
+     "LABEL": "PASSWORD RESET · Reset via email link",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3189,7 +3220,7 @@
      "TS": "2026-11-14 09:02:11",
      "KIND": "EVENT",
      "ID": "E0000001",
-     "LABEL": "LOGIN NEW DEVICE \u00b7 First login from this device",
+     "LABEL": "LOGIN NEW DEVICE · First login from this device",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3213,7 +3244,7 @@
      "TS": "2026-11-13 10:16:16",
      "KIND": "TXN",
      "ID": "T01148402",
-     "LABEL": "Norbeck Digital \u00b7 Detroit",
+     "LABEL": "Norbeck Digital · Detroit",
      "AMOUNT": 13.2,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.30303,
@@ -3225,7 +3256,7 @@
      "TS": "2026-11-13 09:39:13",
      "KIND": "TXN",
      "ID": "T00094660",
-     "LABEL": "Rosvane Pharmacy \u00b7 Detroit",
+     "LABEL": "Rosvane Pharmacy · Detroit",
      "AMOUNT": 6.82,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.37851,
@@ -3237,7 +3268,7 @@
      "TS": "2026-11-12 15:04:46",
      "KIND": "TXN",
      "ID": "T00524900",
-     "LABEL": "Orlaith Digital Online \u00b7 Denver",
+     "LABEL": "Orlaith Digital Online · Denver",
      "AMOUNT": 62.91,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 42.35823,
@@ -3402,11 +3433,11 @@
      "b": "A060008"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE1",
      "b": "A060010"
     },
     {
-     "a": "DMULE1",
+     "a": "IPMULE2",
      "b": "A060010"
     },
     {
@@ -3415,7 +3446,8 @@
     }
    ],
    "actions": [],
-   "ms": 1374,
+   "travel": [],
+   "ms": 981,
    "source": "live"
   },
   "AL9200005": {
@@ -3523,7 +3555,7 @@
      "TS": "2026-11-14 09:08:30",
      "KIND": "EVENT",
      "ID": "E0000005",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060007",
+     "LABEL": "PAYEE ADDED · Payee A060007",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3535,7 +3567,7 @@
      "TS": "2026-11-14 09:07:52",
      "KIND": "EVENT",
      "ID": "E0000004",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060004",
+     "LABEL": "PAYEE ADDED · Payee A060004",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3547,7 +3579,7 @@
      "TS": "2026-11-14 09:07:05",
      "KIND": "EVENT",
      "ID": "E0000003",
-     "LABEL": "PAYEE ADDED \u00b7 Payee A060001",
+     "LABEL": "PAYEE ADDED · Payee A060001",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3559,7 +3591,7 @@
      "TS": "2026-11-14 09:04:40",
      "KIND": "EVENT",
      "ID": "E0000002",
-     "LABEL": "PASSWORD RESET \u00b7 Reset via email link",
+     "LABEL": "PASSWORD RESET · Reset via email link",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3571,7 +3603,7 @@
      "TS": "2026-11-14 09:02:11",
      "KIND": "EVENT",
      "ID": "E0000001",
-     "LABEL": "LOGIN NEW DEVICE \u00b7 First login from this device",
+     "LABEL": "LOGIN NEW DEVICE · First login from this device",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -3595,7 +3627,7 @@
      "TS": "2026-11-13 10:16:16",
      "KIND": "TXN",
      "ID": "T01148402",
-     "LABEL": "Norbeck Digital \u00b7 Detroit",
+     "LABEL": "Norbeck Digital · Detroit",
      "AMOUNT": 13.2,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.30303,
@@ -3607,7 +3639,7 @@
      "TS": "2026-11-13 09:39:13",
      "KIND": "TXN",
      "ID": "T00094660",
-     "LABEL": "Rosvane Pharmacy \u00b7 Detroit",
+     "LABEL": "Rosvane Pharmacy · Detroit",
      "AMOUNT": 6.82,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.37851,
@@ -3619,7 +3651,7 @@
      "TS": "2026-11-12 15:04:46",
      "KIND": "TXN",
      "ID": "T00524900",
-     "LABEL": "Orlaith Digital Online \u00b7 Denver",
+     "LABEL": "Orlaith Digital Online · Denver",
      "AMOUNT": 62.91,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 42.35823,
@@ -3784,11 +3816,11 @@
      "b": "A060008"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE1",
      "b": "A060010"
     },
     {
-     "a": "DMULE1",
+     "a": "IPMULE2",
      "b": "A060010"
     },
     {
@@ -3797,7 +3829,8 @@
     }
    ],
    "actions": [],
-   "ms": 767,
+   "travel": [],
+   "ms": 840,
    "source": "live"
   },
   "AL9400061": {
@@ -3810,7 +3843,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1470.97,
-    "SCORE": 0.9987,
+    "SCORE": 0.9995,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -3843,7 +3876,7 @@
      "TS": "2026-11-09 17:00:00",
      "KIND": "EVENT",
      "ID": "E1000049",
-     "LABEL": "LOGIN \u00b7 Login",
+     "LABEL": "LOGIN · Login",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -4040,11 +4073,11 @@
      "b": "DMULE1"
     },
     {
-     "a": "A060006",
+     "a": "A060012",
      "b": "DMULE3"
     },
     {
-     "a": "A060012",
+     "a": "A060006",
      "b": "DMULE3"
     },
     {
@@ -4060,16 +4093,12 @@
      "b": "IPMULE1"
     },
     {
-     "a": "DATO1",
-     "b": "A012345"
-    },
-    {
      "a": "IPATO1",
      "b": "A012345"
     },
     {
-     "a": "IPMULE1",
-     "b": "A060001"
+     "a": "DATO1",
+     "b": "A012345"
     },
     {
      "a": "DMULE1",
@@ -4077,10 +4106,14 @@
     },
     {
      "a": "IPMULE1",
-     "b": "A060003"
+     "b": "A060001"
     },
     {
      "a": "DMULE3",
+     "b": "A060003"
+    },
+    {
+     "a": "IPMULE1",
      "b": "A060003"
     },
     {
@@ -4101,7 +4134,8 @@
     }
    ],
    "actions": [],
-   "ms": 834,
+   "travel": [],
+   "ms": 836,
    "source": "live"
   },
   "AL9400018": {
@@ -4114,7 +4148,7 @@
     "CHANNEL": "CARD_NOT_PRESENT",
     "MERCHANT_NAME": "Varnell Gift Cards",
     "AMOUNT": 1464.75,
-    "SCORE": 0.9994,
+    "SCORE": 0.9997,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -4135,7 +4169,7 @@
      "TS": "2026-11-04 15:54:00",
      "KIND": "TXN",
      "ID": "T9400018",
-     "LABEL": "Varnell Gift Cards \u00b7 Dallas",
+     "LABEL": "Varnell Gift Cards · Dallas",
      "AMOUNT": 1464.75,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 32.78,
@@ -4147,7 +4181,7 @@
      "TS": "2026-11-04 04:00:00",
      "KIND": "EVENT",
      "ID": "E1000030",
-     "LABEL": "LOGIN \u00b7 Login",
+     "LABEL": "LOGIN · Login",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -4159,7 +4193,7 @@
      "TS": "2026-11-03 05:18:00",
      "KIND": "TXN",
      "ID": "T9400006",
-     "LABEL": "Varnell Gift Cards \u00b7 Dallas",
+     "LABEL": "Varnell Gift Cards · Dallas",
      "AMOUNT": 691.4,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 32.78,
@@ -4300,11 +4334,11 @@
      "b": "IPMULE1"
     },
     {
-     "a": "DMULE1",
+     "a": "IPMULE1",
      "b": "A060001"
     },
     {
-     "a": "IPMULE1",
+     "a": "DMULE1",
      "b": "A060001"
     },
     {
@@ -4344,11 +4378,11 @@
      "b": "DMULE2"
     },
     {
-     "a": "A060003",
+     "a": "A060009",
      "b": "DMULE3"
     },
     {
-     "a": "A060009",
+     "a": "A060003",
      "b": "DMULE3"
     },
     {
@@ -4372,11 +4406,11 @@
      "b": "A012345"
     },
     {
-     "a": "DMULE2",
+     "a": "IPMULE2",
      "b": "A060002"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE2",
      "b": "A060002"
     },
     {
@@ -4388,11 +4422,11 @@
      "b": "A060006"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE2",
      "b": "A060008"
     },
     {
-     "a": "DMULE2",
+     "a": "IPMULE2",
      "b": "A060008"
     },
     {
@@ -4405,7 +4439,8 @@
     }
    ],
    "actions": [],
-   "ms": 1039,
+   "travel": [],
+   "ms": 782,
    "source": "live"
   },
   "AL9400040": {
@@ -4418,7 +4453,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1463.58,
-    "SCORE": 0.9957,
+    "SCORE": 0.996,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -4451,7 +4486,7 @@
      "TS": "2026-11-07 02:00:00",
      "KIND": "EVENT",
      "ID": "E1000040",
-     "LABEL": "LOGIN \u00b7 Login",
+     "LABEL": "LOGIN · Login",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -4626,11 +4661,11 @@
      "b": "DMULE1"
     },
     {
-     "a": "A060009",
+     "a": "A060003",
      "b": "DMULE3"
     },
     {
-     "a": "A060003",
+     "a": "A060009",
      "b": "DMULE3"
     },
     {
@@ -4650,19 +4685,19 @@
      "b": "A060004"
     },
     {
+     "a": "IPMULE2",
+     "b": "A060006"
+    },
+    {
      "a": "DMULE3",
      "b": "A060006"
     },
     {
      "a": "IPMULE2",
-     "b": "A060006"
-    },
-    {
-     "a": "DMULE1",
      "b": "A060010"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE1",
      "b": "A060010"
     },
     {
@@ -4675,7 +4710,8 @@
     }
    ],
    "actions": [],
-   "ms": 834,
+   "travel": [],
+   "ms": 771,
    "source": "live"
   },
   "AL9400063": {
@@ -4688,7 +4724,7 @@
     "CHANNEL": "CARD_NOT_PRESENT",
     "MERCHANT_NAME": "Varnell Gift Cards",
     "AMOUNT": 1463.42,
-    "SCORE": 0.9987,
+    "SCORE": 0.9991,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -4710,7 +4746,7 @@
      "TS": "2026-11-10 07:00:00",
      "KIND": "EVENT",
      "ID": "E1000051",
-     "LABEL": "LOGIN \u00b7 Login",
+     "LABEL": "LOGIN · Login",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -4722,7 +4758,7 @@
      "TS": "2026-11-10 01:39:00",
      "KIND": "TXN",
      "ID": "T9400063",
-     "LABEL": "Varnell Gift Cards \u00b7 Dallas",
+     "LABEL": "Varnell Gift Cards · Dallas",
      "AMOUNT": 1463.42,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 32.78,
@@ -4734,7 +4770,7 @@
      "TS": "2026-11-08 15:03:00",
      "KIND": "TXN",
      "ID": "T9400051",
-     "LABEL": "Varnell Gift Cards \u00b7 Dallas",
+     "LABEL": "Varnell Gift Cards · Dallas",
      "AMOUNT": 1202.5,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 32.78,
@@ -4977,11 +5013,11 @@
      "b": "IPMULE1"
     },
     {
-     "a": "IPMULE1",
+     "a": "DMULE3",
      "b": "A060003"
     },
     {
-     "a": "DMULE3",
+     "a": "IPMULE1",
      "b": "A060003"
     },
     {
@@ -4993,11 +5029,11 @@
      "b": "A060005"
     },
     {
-     "a": "IPMULE1",
+     "a": "DMULE3",
      "b": "A060009"
     },
     {
-     "a": "DMULE3",
+     "a": "IPMULE1",
      "b": "A060009"
     },
     {
@@ -5010,7 +5046,8 @@
     }
    ],
    "actions": [],
-   "ms": 878,
+   "travel": [],
+   "ms": 758,
    "source": "live"
   },
   "AL9400025": {
@@ -5023,7 +5060,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1454.85,
-    "SCORE": 0.9982,
+    "SCORE": 0.9992,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -5241,11 +5278,11 @@
      "b": "DMULE1"
     },
     {
-     "a": "A060006",
+     "a": "A060012",
      "b": "DMULE3"
     },
     {
-     "a": "A060012",
+     "a": "A060006",
      "b": "DMULE3"
     },
     {
@@ -5261,16 +5298,12 @@
      "b": "IPMULE1"
     },
     {
-     "a": "DATO1",
-     "b": "A012345"
-    },
-    {
      "a": "IPATO1",
      "b": "A012345"
     },
     {
-     "a": "IPMULE1",
-     "b": "A060001"
+     "a": "DATO1",
+     "b": "A012345"
     },
     {
      "a": "DMULE1",
@@ -5278,10 +5311,14 @@
     },
     {
      "a": "IPMULE1",
-     "b": "A060003"
+     "b": "A060001"
     },
     {
      "a": "DMULE3",
+     "b": "A060003"
+    },
+    {
+     "a": "IPMULE1",
      "b": "A060003"
     },
     {
@@ -5302,7 +5339,8 @@
     }
    ],
    "actions": [],
-   "ms": 657,
+   "travel": [],
+   "ms": 706,
    "source": "live"
   },
   "AL9400062": {
@@ -5315,7 +5353,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1445.62,
-    "SCORE": 0.9986,
+    "SCORE": 0.9996,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -5336,7 +5374,7 @@
      "TS": "2026-11-10 00:00:00",
      "KIND": "EVENT",
      "ID": "E1000050",
-     "LABEL": "LOGIN \u00b7 Login",
+     "LABEL": "LOGIN · Login",
      "AMOUNT": null,
      "CHANNEL": null,
      "LAT": null,
@@ -5499,11 +5537,11 @@
      "b": "A060007"
     },
     {
-     "a": "DMULE3",
+     "a": "IPMULE1",
      "b": "A060009"
     },
     {
-     "a": "IPMULE1",
+     "a": "DMULE3",
      "b": "A060009"
     },
     {
@@ -5523,11 +5561,11 @@
      "b": "DMULE1"
     },
     {
-     "a": "A060005",
+     "a": "A060011",
      "b": "DMULE2"
     },
     {
-     "a": "A060011",
+     "a": "A060005",
      "b": "DMULE2"
     },
     {
@@ -5539,11 +5577,11 @@
      "b": "IPMULE2"
     },
     {
-     "a": "DMULE2",
+     "a": "IPMULE2",
      "b": "A060002"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE2",
      "b": "A060002"
     },
     {
@@ -5555,11 +5593,11 @@
      "b": "A060004"
     },
     {
-     "a": "DMULE2",
+     "a": "IPMULE2",
      "b": "A060008"
     },
     {
-     "a": "IPMULE2",
+     "a": "DMULE2",
      "b": "A060008"
     },
     {
@@ -5572,7 +5610,8 @@
     }
    ],
    "actions": [],
-   "ms": 846,
+   "travel": [],
+   "ms": 825,
    "source": "live"
   },
   "AL00811690": {
@@ -5609,7 +5648,7 @@
      "TS": "2026-11-12 13:01:35",
      "KIND": "TXN",
      "ID": "T01146110",
-     "LABEL": "Galvane Travel Online \u00b7 New York",
+     "LABEL": "Galvane Travel Online · New York",
      "AMOUNT": 101.4,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 41.90522,
@@ -5645,7 +5684,7 @@
      "TS": "2026-11-10 22:14:54",
      "KIND": "TXN",
      "ID": "T00685925",
-     "LABEL": "Istrel Fuel \u00b7 Chicago",
+     "LABEL": "Istrel Fuel · Chicago",
      "AMOUNT": 103.4,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 41.89455,
@@ -5715,7 +5754,8 @@
     }
    ],
    "actions": [],
-   "ms": 811,
+   "travel": [],
+   "ms": 952,
    "source": "live"
   },
   "AL01080564": {
@@ -5728,7 +5768,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1060.69,
-    "SCORE": 0.9995,
+    "SCORE": 0.9996,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -5751,7 +5791,7 @@
      "TS": "2026-11-04 21:33:11",
      "KIND": "TXN",
      "ID": "T02587263",
-     "LABEL": "Pellmont Bistro \u00b7 Indianapolis",
+     "LABEL": "Pellmont Bistro · Indianapolis",
      "AMOUNT": 6.12,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 39.74354,
@@ -5787,7 +5827,7 @@
      "TS": "2026-11-03 20:51:23",
      "KIND": "TXN",
      "ID": "T02733603",
-     "LABEL": "Norbeck Travel \u00b7 Indianapolis",
+     "LABEL": "Norbeck Travel · Indianapolis",
      "AMOUNT": 26.11,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 39.7207,
@@ -5799,7 +5839,7 @@
      "TS": "2026-11-02 21:28:17",
      "KIND": "TXN",
      "ID": "T00945002",
-     "LABEL": "Marvelle Outfitters \u00b7 Indianapolis",
+     "LABEL": "Marvelle Outfitters · Indianapolis",
      "AMOUNT": 23.39,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 39.76697,
@@ -5889,7 +5929,8 @@
     }
    ],
    "actions": [],
-   "ms": 1068,
+   "travel": [],
+   "ms": 857,
    "source": "live"
   },
   "AL00879804": {
@@ -5902,7 +5943,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1049.7,
-    "SCORE": 0.9993,
+    "SCORE": 0.9995,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -5937,7 +5978,7 @@
      "TS": "2026-11-04 18:59:14",
      "KIND": "TXN",
      "ID": "T00286524",
-     "LABEL": "Brindle Pharmacy \u00b7 Las Vegas",
+     "LABEL": "Brindle Pharmacy · Las Vegas",
      "AMOUNT": 38.66,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 36.11327,
@@ -6007,7 +6048,8 @@
     }
    ],
    "actions": [],
-   "ms": 1216,
+   "travel": [],
+   "ms": 788,
    "source": "live"
   },
   "AL02693751": {
@@ -6020,7 +6062,7 @@
     "CHANNEL": "P2P",
     "MERCHANT_NAME": null,
     "AMOUNT": 1029.94,
-    "SCORE": 0.9991,
+    "SCORE": 0.999,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -6043,7 +6085,7 @@
      "TS": "2026-11-07 21:24:07",
      "KIND": "TXN",
      "ID": "T00066479",
-     "LABEL": "Kestrin Digital Online \u00b7 Houston",
+     "LABEL": "Kestrin Digital Online · Houston",
      "AMOUNT": 100.56,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 30.30427,
@@ -6067,7 +6109,7 @@
      "TS": "2026-11-07 07:20:36",
      "KIND": "TXN",
      "ID": "T01399458",
-     "LABEL": "Rosvane Digital \u00b7 Austin",
+     "LABEL": "Rosvane Digital · Austin",
      "AMOUNT": 5.67,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 30.2931,
@@ -6079,7 +6121,7 @@
      "TS": "2026-11-07 07:17:03",
      "KIND": "TXN",
      "ID": "T00280585",
-     "LABEL": "Jorvane Outfitters Online \u00b7 Houston",
+     "LABEL": "Jorvane Outfitters Online · Houston",
      "AMOUNT": 17.34,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 30.25323,
@@ -6091,7 +6133,7 @@
      "TS": "2026-11-06 19:29:03",
      "KIND": "TXN",
      "ID": "T02670711",
-     "LABEL": "Calvory Outfitters Online \u00b7 San Francisco",
+     "LABEL": "Calvory Outfitters Online · San Francisco",
      "AMOUNT": 8.53,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 30.24137,
@@ -6103,7 +6145,7 @@
      "TS": "2026-11-06 10:39:23",
      "KIND": "TXN",
      "ID": "T02848805",
-     "LABEL": "Galvane Electronics Online \u00b7 Minneapolis",
+     "LABEL": "Galvane Electronics Online · Minneapolis",
      "AMOUNT": 56.42,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 30.29009,
@@ -6115,7 +6157,7 @@
      "TS": "2026-11-05 14:29:39",
      "KIND": "TXN",
      "ID": "T00768179",
-     "LABEL": "Rosvane Digital Online \u00b7 Miami",
+     "LABEL": "Rosvane Digital Online · Miami",
      "AMOUNT": 109.81,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 30.23231,
@@ -6185,7 +6227,8 @@
     }
    ],
    "actions": [],
-   "ms": 823,
+   "travel": [],
+   "ms": 777,
    "source": "live"
   },
   "AL01339011": {
@@ -6198,7 +6241,7 @@
     "CHANNEL": "CARD_PRESENT",
     "MERCHANT_NAME": "Rosvane Electronics",
     "AMOUNT": 330.93,
-    "SCORE": 0.8827,
+    "SCORE": 0.8636,
     "PRIORITY": "HIGH",
     "RULES": [
      "IMPOSSIBLE_TRAVEL"
@@ -6222,7 +6265,7 @@
      "TS": "2026-11-06 13:33:57",
      "KIND": "TXN",
      "ID": "T01339011",
-     "LABEL": "Rosvane Electronics \u00b7 New York",
+     "LABEL": "Rosvane Electronics · New York",
      "AMOUNT": 330.93,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 40.75447,
@@ -6234,7 +6277,7 @@
      "TS": "2026-11-06 12:57:44",
      "KIND": "TXN",
      "ID": "T00135131",
-     "LABEL": "Orlaith Digital Online \u00b7 Denver",
+     "LABEL": "Orlaith Digital Online · Denver",
      "AMOUNT": 10.81,
      "CHANNEL": "CARD_NOT_PRESENT",
      "LAT": 42.3229,
@@ -6246,7 +6289,7 @@
      "TS": "2026-11-05 18:20:42",
      "KIND": "TXN",
      "ID": "T00553343",
-     "LABEL": "Rosvane Travel \u00b7 Detroit",
+     "LABEL": "Rosvane Travel · Detroit",
      "AMOUNT": 19.89,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 42.3605,
@@ -6308,7 +6351,16 @@
     }
    ],
    "actions": [],
-   "ms": 755,
+   "travel": [
+    {
+     "TXN_ID": "T01339011",
+     "TS": "2026-11-06 13:33:57",
+     "MINUTES": 1153,
+     "KM": 772.9,
+     "KMH": 40
+    }
+   ],
+   "ms": 842,
    "source": "live"
   },
   "AL01929547": {
@@ -6321,7 +6373,7 @@
     "CHANNEL": "CARD_PRESENT",
     "MERCHANT_NAME": "Tavron Electronics",
     "AMOUNT": 268.83,
-    "SCORE": 0.9572,
+    "SCORE": 0.9626,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
@@ -6342,7 +6394,7 @@
      "TS": "2026-11-10 01:12:55",
      "KIND": "TXN",
      "ID": "T01929547",
-     "LABEL": "Tavron Electronics \u00b7 Tampa",
+     "LABEL": "Tavron Electronics · Tampa",
      "AMOUNT": 268.83,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 27.90799,
@@ -6354,7 +6406,7 @@
      "TS": "2026-11-08 15:46:53",
      "KIND": "TXN",
      "ID": "T02181026",
-     "LABEL": "Kestrin Pharmacy \u00b7 St. Louis",
+     "LABEL": "Kestrin Pharmacy · St. Louis",
      "AMOUNT": 18.02,
      "CHANNEL": "CARD_PRESENT",
      "LAT": 38.64106,
@@ -6404,203 +6456,873 @@
     }
    ],
    "actions": [],
-   "ms": 808,
+   "travel": [
+    {
+     "TXN_ID": "T01929547",
+     "TS": "2026-11-10 01:12:55",
+     "MINUTES": 2006,
+     "KM": 1393.5,
+     "KMH": 42
+    }
+   ],
+   "ms": 815,
    "source": "live"
   },
-  "AL02523179": {
+  "AL02670282": {
    "alert": {
-    "ALERT_ID": "AL02523179",
-    "TXN_ID": "T02523179",
-    "CREATED_TS": "2026-11-09 16:36:29",
-    "ACCOUNT_ID": "A049631",
-    "CUSTOMER_NAME": "Noah Corwin",
+    "ALERT_ID": "AL02670282",
+    "TXN_ID": "T02670282",
+    "CREATED_TS": "2026-11-09 03:55:38",
+    "ACCOUNT_ID": "A019074",
+    "CUSTOMER_NAME": "Felix Delacroix",
     "CHANNEL": "CARD_PRESENT",
-    "MERCHANT_NAME": "Jorvane Pharmacy",
-    "AMOUNT": 268.75,
-    "SCORE": 0.9138,
+    "MERCHANT_NAME": "Lumenor Electronics",
+    "AMOUNT": 245.44,
+    "SCORE": 0.9602,
     "PRIORITY": "HIGH",
     "RULES": [],
     "REASON_CODES": [
-     "AMOUNT_SPIKE"
+     "NIGHT_TIME"
     ],
-    "SLA_MIN_LEFT": -7944,
+    "SLA_MIN_LEFT": -8705,
     "STATUS": "FALSE_POSITIVE",
     "LINKED_ACCOUNTS": 1,
     "LAST_ACTION": null,
     "DEVICE_ID": null,
     "IP_ID": null,
-    "LAT": 25.77682,
-    "LON": -80.18806,
-    "MERCHANT_CATEGORY": "Pharmacy"
+    "LAT": 44.9977,
+    "LON": -93.24938,
+    "MERCHANT_CATEGORY": "Electronics"
    },
    "timeline": [
     {
-     "TS": "2026-11-09 16:36:29",
+     "TS": "2026-11-09 03:55:38",
      "KIND": "TXN",
-     "ID": "T02523179",
-     "LABEL": "Jorvane Pharmacy \u00b7 Miami",
-     "AMOUNT": 268.75,
+     "ID": "T02670282",
+     "LABEL": "Lumenor Electronics · Minneapolis",
+     "AMOUNT": 245.44,
      "CHANNEL": "CARD_PRESENT",
-     "LAT": 25.77682,
-     "LON": -80.18806,
+     "LAT": 44.9977,
+     "LON": -93.24938,
      "DEVICE_ID": null,
      "FLAGGED": true
     },
     {
-     "TS": "2026-11-09 11:48:50",
+     "TS": "2026-11-08 16:14:20",
      "KIND": "TXN",
-     "ID": "T00785236",
-     "LABEL": "Tavron Digital Online \u00b7 Las Vegas",
-     "AMOUNT": 101.81,
+     "ID": "T00765380",
+     "LABEL": "Rosvane Digital Online · Miami",
+     "AMOUNT": 112.89,
      "CHANNEL": "CARD_NOT_PRESENT",
-     "LAT": 36.15469,
-     "LON": -86.80471,
-     "DEVICE_ID": "D049631",
+     "LAT": 30.28942,
+     "LON": -97.75665,
+     "DEVICE_ID": "D019074",
      "FLAGGED": false
     },
     {
-     "TS": "2026-11-08 21:40:14",
+     "TS": "2026-11-08 12:11:17",
      "KIND": "TXN",
-     "ID": "T01953216",
-     "LABEL": "Pellmont Digital Online \u00b7 Detroit",
-     "AMOUNT": 12.57,
-     "CHANNEL": "CARD_NOT_PRESENT",
-     "LAT": 36.17638,
-     "LON": -86.75202,
-     "DEVICE_ID": "D049631",
-     "FLAGGED": false
-    },
-    {
-     "TS": "2026-11-08 21:18:34",
-     "KIND": "TXN",
-     "ID": "T00710539",
-     "LABEL": "Norbeck Bistro \u00b7 Nashville",
-     "AMOUNT": 28.52,
+     "ID": "T01671964",
+     "LABEL": "Tavron Fuel · Austin",
+     "AMOUNT": 17.14,
      "CHANNEL": "CARD_PRESENT",
-     "LAT": 36.17989,
-     "LON": -86.8219,
+     "LAT": 30.3235,
+     "LON": -97.7328,
      "DEVICE_ID": null,
      "FLAGGED": false
     },
     {
-     "TS": "2026-11-08 18:55:53",
+     "TS": "2026-11-07 11:17:55",
      "KIND": "TXN",
-     "ID": "T01124585",
-     "LABEL": "Jorvane Travel \u00b7 Nashville",
-     "AMOUNT": 26.04,
+     "ID": "T01534292",
+     "LABEL": "Tavron Market · Austin",
+     "AMOUNT": 15.99,
      "CHANNEL": "CARD_PRESENT",
-     "LAT": 36.17422,
-     "LON": -86.78961,
+     "LAT": 30.24256,
+     "LON": -97.73264,
      "DEVICE_ID": null,
-     "FLAGGED": false
-    },
-    {
-     "TS": "2026-11-08 16:49:07",
-     "KIND": "TXN",
-     "ID": "T01785579",
-     "LABEL": "Marvelle Travel \u00b7 Nashville",
-     "AMOUNT": 7.52,
-     "CHANNEL": "CARD_PRESENT",
-     "LAT": 36.17348,
-     "LON": -86.7703,
-     "DEVICE_ID": null,
-     "FLAGGED": false
-    },
-    {
-     "TS": "2026-11-07 22:25:15",
-     "KIND": "TXN",
-     "ID": "T01986192",
-     "LABEL": "Calvory Outfitters Online \u00b7 San Francisco",
-     "AMOUNT": 173.64,
-     "CHANNEL": "CARD_NOT_PRESENT",
-     "LAT": 36.12733,
-     "LON": -86.80455,
-     "DEVICE_ID": "D049631",
      "FLAGGED": false
     }
    ],
    "nodes": [
     {
-     "id": "A049631",
+     "id": "A019074",
      "type": "ACCOUNT",
      "depth": 0,
-     "label": "A049631"
+     "label": "A019074"
     },
     {
-     "id": "D049631",
+     "id": "D019074",
      "type": "DEVICE",
      "depth": 1,
-     "label": "D049631"
+     "label": "D019074"
     },
     {
-     "id": "IP049631",
+     "id": "D119074",
+     "type": "DEVICE",
+     "depth": 1,
+     "label": "D119074"
+    },
+    {
+     "id": "IP019074",
      "type": "IP",
      "depth": 1,
-     "label": "IP049631"
+     "label": "IP019074"
     }
    ],
    "edges": [
     {
-     "a": "A049631",
-     "b": "D049631"
+     "a": "A019074",
+     "b": "D019074"
     },
     {
-     "a": "A049631",
-     "b": "IP049631"
+     "a": "A019074",
+     "b": "D119074"
+    },
+    {
+     "a": "A019074",
+     "b": "IP019074"
     }
    ],
    "actions": [],
-   "ms": 764,
+   "travel": [
+    {
+     "TXN_ID": "T02670282",
+     "TS": "2026-11-09 03:55:38",
+     "MINUTES": 944,
+     "KM": 1678,
+     "KMH": 107
+    },
+    {
+     "TXN_ID": "T01671964",
+     "TS": "2026-11-08 12:11:17",
+     "MINUTES": 1494,
+     "KM": 9,
+     "KMH": 0
+    }
+   ],
+   "ms": 1780,
    "source": "live"
   }
  },
  "summaries": {
-  "AL9200001": "**Summary**\n\nOn 2026-11-14 at 09:02, the customer logged in from a new device (DATO1), reset their password via email at 09:04, then immediately added three new payees. Between 09:10 and 09:44, the customer sent six P2P transactions totaling $9,800 to these three newly-added payees (A060001, A060004, A060007), with individual amounts ranging from $1,250 to $1,900\u2014a dramatic spike from their prior day's P2P of $266.\n\n**Signals**\n\n- **NEW_DEVICE**: First login from device DATO1 at 09:02, immediately preceding all suspicious activity\n- **RECENT_PASSWORD_RESET**: Password reset via email link at 09:04, just minutes before adding payees and initiating transactions\n- **FIRST_TIME_PAYEE**: All three payees (A060001, A060004, A060007) were added within 3 minutes (09:07-09:08) and immediately received funds\n- **AMOUNT_SPIKE**: Six transactions totaling $9,800 within 34 minutes versus typical transaction of $266; individual amounts ($1,250-$1,900) far exceed baseline\n- **Linked accounts**: 9 linked accounts identified in network graph, including all three recipient accounts\n\n**Recommended next step**\n\nImmediately block the account and contact the customer through a verified phone number on file to confirm account ownership and transaction authorization. If the customer does not recognize this activity, freeze the P2P transactions if possible and investigate potential account takeover involving the three recipient accounts (A060001, A060004, A060007) which appear in the linked account network.",
-  "AL9400084": "**Summary**\n\nOn November 11, 2026 at 03:36, a transaction for $618.18 was processed at Varnell Gift Cards in Dallas using device DMULE1. Approximately 34 hours later on November 12 at 14:12, a second transaction for $1,494.93 was processed at the same merchant and device, triggering a high-priority fraud alert (score 0.9994). A login event occurred later that same day at 22:00 from the same device.\n\n**Signals**\n\n- NEW_DEVICE reason code flagged on the alert\n- Two gift card purchases totaling $2,113.11 within 34 hours at same merchant\n- Card-not-present channel with high fraud score (0.9994)\n- Device DMULE1 linked to 13 accounts, 4 devices, and 3 IP addresses in network\n- Both transactions at Varnell Gift Cards flagged in timeline\n\n**Recommended next step**\n\nImmediately block the card and contact the customer through a verified phone number to confirm whether they authorized the gift card purchases. Review the 13 linked accounts (A060001-A060012 and A012345) for similar gift card transaction patterns that may indicate organized fraud ring activity.",
-  "AL9500002": "**Summary**\n\nOn November 13, 2026, the cardholder made a $42.18 purchase at Brindle Digital in Boston at 14:02:37. Approximately 28 minutes later at 14:30:09, a flagged transaction for $639.99 occurred at Jorvane Fuel in Miami. This was followed 12 minutes later by another Miami transaction at Jorvane Electronics for $412.50 at 14:41:55.\n\n**Signals**\n\n- **Impossible travel**: Transaction in Boston at 14:02:37 followed by Miami transaction at 14:30:09 (geographically impossible within 28 minutes)\n- **Geo velocity alert**: Multiple locations detected triggering velocity rules\n- **Amount spike**: The $639.99 Miami fuel purchase represents a significant increase from the prior $42.18 transaction\n- **Sequential Miami transactions**: Two high-value Miami purchases ($639.99 and $412.50) totaling over $1,000 within 12 minutes at related merchants (Jorvane brand)\n\n**Recommended next step**\n\nImmediately block the card to prevent further fraudulent charges and contact the customer to verify the Miami transactions, as the Boston-to-Miami timeframe indicates card-present fraud or a cloned card. Review linked account A034560 for similar geographic anomalies.",
-  "AL90000200": "**Summary**\n\nOn November 12, 2026 at 2:52 AM, a card-not-present transaction for $1.85 was processed at Zentrova Digital Goods in Las Vegas. The transaction triggered a high-priority fraud alert with a score of 0.66. This appears to be a potential card testing attempt using a small-value digital goods purchase.\n\n**Signals**\n\n- **Card testing pattern**: Low-value transaction ($1.85) at digital goods merchant, matching CARD_TESTING rule trigger\n- **New device**: Transaction originated from device DCT0, not previously associated with this account\n- **Night-time activity**: Transaction occurred at 2:52 AM, outside typical customer behavior hours\n- **Merchant burst**: MERCHANT_BURST reason indicates multiple rapid transactions at this merchant\n- **Shared device**: Device DCT0 is shared across multiple accounts (DEVICE_SHARED_BY_ACCOUNTS flag)\n\n**Recommended next step**\n\nBlock the card immediately to prevent additional unauthorized transactions and monitor for any subsequent card testing attempts at Zentrova Digital Goods. Contact the customer via their verified phone number to confirm whether they authorized this transaction and issue a replacement card if fraud is confirmed.",
-  "AL9600948": "**Summary**\n\nOn November 8, 2026 at 19:58:49, a card-not-present transaction for $179 was attempted at Quillmont Outfitters in Portland. This transaction was immediately flagged by the fraud detection system with a high-priority alert (score 0.9965). The payment was made using a new device that had not been previously associated with this account.\n\n**Signals**\n\n- **New Device**: Transaction originated from device DNEW948, which has no prior history with this account\n- **High Risk Score**: Alert scored 0.9965, indicating extremely high fraud probability\n- **Card-Not-Present**: Higher-risk channel with no physical card verification\n- **Device Activity**: Account linked to 3 total devices and 1 IP address, suggesting the new device is an anomaly\n\n**Recommended Next Step**\n\nContact the customer immediately through verified contact information to confirm whether they authorized the $179 transaction at Quillmont Outfitters. If the customer does not recognize this purchase, block the card and investigate device DNEW948 for additional fraudulent activity.",
-  "AL91000015": "**Summary**\n\nOn November 11-13, 2026, the cardholder made five transactions ranging from $0.59 to $382.29 across multiple cities including Salt Lake City, Las Vegas, Washington, and Charlotte. The account showed a normal spending pattern with transactions under $100 until November 13 at 15:15:00, when a $382.29 purchase at Kestrin Electronics Online was flagged. This high-priority alert (score 0.9999) was triggered during a card-not-present transaction that represents a significant amount spike from the previous transaction of $79.21 just 90 minutes earlier.\n\n**Signals**\n\n- **Amount spike**: Transaction jumped from typical amounts ($0.59-$97.01) to $382.29\n- **New device**: Device DCT3 used for the flagged transaction has no prior history on this account\n- **Shared device**: Device DCT3 is shared across multiple accounts (DEVICE_SHARED_BY_ACCOUNTS reason code)\n- **Linked accounts**: Account is connected to 2 accounts, 6 devices, and 3 IP addresses in the link graph\n- **Geographic scatter**: Transactions span four different cities (Salt Lake City, Las Vegas, Washington, Charlotte) within 48 hours\n\n**Recommended next step**\n\nImmediately contact the cardholder to verify the $382.29 Kestrin Electronics Online transaction and temporarily block the card pending verification. Review linked account A005590 for similar fraud patterns given the shared device indicator.",
-  "AL9200002": "# CASE NOTE: AL9200002\n\n**Summary**\n\nOn 2026-11-14 at 09:02, the customer logged in from a new device (DATO1), then immediately reset their password at 09:04 and added three new payees between 09:07-09:08. Within minutes, six consecutive P2P transactions totaling $9,800 were sent to these three newly-added payees (A060001, A060004, A060007) between 09:10 and 09:44, each transaction flagged and ranging from $1,250 to $1,900. This activity represents a dramatic spike from the customer's prior normal P2P behavior ($266.18 on 2026-11-13).\n\n**Signals**\n\n- **NEW_DEVICE**: First login from device DATO1 immediately preceded all suspicious activity\n- **RECENT_PASSWORD_RESET**: Password reset via email link occurred 2 minutes after new device login, before any payees added\n- **FIRST_TIME_PAYEE**: Three payees (A060001, A060004, A060007) added within one minute and immediately received funds\n- **AMOUNT_SPIKE**: Six transactions averaging $1,633 represent massive increase from baseline ($266.18 previous P2P, $6-$63 retail purchases)\n- **Linked accounts**: Nine accounts connected through link graph including all three payee accounts involved in suspicious transfers\n\n**Recommended next step**\n\nImmediately block the customer's account and contact them via verified phone number on file to confirm account control and legitimacy of the password reset and P2P transactions. Simultaneously freeze the three payee accounts (A060001, A060004, A060007) and investigate the full link graph for potential money mule network or account takeover ring.",
-  "AL9200003": "# Case Note: Alert AL9200003\n\n## Summary\n\nOn 2026-11-14 at 09:02, the account holder logged in from a new device (DATO1), immediately reset their password via email link, and added three new payees within three minutes. Between 09:10 and 09:44, six P2P transfers totaling $9,800 were sent from device DATO1 to the three newly-added payees (A060001, A060004, A060007), with individual amounts ranging from $1,250 to $1,900. This activity represents a dramatic spike from the customer's prior transaction pattern, which showed small retail purchases ($6.82-$62.91) and a single P2P transfer of $266.18 the previous day from a different device (D012345).\n\n## Signals\n\n- **NEW_DEVICE and RECENT_PASSWORD_RESET**: First login from device DATO1 followed immediately by password reset via email link, classic account takeover pattern\n- **FIRST_TIME_PAYEE**: Three payees (A060001, A060004, A060007) added within minutes and immediately used for high-value transfers\n- **AMOUNT_SPIKE**: Six transactions of $1,250-$1,900 each versus baseline activity of under $300\n- **Velocity and pattern**: Six large P2P transactions executed in 34 minutes, all from the new device\n- **Link graph concern**: Account is connected to 9 accounts and payees are within the linked network, suggesting possible money mule ring\n\n## Recommended Next Step\n\nImmediately block device DATO1, suspend P2P functionality on this account, and freeze any pending transfers to payees A060001, A060004, and A060007. Contact the customer urgently via verified phone number (not email, given the password reset) to confirm whether they authorized the new device login and these transactions, and investigate the linked account network for evidence of coordinated fraud or money mule activity.",
-  "AL9200004": "## CASE NOTE \u2013 AL9200004\n\n**Summary**\n\nOn 2026-11-14 at 09:02, the customer logged in from a new device (DATO1), immediately reset their password via email link at 09:04, then added three new payees within three minutes (09:07-09:08). Between 09:10 and 09:44, six high-value P2P transfers totaling $9,800 were executed to these three newly-added payees (A060001, A060004, A060007), with individual amounts ranging from $1,250 to $1,900. Prior account activity showed typical low-value transactions ($6.82-$266.18) from a different device (D012345).\n\n**Signals**\n\n- **NEW_DEVICE**: First login from device DATO1 immediately preceded suspicious activity; all prior transactions from device D012345\n- **RECENT_PASSWORD_RESET**: Password reset via email link at 09:04:40, just 2 minutes after new device login\n- **AMOUNT_SPIKE**: Six transactions totaling $9,800 in 34 minutes versus prior normal pattern of sub-$300 transactions\n- **Velocity**: Three payees added within 90 seconds, followed by rapid-fire P2P transfers (six transactions in 34 minutes)\n- **Link Graph**: 9 linked accounts detected, including all three recipient accounts (A060001, A060004, A060007)\n\n**Recommended Next Step**\n\nImmediately block the account and all P2P functionality, then attempt to reverse the six flagged transactions if possible. Contact the customer via verified phone number (not email) to confirm account takeover and determine if email was compromised, enabling the password reset.",
-  "AL9200005": "# Case Note: AL9200005\n\n## Summary\nOn November 14, 2026, starting at 09:02, a new device (DATO1) logged into the account for the first time, followed immediately by a password reset via email at 09:04. Between 09:10 and 09:44, six high-value P2P transfers totaling $9,800 were sent to three newly-added payees (A060001, A060004, A060007), representing a dramatic spike from the account's prior typical transaction amounts of $6-$266.\n\n## Signals\n- **NEW_DEVICE**: First login from device DATO1 at 09:02, immediately preceding suspicious activity; historical transactions used device D012345\n- **RECENT_PASSWORD_RESET**: Password reset via email link at 09:04, just minutes after new device login\n- **AMOUNT_SPIKE**: Six transactions ranging $1,250-$1,900 versus baseline activity of $6.82-$266.18 in preceding days\n- **Velocity pattern**: Three payees added within 3 minutes (09:07-09:08), followed by six rapid-fire P2P transfers over 34 minutes\n- **Link graph expansion**: Account connected to 9 linked accounts and recipient accounts (A060001, A060004, A060007) are in the network\n\n## Recommended Next Step\nImmediately block the account and contact the legitimate account holder via verified phone number to confirm if they authorized the password reset and P2P transfers. Simultaneously freeze recipient accounts A060001, A060004, and A060007 and initiate recall procedures for all six flagged transactions totaling $9,800.",
-  "AL9400061": "**Summary**\n\nOn November 8, 2026 at 09:17, a P2P payment of $1,158.04 was sent to account A060007 from device DMULE2 and was flagged. Approximately 32 hours later on November 9 at 17:00, a login occurred from the same device DMULE2. At 19:53 on November 9, another P2P payment of $1,470.97 was sent to the same recipient A060007 from device DMULE2, triggering a high-priority alert.\n\n**Signals**\n\n- High fraud score of 0.9987 on the most recent $1,470.97 transaction\n- NEW_DEVICE flag raised as primary reason code\n- Device DMULE2 associated with multiple flagged P2P transactions totaling $2,628.01 within 35 hours\n- Extensive link graph showing 13 connected accounts, 4 devices, and 3 IP addresses\n- Both flagged transactions sent to the same recipient account A060007\n\n**Recommended next step**\n\nImmediately block further P2P transactions from device DMULE2 and contact the primary account holder via a verified phone number to confirm whether they authorized these payments. Simultaneously review all 13 linked accounts in the network for suspicious activity patterns and potential mule account behavior.",
-  "AL9400018": "**Summary**\n\nOn November 3, 2026 at 05:18, a transaction for $691.40 was made at Varnell Gift Cards in Dallas using device DMULE1. Following a login event on November 4 at 04:00 from the same device, a second transaction occurred at 15:54 for $1,464.75 at the same merchant, triggering a high-priority alert. Both gift card purchases were flagged and conducted through the same new device.\n\n**Signals**\n\n- High fraud score (0.9994) with NEW_DEVICE reason code on card-not-present transaction\n- Two gift card purchases totaling $2,156.15 within 35 hours at same merchant\n- Device DMULE1 linked to 13 accounts (A060007, A060001-A060012, A012345)\n- Device connects to 4 total devices and 3 IP addresses in link graph\n- Escalating transaction amounts ($691.40 to $1,464.75) at gift card retailer\n\n**Recommended next step**\n\nImmediately block the card and contact the legitimate cardholder to verify both transactions, as the new device, gift card merchant category, and connection to 13 accounts strongly indicate account takeover fraud. Review all 13 linked accounts for similar suspicious gift card activity originating from the connected device network.",
-  "AL9400040": "## CASE NOTE: AL9400040\n\n**Summary**\n\nOn November 5, 2026 at 20:44, a P2P transaction of $467.79 was sent to account A060010 from device DMULE2 and flagged. On November 7 at 02:00, a login event occurred on the same device DMULE2. Approximately five hours later at 07:20, a second flagged P2P transaction of $1,463.58 was sent to the same recipient A060010 from DMULE2, triggering a high-priority alert (score 0.9957).\n\n**Signals**\n\n- **New device flag**: Alert reason \"NEW_DEVICE\" triggered on device DMULE2\n- **Escalating transaction amounts**: P2P payments increased from $467.79 to $1,463.58 within 36 hours\n- **Repeat recipient**: Both flagged transactions sent to same account A060010\n- **Extensive link graph**: Account connected to 12 accounts, 3 devices, and 2 IP addresses\n- **Early morning login**: Login at 02:00 followed by high-value transaction at 07:20\n\n**Recommended next step**\n\nContact the customer immediately via verified phone number to confirm they authorized both P2P transactions to A060010 from the new device DMULE2. If the customer does not verify these transactions, block the card and investigate the linked account cluster, particularly A060010 and the relationship between the 12 connected accounts.",
-  "AL9400063": "**Summary**\n\nOn November 8, 2026 at 3:03 PM, a transaction for $1,202.50 was processed at Varnell Gift Cards in Dallas using device DMULE1. Two days later on November 10 at 1:39 AM, a second transaction for $1,463.42 was processed at the same merchant and device, triggering a high-priority alert. A login event occurred later that same day at 7:00 AM from the same device.\n\n**Signals**\n\n- High fraud score (0.9987) with NEW_DEVICE and NIGHT_TIME reason codes on the $1,463.42 transaction\n- Two flagged transactions at gift card merchant within 48 hours totaling $2,665.92\n- Transaction occurred at 1:39 AM (overnight hours) followed by login at 7:00 AM\n- Single device (DMULE1) linked to 13 different accounts in the link graph\n- Card-not-present channel with gift card merchant (high-risk category)\n\n**Recommended next step**\n\nImmediately block the card and contact the customer via verified phone number to confirm whether they authorized both gift card purchases, particularly the overnight transaction. Review all 13 linked accounts for similar gift card purchase patterns to identify potential account takeover ring activity.",
-  "AL9400025": "# Case Note: Alert AL9400025\n\n## Summary\nOn November 4, 2026 at 01:29, a P2P payment of $712.44 was sent to account A060007 from device DMULE2 and flagged. Approximately 35 hours later on November 5, 2026 at 12:05, a second P2P payment of $1,454.85 was sent to the same recipient account (A060007) from the same device (DMULE2), triggering a high-priority alert. Both transactions occurred via a new device not previously associated with the sending account.\n\n## Signals\n- **High fraud score**: Alert scored 0.9982 (near-maximum risk)\n- **New device**: Device DMULE2 flagged as NEW_DEVICE for this account\n- **Escalating payment pattern**: Two payments to same recipient in short timeframe with increasing amounts ($712.44 \u2192 $1,454.85)\n- **Extensive link graph**: Account network includes 13 linked accounts, 4 devices, and 3 IP addresses\n- **Same recipient targeting**: Both flagged transactions directed to account A060007\n\n## Recommended Next Step\nImmediately contact the account holder through a verified communication method to confirm they authorized both P2P transactions to A060007 and are using device DMULE2. Temporarily restrict P2P transactions on this account until customer verification is complete, and review the relationship between the sender and recipient account A060007 within the larger 13-account network to identify potential account takeover or money mule activity.",
-  "AL9400062": "**Summary**\n\nOn November 8, 2026 at 12:10, a P2P transaction of $826.65 was sent to account A060008 from device DMULE3. Approximately 34 hours later on November 9 at 22:46, a second P2P transaction of $1,445.62 was sent to the same recipient (A060008) from the same device, triggering a high-priority alert. A login event occurred on November 10 at 00:00 from device DMULE3.\n\n**Signals**\n\n- High fraud score (0.9986) with NEW_DEVICE reason code flagged on alert\n- Two consecutive P2P transactions to the same recipient (A060008) totaling $2,272.27 within 34 hours, both flagged\n- Extensive link graph showing 12 connected accounts, 3 devices, and 2 IP addresses\n- Recipient account A060008 appears in the network of 12 linked accounts\n- Rapid escalation in transaction amounts ($826.65 to $1,445.62)\n\n**Recommended Next Step**\n\nImmediately contact the customer through a verified phone number to confirm whether they authorized both P2P transactions to A060008, and temporarily block further P2P transfers from device DMULE3 pending verification. Review the full linked account network to identify if A060008 or other connected accounts show similar suspicious P2P patterns that may indicate a money mule ring.",
-  "AL00811690": "# Case Note: Alert AL00811690\n\n## Summary\n\nOn November 10-11, 2026, the cardholder made normal purchases including fuel in Chicago ($103.40) and a P2P transfer ($263.24) using device D027039. On November 12 at 04:27:35, a high-value P2P transfer of $1,081.37 was sent to payee A007067 from a new device (DX811690) and flagged with a critical fraud score of 0.9997. Hours later at 13:01:35, a travel purchase of $101.40 was made in New York using the original device D027039.\n\n## Signals\n\n- **NEW_DEVICE**: Flagged transaction originated from device DX811690, never seen before on this account\n- **FIRST_TIME_PAYEE**: P2P recipient A007067 has no prior relationship with the cardholder\n- **AMOUNT_SPIKE**: $1,081.37 P2P transfer represents a significant increase from the previous P2P of $263.24 (310% increase)\n- **NIGHT_TIME**: Suspicious transaction occurred at 04:27:35, outside normal activity hours\n- **Device inconsistency**: Legitimate device D027039 resumed use 8.5 hours after the fraudulent transaction from unknown device\n\n## Recommended Next Step\n\nImmediately block the card and freeze P2P capabilities pending customer contact. Attempt to contact the cardholder urgently using verified phone numbers to confirm whether they authorized the $1,081.37 transfer to A007067 from the new device, and if denied, initiate recall procedures with the P2P network.",
-  "AL01080564": "# Case Note: AL01080564\n\n## Summary\n\nThe cardholder maintained normal spending patterns in Indianapolis with merchant purchases ranging from $6-26 between November 2-4, 2026. On November 3 at 22:58:54, a P2P transfer of $527.55 was sent to recipient A014411 from device DX2170812 and flagged. On November 4 at 16:07:54, a second P2P transfer of $1,060.69 was sent to recipient A055746 from a different device (DX1080564), triggering a high-priority alert.\n\n## Signals\n\n- **Amount spike**: P2P transfers ($527.55 and $1,060.69) represent significant increase from typical merchant transactions ($6-26)\n- **New device**: Alert triggered for device DX1080564 used in the $1,060.69 transaction\n- **First-time payee**: Recipient A055746 has no prior payment history with this account\n- **Multiple devices**: Two different devices (DX2170812 and DX1080564) used for consecutive P2P transfers within 18 hours\n- **Linked account presence**: Account shows connection to A035845, spanning 4 devices and 3 IP addresses total\n\n## Recommended Next Step\n\nContact the cardholder immediately via verified phone number to confirm authorization of both P2P transfers, particularly the $1,060.69 payment to A055746. If contact is unsuccessful or transactions are disputed, block further P2P activity and review linked account A035845 for similar suspicious patterns.",
-  "AL00879804": "**Summary**\n\nOn November 4, 2026, the customer made a legitimate $38.66 purchase at Brindle Pharmacy in Las Vegas. Two days later, on November 6, 2026 at 17:09:45, the account was used to send a P2P payment of $1,049.70 to recipient A044207 from a new device (DX879804). This transaction generated a high-priority fraud alert with a score of 0.9993.\n\n**Signals**\n\n- **NEW_DEVICE**: Transaction initiated from device DX879804, which has never been used on this account before\n- **FIRST_TIME_PAYEE**: Recipient A044207 has never received funds from this customer previously\n- **AMOUNT_SPIKE**: The $1,049.70 P2P transfer represents a significant increase compared to the prior $38.66 retail purchase\n- **Linked accounts**: Account is connected to another account (A017133) and associated with 3 devices and 2 IP addresses in the network graph\n- **Channel shift**: Abrupt change from in-person retail to P2P transfer activity\n\n**Recommended next step**\n\nImmediately contact the customer through verified phone/email to confirm they authorized the $1,049.70 P2P payment to A044207, and temporarily block P2P functionality on this account until authentication is completed. Review linked account A017133 for similar suspicious P2P activity patterns.",
-  "AL02693751": "**Summary**\n\nThe customer's account shows typical online purchase activity from November 5-7, 2026, with transactions ranging from $5.67 to $109.81 across multiple merchants using known devices (D005544, D105544). On November 7, 2026 at 12:12:39, a high-priority alert triggered for a P2P transfer of $1,029.94 to recipient A041724. This flagged transaction represents a significant spike from the customer's normal spending pattern and occurred approximately 5 hours before a subsequent legitimate transaction for $100.56.\n\n**Signals**\n\n- **NEW_DEVICE**: P2P transaction initiated from device DX2693751, which has no prior transaction history on the account\n- **FIRST_TIME_PAYEE**: Recipient A041724 has never received funds from this customer before\n- **AMOUNT_SPIKE**: $1,029.94 transfer is approximately 10x higher than the customer's recent transaction pattern (prior high: $109.81)\n- **High risk score**: Alert scored 0.9991, indicating extremely high fraud probability\n- **Linked account presence**: Customer is linked to account A005544, suggesting potential network to review\n\n**Recommended next step**\n\nImmediately contact the customer via verified phone number to confirm authorization of the $1,029.94 P2P transfer to A041724 made at 12:12:39 on November 7. If the customer does not verify this transaction, block device DX2693751, freeze the account pending investigation, and review linked account A005544 for similar suspicious activity.",
-  "AL01339011": "**Summary**\n\nOn November 4th, the cardholder initiated a P2P payment of $265.46, followed by a $19.89 transaction at Rosvane Travel in Detroit on November 5th. On November 6th, the card was used for $10.81 online in Denver at 12:57 PM, then 36 minutes later for $330.93 at a card-present terminal at Rosvane Electronics in New York, triggering a high-priority fraud alert.\n\n**Signals**\n\n- Impossible travel: Card-present transaction in New York just 36 minutes after an online transaction from Denver (approx. 1,600+ miles)\n- Geographic velocity anomaly spanning three cities (Detroit, Denver, New York) within 19 hours\n- Significant amount spike: $330.93 transaction is substantially higher than recent baseline ($10.81, $19.89)\n- Alert triggered IMPOSSIBLE_TRAVEL rule with 0.88 fraud score\n- Mixed channel usage: Card-present New York transaction followed immediately after card-not-present Denver purchase using device D023145\n\n**Recommended next step**\n\nImmediately block the card to prevent further unauthorized transactions and contact the cardholder via verified phone number to confirm their location and whether they authorized the $330.93 Rosvane Electronics transaction in New York. If fraud is confirmed, review linked account A023145 for similar velocity patterns.",
-  "AL01929547": "## Case Note: AL01929547\n\n**Summary**\n\nOn November 8, 2026 at 3:46 PM, the cardholder made a legitimate $18.02 purchase at Kestrin Pharmacy in St. Louis. Approximately 33 hours later, on November 10, 2026 at 1:12 AM, a $268.83 card-present transaction occurred at Tavron Electronics in Tampa, triggering a high-priority fraud alert. This flagged transaction represents a significant amount increase and was conducted during nighttime hours.\n\n**Signals**\n\n- High fraud score (0.9572) with HIGH priority classification\n- NIGHT_TIME reason code triggered (transaction at 1:12 AM)\n- Geographic distance: St. Louis to Tampa (~1,000 miles) in 33 hours\n- Amount velocity: $18.02 to $268.83 (approximately 15x increase)\n- Electronics merchant category at unusual hour\n\n**Recommended Next Step**\n\nImmediately contact the cardholder to verify the Tampa electronics purchase and confirm their current location. If the transaction is not recognized, block the card and initiate chargeback procedures for the $268.83 Tavron Electronics charge.",
-  "AL02523179": "# Case Note: AL02523179\n\n## Summary\n\nBetween November 7-9, 2026, the cardholder made seven transactions totaling approximately $619. Activity began with low-value purchases in Nashville ($7.52-$28.52) and online transactions ($12.57-$173.64) using device D049631. On November 9 at 16:36, a $268.75 card-present transaction at Jorvane Pharmacy in Miami triggered a high-priority alert with a 0.91 fraud score.\n\n## Signals\n\n- **AMOUNT_SPIKE**: The $268.75 pharmacy purchase represents a significant increase compared to recent transaction patterns (previous amounts ranged $7.52-$173.64)\n- **Geographic velocity**: Card-present transactions jumped from Nashville (Nov 8) to Miami (Nov 9) within approximately 19 hours\n- **Channel inconsistency**: Recent online transactions used device D049631, but the flagged Miami transaction was card-present with no associated device\n- **Location spread**: Transactions span five cities (Nashville, Detroit, Las Vegas, San Francisco, Miami) across three days with mix of online and physical presence\n\n## Recommended Next Step\n\nContact the cardholder immediately to verify the Miami pharmacy transaction and confirm whether they are currently in possession of their physical card. If the cardholder does not recognize the Miami transaction, block the card and investigate the linked account A049631 for additional compromise indicators."
+  "AL9200001": "# Case Note: Alert AL9200001\n\n## Summary\n\nOn 2026-11-14 at 09:02, the customer logged in from a new device (DATO1), reset their password at 09:04, and immediately added three new payees within three minutes. Between 09:10 and 09:44, the customer sent six P2P transfers totaling $9,800 to the three newly-added payees (A060001, A060004, A060007), with individual amounts ranging from $1,250 to $1,900. This activity represents a significant departure from prior behavior, which showed small purchases ($6.82–$62.91) and a single P2P transfer of $266.18 the previous day from a different device.\n\n## Signals\n\n- **NEW_DEVICE and RECENT_PASSWORD_RESET**: Account accessed from new device DATO1 immediately followed by password reset via email link, classic account takeover pattern\n- **FIRST_TIME_PAYEE**: All three payees (A060001, A060004, A060007) were added within 3 minutes and immediately received funds\n- **AMOUNT_SPIKE**: Six transactions totaling $9,800 in 34 minutes versus historical pattern of sub-$300 transactions\n- **Link graph concern**: 9 linked accounts in network including all three recipient accounts (A060001, A060004, A060007)\n- **Device switching**: All flagged transactions from DATO1; legitimate transactions from D012345\n\n## Recommended Next Step\n\nImmediately block device DATO1 and freeze the account to prevent further unauthorized transfers. Contact the customer urgently via verified phone number to confirm whether they authorized the password reset and P2P transfers; if not confirmed, initiate recall procedures for the six transactions and investigate the linked account network for potential money mule activity.",
+  "AL9400084": "**Summary**\n\nOn November 11, 2026 at 03:36, a transaction for $618.18 was made at Varnell Gift Cards in Dallas using device DMULE1. Approximately 34 hours later on November 12 at 14:12, a second transaction for $1,494.93 was processed at the same merchant using the same device, triggering a high-priority fraud alert. A login event was recorded later that same day at 22:00 from device DMULE1.\n\n**Signals**\n\n- High fraud score (0.9998) with NEW_DEVICE reason code flagged by the alert system\n- Two card-not-present transactions at gift card merchant totaling $2,113.11 within 34 hours\n- Both transactions conducted from the same device (DMULE1) and both flagged as suspicious\n- Extensive link graph showing 13 connected accounts, 4 devices, and 3 IP addresses suggesting potential account network or bust-out scheme\n- Gift card purchases are classic fraud typology for monetizing compromised payment methods\n\n**Recommended next step**\n\nImmediately block the card to prevent further transactions and contact the legitimate cardholder through verified channels to confirm whether they authorized the gift card purchases. Conduct a detailed investigation of all 13 linked accounts in the network to identify additional compromised accounts or coordinated fraud activity.",
+  "AL9500002": "# Case Note: Alert AL9500002\n\n**Summary**\n\nOn November 13, 2026, the cardholder made a $42.18 purchase at Brindle Digital in Boston at 14:02:37. Approximately 28 minutes later at 14:30:09, a flagged transaction for $639.99 occurred at Jorvane Fuel in Miami. An additional transaction for $412.50 followed at 14:41:55 at Jorvane Electronics, also in Miami.\n\n**Signals**\n\n- **Impossible travel rule triggered**: Boston to Miami transactions within 28 minutes (physically impossible distance)\n- **Geographic velocity anomaly**: Two distant cities (Boston/Miami) within same hour\n- **Amount spike detected**: $639.99 fuel purchase significantly higher than preceding $42.18 transaction\n- **Sequential high-value Miami transactions**: Two purchases totaling $1,052.49 in Miami within 12 minutes following the Boston transaction\n- **Linked account**: One linked account ID (A034560) present in relationship graph\n\n**Recommended Next Step**\n\nImmediately block the card to prevent further fraudulent charges and contact the cardholder to verify the Boston transaction and confirm they did not authorize the Miami purchases. Review linked account A034560 for similar suspicious geographic velocity patterns.",
+  "AL90000200": "**Summary**\n\nOn November 12, 2026 at 2:52 AM, a card-not-present transaction for $1.85 was processed at Zentrova Digital Goods in Las Vegas. The transaction was flagged and generated a high-priority alert with a fraud score of 0.4992. This appears to be an isolated incident involving a single small-value transaction at a digital goods merchant.\n\n**Signals**\n\n- **Card testing pattern**: Transaction flagged under CARD_TESTING rule with a very small amount ($1.85) at a digital goods merchant commonly used to validate stolen card credentials\n- **New device**: Payment made from device DCT0 which has not been previously associated with this account\n- **Night-time transaction**: Purchase occurred at 2:52 AM, outside typical cardholder activity hours\n- **Merchant burst**: MERCHANT_BURST reason indicates multiple rapid transactions at the same merchant, suggesting automated testing activity\n- **Shared device**: Device DCT0 is shared across multiple accounts, indicating potential fraud ring activity\n\n**Recommended next step**\n\nImmediately block the card to prevent additional fraudulent transactions, as the card testing pattern suggests the card details may have been compromised and shared with fraudsters who will likely attempt larger purchases once validation succeeds. Contact the cardholder urgently via phone to verify the transaction and issue a replacement card.",
+  "AL9600948": "# Case Note: Alert AL9600948\n\n## Summary\nOn November 8, 2026 at 19:58:49, a card-not-present transaction for $179 was processed at Quillmont Outfitters in Portland. This transaction was flagged and generated a high-priority alert with a fraud score of 0.9954. The purchase was conducted using a new device (DNEW948) not previously associated with this account.\n\n## Signals\n- **High fraud score**: 0.9954 indicating extremely elevated risk\n- **New device**: Transaction originated from device DNEW948, which has no prior history with this account\n- **Card-not-present channel**: Higher-risk transaction type without physical card verification\n- **Link analysis**: Account is connected to 3 total devices and 1 linked account (A007213)\n\n## Recommended Next Step\nContact the customer immediately through a verified phone number to confirm whether they authorized the $179 Quillmont Outfitters transaction and were using a new device. If the customer does not recognize this purchase, block the card immediately and review activity on linked account A007213 for similar suspicious patterns.",
+  "AL91000015": "**Summary**\n\nOn November 11, 2026, the cardholder made a $97.01 online purchase at Kestrin Outfitters, followed by smaller transactions of $8.93 and $0.59 over the next day. On November 13 at 15:15, a $382.29 transaction at Kestrin Electronics Online was flagged, representing a significant amount spike from the customer's recent pattern. This high-priority alert triggered due to the use of a new device (DCT3) that is shared across multiple accounts.\n\n**Signals**\n\n- **NEW_DEVICE**: Transaction attempted from device DCT3, not previously seen in customer's transaction history\n- **AMOUNT_SPIKE**: Purchase amount of $382.29 significantly exceeds recent transaction pattern (previous amounts: $97.01, $8.93, $0.59, $79.21)\n- **DEVICE_SHARED_BY_ACCOUNTS**: Device DCT3 is linked to multiple accounts in a network of 2 accounts, 6 devices, and 3 IP addresses\n- **Geographic inconsistency**: Transactions span Charlotte, Salt Lake City, Las Vegas, and Washington within 48 hours\n- **Alert score**: 0.9999 with HIGH priority indicating extremely suspicious activity\n\n**Recommended next step**\n\nImmediately block the card to prevent further unauthorized transactions and contact the cardholder at their verified phone number to confirm whether they authorized the $382.29 Kestrin Electronics purchase from the new device. Review linked account A005590 for similar suspicious activity patterns given the shared device connection.",
+  "AL9200002": "# CASE NOTE — AL9200002\n\n**Summary**\n\nOn 2026-11-14 at 09:02, the customer logged in from a new device (DATO1), immediately reset their password via email at 09:04, and added three new payees within three minutes (09:07-09:08). Between 09:10 and 09:44, the customer executed six P2P transactions totaling $9,800 to these three newly-added payees (A060001, A060004, A060007), with individual amounts ranging from $1,250 to $1,900. This activity represents a dramatic spike from the customer's prior baseline of small purchases ($6.82-$62.91) and a single P2P transfer of $266.18 the previous day.\n\n**Signals**\n\n- **NEW_DEVICE**: First login from device DATO1 immediately preceded all suspicious activity\n- **RECENT_PASSWORD_RESET**: Password reset via email link occurred 6 minutes after new device login and 3 minutes before payee additions\n- **FIRST_TIME_PAYEE**: All three payees (A060001, A060004, A060007) were added within 3 minutes and immediately received transfers\n- **AMOUNT_SPIKE**: Six transactions averaging $1,633 each vs. historical pattern of sub-$300 transactions\n- **Link graph**: 9 linked accounts including all three recipient accounts, suggesting possible fraud ring or account takeover with pre-staged mule accounts\n\n**Recommended next step**\n\nImmediately block the account and contact the customer via verified phone number on file to confirm whether they authorized the password reset and P2P transfers. Review all linked accounts (A060001, A060004, A060007, A060002, A060006, A060008, A060010, A060012) for similar takeover patterns and freeze pending transfers if recoverable.",
+  "AL9200003": "# Case Note: Alert AL9200003\n\n**Summary**\n\nOn 2026-11-14 at 09:02:11, the customer logged in from a new device (DATO1), immediately reset their password via email, and added three new payees within three minutes. Starting at 09:10:14, six high-value P2P transactions totaling $9,800 were sent to these three newly-added payees (A060001, A060004, A060007) over a 34-minute period, with individual amounts ranging from $1,250 to $1,900. This represents a significant departure from the customer's recent transaction history, which showed typical small purchases under $270.\n\n**Signals**\n\n- **NEW_DEVICE**: First login from device DATO1 on 2026-11-14 at 09:02:11, different from previous device D012345\n- **RECENT_PASSWORD_RESET**: Password reset via email link at 09:04:40, just minutes after new device login\n- **FIRST_TIME_PAYEE**: All three payees (A060001, A060004, A060007) added within 3 minutes immediately before transactions\n- **AMOUNT_SPIKE**: Six transactions averaging $1,633 each versus historical baseline of small purchases ($6.82-$266.18)\n- **Link graph complexity**: 9 linked accounts including all three recipient accounts, suggesting potential money mule network\n\n**Recommended Next Step**\n\nImmediately block the card/account and attempt live customer contact via verified phone number to confirm account ownership and transaction legitimacy. If customer contact fails or confirms fraud, freeze all linked recipient accounts (A060001, A060004, A060007) and initiate recalls on the six flagged P2P transactions.",
+  "AL9200004": "# Case Note: AL9200004\n\n## Summary\nOn November 14, 2026, at 09:02:11, a login occurred from new device DATO1, followed by a password reset at 09:04:40. Between 09:10:14 and 09:44:02, six rapid P2P transactions totaling $9,800 were sent from device DATO1 to three newly-added payees (A060001, A060004, A060007), with individual amounts ranging from $1,250 to $1,900. This represents a dramatic spike from the customer's prior transaction history, which showed typical amounts under $300.\n\n## Signals\n- **NEW_DEVICE & RECENT_PASSWORD_RESET**: First login from device DATO1 immediately followed by password reset via email link, both occurring minutes before the fraud spree\n- **AMOUNT_SPIKE**: Six transactions averaging $1,633 compared to previous baseline of $6.82-$266.18\n- **Velocity pattern**: Three payees added within 3 minutes (09:07:05-09:08:30), followed by six P2P transactions within 34 minutes\n- **Device consistency**: All flagged transactions originated from the same new device (DATO1) versus established device D012345\n- **Link graph exposure**: Account connected to 9 accounts, 4 devices, and 3 IPs, with transactions sent to linked accounts A060001, A060004, and A060007\n\n## Recommended Next Step\nImmediately block device DATO1 and freeze all P2P functionality on account A012345. Contact the customer urgently via phone using verified contact information (not email) to confirm account takeover, and initiate recall procedures for the six flagged transactions totaling $9,800.",
+  "AL9200005": "**Summary**\n\nOn 2026-11-14 at 09:02:11, the customer logged in from a new device (DATO1) for the first time, then immediately reset their password via email link at 09:04:40. Between 09:10:14 and 09:44:02, the customer added three new payees (A060001, A060004, A060007) and executed six P2P transfers totaling $9,800 to these newly-added payees, with individual amounts ranging from $1,250 to $1,900—a dramatic spike from their previous day's typical transaction of $266.18.\n\n**Signals**\n\n- **NEW_DEVICE**: First login from device DATO1 on 2026-11-14 at 09:02:11, immediately preceding suspicious activity\n- **RECENT_PASSWORD_RESET**: Password reset via email link at 09:04:40, just 2.5 minutes after new device login\n- **AMOUNT_SPIKE**: Six flagged P2P transactions totaling $9,800 within 34 minutes, compared to prior typical activity under $300\n- **Rapid payee addition**: Three new payees added within 3.5 minutes (09:07:05 to 09:08:30), all immediately receiving large transfers\n- **Link graph complexity**: Account linked to 9 total accounts, 4 devices, and 3 IPs; multiple recipients (A060001, A060004, A060007) appear in linked account network\n\n**Recommended next step**\n\nImmediately block device DATO1 and freeze the customer's P2P transfer capability to prevent additional losses. Contact the customer urgently via verified phone number (not email) to confirm whether they authorized the password reset and $9,800 in transfers, and review all linked accounts (A060001, A060004, A060007) for potential money mule activity.",
+  "AL9400061": "**Summary**\n\nOn November 8, 2026 at 09:17, a P2P transaction for $1,158.04 was sent to account A060007 from device DMULE2 and flagged. Approximately 32 hours later on November 9 at 17:00, a login occurred from the same device DMULE2. Two hours and 53 minutes after that login, at 19:53 on November 9, another P2P payment to the same recipient (A060007) for $1,470.97 was sent from DMULE2, triggering a high-priority alert scored at 0.9995.\n\n**Signals**\n\n- NEW_DEVICE flagged as primary reason code with alert score of 0.9995\n- Two consecutive P2P transactions to same recipient account (A060007) totaling $2,628.01 within 35 hours, both flagged\n- Device DMULE2 linked to extensive network of 13 accounts, 4 devices, and 3 IP addresses\n- Escalating transaction amounts ($1,158.04 increasing to $1,470.97)\n\n**Recommended next step**\n\nImmediately block card/account and contact the legitimate account holder by verified phone to confirm whether they authorized these P2P transactions from the new device DMULE2. Review all 13 linked accounts in the network graph for coordinated fraud activity, with priority focus on recipient account A060007.",
+  "AL9400018": "# Case Note: AL9400018\n\n## Summary\n\nOn November 3, 2026 at 05:18, a transaction for $691.40 was flagged at Varnell Gift Cards in Dallas using device DMULE1. Following a login event on the same device on November 4 at 04:00, a second high-priority transaction occurred at 15:54 for $1,464.75 at the same merchant. Both gift card purchases were made through card-not-present channels and triggered fraud alerts.\n\n## Signals\n\n- **High fraud score**: Alert scored 0.9997 with HIGH priority classification\n- **New device flag**: Primary reason code \"NEW_DEVICE\" triggered on device DMULE1\n- **Gift card merchant**: Both transactions at Varnell Gift Cards, a high-risk merchant category for fraud\n- **Escalating amounts**: Transaction value more than doubled from $691.40 to $1,464.75 within 34 hours\n- **Extensive account linkage**: Device DMULE1 connected to 13 separate accounts, 4 devices, and 3 IP addresses\n\n## Recommended Next Step\n\nImmediately block the card and contact the cardholder through verified phone number to confirm legitimacy of both gift card transactions. Conduct a comprehensive review of all 13 linked accounts (A060001-A060012 and A012345) for coordinated fraud activity, as the device overlap suggests possible account takeover or synthetic identity network.",
+  "AL9400040": "**Summary**\n\nOn November 5, 2026 at 20:44, a P2P payment of $467.79 was sent to account A060010 from device DMULE2 and flagged. On November 7 at 02:00, a login occurred from the same device DMULE2. Approximately five hours later at 07:20, another P2P payment of $1,463.58 was sent to the same recipient A060010, triggering a high-priority alert with a fraud score of 0.996.\n\n**Signals**\n\n- New device alert (DMULE2) flagged as primary reason code for HIGH priority alert\n- Rapid escalation in transaction amounts: $467.79 to $1,463.58 within 35 hours to same recipient\n- Both P2P transactions to identical account (A060010) were flagged\n- Extensive link graph showing 12 connected accounts, 3 devices, and 2 IP addresses indicating potential network activity\n- Early morning login (02:00) followed by high-value P2P transfer during business hours\n\n**Recommended Next Step**\n\nImmediately block further P2P transactions from this account and contact the legitimate account holder via verified phone number to confirm whether they authorized these payments from device DMULE2. Additionally, review all 12 linked accounts in the network for similar suspicious P2P patterns to A060010.",
+  "AL9400063": "**Summary**\n\nOn November 8, 2026 at 15:03, a transaction for $1,202.50 was flagged at Varnell Gift Cards in Dallas using device DMULE1. Two days later on November 10, 2026 at 01:39, a second flagged transaction occurred at the same merchant for $1,463.42 on the same device, triggering a high-priority alert. A login event was recorded approximately 5 hours later at 07:00 from device DMULE1.\n\n**Signals**\n\n- High fraud score (0.9991) on card-not-present transaction at gift card merchant\n- New device flag (DMULE1) and night-time transaction reason codes\n- Two consecutive transactions at same gift card merchant within 48 hours totaling $2,665.92\n- Device DMULE1 linked to network of 13 accounts, 6 devices, and 4 IP addresses\n- Suspicious merchant category (gift cards) commonly associated with fraud liquidation\n\n**Recommended next step**\n\nBlock the card immediately and contact the cardholder via verified phone number to confirm legitimacy of both Varnell Gift Cards transactions. Initiate a review of all 13 linked accounts in the network to identify potential organized fraud ring activity.",
+  "AL9400025": "# Case Note: AL9400025\n\n## Summary\nOn November 4, 2026 at 01:29, a P2P transaction of $712.44 was sent to account A060007 from device DMULE2 and flagged. Approximately 35 hours later on November 5, 2026 at 12:05, a second P2P transaction of $1,454.85 was sent to the same recipient (A060007) from the same device, triggering a high-priority alert. Both transactions occurred via a new device not previously associated with the account.\n\n## Signals\n- **NEW_DEVICE**: Device DMULE2 has not been used for this account historically, triggering automated alert reason\n- **High fraud score**: Alert scored 0.9992 (near-maximum risk)\n- **Escalating amounts**: Transaction amounts doubled from $712.44 to $1,454.85 within 35 hours\n- **Same recipient pattern**: Both flagged transactions sent to account A060007\n- **Extensive link graph**: Account connected to 13 linked accounts, 4 devices, and 3 IP addresses, suggesting possible network activity\n\n## Recommended Next Step\nImmediately contact the legitimate account holder via verified phone number to confirm authorization of both P2P transactions totaling $2,167.29 to A060007. If unauthorized, block device DMULE2, freeze further P2P transactions, and conduct a review of all 13 linked accounts in the network for coordinated fraud activity.",
+  "AL9400062": "**Summary**\n\nOn November 8, 2026 at 12:10, a P2P transfer of $826.65 was sent to account A060008 from device DMULE3. Approximately 34 hours later on November 9 at 22:46, a second P2P transfer of $1,445.62 was sent to the same recipient (A060008) from the same device, triggering a high-priority alert. A login event occurred on November 10 at 00:00 from device DMULE3.\n\n**Signals**\n\n- High fraud score (0.9996) with NEW_DEVICE reason code on alert AL9400062\n- Two flagged P2P transactions totaling $2,272.27 sent to the same recipient account (A060008) within 34 hours\n- Device DMULE3 associated with extensive link network of 12 accounts, 3 devices, and 2 IP addresses\n- Escalating transaction amounts ($826.65 increasing to $1,445.62) to same recipient in short timeframe\n\n**Recommended next step**\n\nImmediately contact the customer through a verified phone number to confirm they authorized both P2P transfers to A060008 and are in possession of device DMULE3. If customer contact fails or they deny the transactions, block further P2P activity and review all 12 linked accounts for coordinated fraud activity.",
+  "AL00811690": "**Summary**\n\nOn November 10-11, the cardholder made three normal transactions: a $103.40 fuel purchase in Chicago, a $263.24 P2P transfer to account A025004, and a $101.40 travel purchase in New York. On November 12 at 4:27 AM, an alert triggered for a $1,081.37 P2P transfer to account A007067 scored at 99.97% risk. Approximately 8.5 hours later, the cardholder resumed normal activity with the New York travel merchant.\n\n**Signals**\n\n- **New device**: Transaction executed from device DX811690, never seen before on this account\n- **First-time payee**: Recipient A007067 has no prior payment history with this cardholder\n- **Amount spike**: $1,081.37 represents a significant increase compared to prior P2P transaction of $263.24 and recent purchases under $105\n- **Night-time transaction**: P2P sent at 4:27 AM, outside normal customer activity patterns\n- **Device change pattern**: Cardholder returned to known device D027039 for post-alert transaction, suggesting possible account takeover during overnight hours\n\n**Recommended next step**\n\nContact the customer immediately via verified phone number to confirm whether they authorized the $1,081.37 P2P transfer to A007067 at 4:27 AM from the new device. If the customer denies the transaction, block the card immediately and review recipient account A007067 for fraud patterns.",
+  "AL01080564": "**Summary**\n\nThe cardholder made small in-person purchases at Indianapolis merchants ($23.39, $26.11) on November 2-3, 2026. On November 3 at 22:58, a P2P payment of $527.55 was sent to payee A014411 from device DX2170812. On November 4 at 16:07, a HIGH priority alert triggered for a $1,060.69 P2P payment to a new payee (A055746) from a new device (DX1080564), representing a significant amount spike from the account's typical activity.\n\n**Signals**\n\n- **NEW_DEVICE**: P2P payment sent from device DX1080564, not previously used on this account\n- **FIRST_TIME_PAYEE**: Recipient A055746 has never received funds from this cardholder before\n- **AMOUNT_SPIKE**: $1,060.69 represents a dramatic increase from baseline transaction amounts ($6-$26)\n- **Rapid P2P escalation**: Two flagged P2P transfers totaling $1,588.24 within 18 hours from two different devices (DX2170812, DX1080564)\n- **Device proliferation**: Four total devices linked to account, with two new devices used for suspicious P2P activity\n\n**Recommended next step**\n\nImmediately contact the cardholder via verified phone number to confirm authorization of both P2P payments ($527.55 and $1,060.69) and temporarily block P2P functionality pending customer verification. If unable to reach cardholder or they deny the transactions, freeze the card and initiate recall of both P2P payments.",
+  "AL00879804": "# Case Note: AL00879804\n\n## Summary\nOn November 4, 2026, the cardholder made a legitimate purchase at Brindle Pharmacy in Las Vegas for $38.66. Two days later on November 6, 2026, a P2P transaction for $1,049.70 was sent to recipient A044207 using a new device (DX879804), triggering a high-priority fraud alert. This represents a significant amount spike from the prior transaction pattern.\n\n## Signals\n- **NEW_DEVICE**: Transaction initiated from device DX879804, not previously associated with this account\n- **FIRST_TIME_PAYEE**: Recipient A044207 has never received funds from this cardholder before\n- **AMOUNT_SPIKE**: $1,049.70 represents a dramatic increase compared to the $38.66 transaction two days prior\n- **High fraud score**: Alert scored 0.9995 (near-maximum confidence)\n- **Linked accounts**: Account shows connection to A017133, plus 3 devices and 2 IP addresses in the link graph\n\n## Recommended Next Step\nImmediately block further P2P transactions and contact the cardholder through verified phone number to confirm whether they authorized the $1,049.70 transfer to A044207. If unauthorized, reverse the P2P payment if possible and investigate the relationship between this account and linked account A017133 for coordinated fraud activity.",
+  "AL02693751": "**Summary**\n\nThe customer's account showed typical spending between November 5-7, 2026, with small online purchases ranging from $5.67 to $109.81 across various merchants using known devices D005544 and D105544. On November 7, 2026 at 12:12:39, a high-priority alert triggered for a P2P transfer of $1,029.94 to recipient A041724. This flagged transaction occurred between two legitimate purchases on the same day (a $17.34 purchase at 07:17:03 and a $100.56 purchase at 21:24:07).\n\n**Signals**\n\n- **NEW_DEVICE**: Transaction initiated from device DX2693751, never seen before on this account\n- **FIRST_TIME_PAYEE**: Recipient A041724 has no prior payment history with this customer\n- **AMOUNT_SPIKE**: $1,029.94 P2P payment is 9-18x higher than recent transaction history (prior highest: $109.81)\n- **Alert score**: 0.999 (maximum risk) with HIGH priority classification\n- **Linked network**: Account connected to 3 devices and 2 IP addresses, with one linked account (A005544)\n\n**Recommended next step**\n\nImmediately contact the customer through a verified phone number to confirm whether they authorized the $1,029.94 P2P transfer to A041724 from the new device DX2693751. If the customer does not confirm authorization within 2 hours, block further P2P transactions and investigate linked account A005544 for similar suspicious activity.",
+  "AL01339011": "# Case Note: Alert AL01339011\n\n## Summary\nOn November 4-5, 2026, the cardholder made normal transactions including a $265.46 P2P payment in one location, a $19.89 purchase at Rosvane Travel in Detroit, and a $10.81 online purchase from Denver. On November 6 at 12:57 PM, an online transaction for $10.81 occurred in Denver using device D023145, followed 36 minutes later by a $330.93 card-present transaction at Rosvane Electronics in New York at 1:33 PM. The New York transaction represents a significant amount spike and triggered an impossible travel alert due to the geographic distance covered in under an hour.\n\n## Signals\n- **Impossible Travel Rule**: Card-present transaction in New York only 36 minutes after online transaction in Denver (approximately 1,600+ miles)\n- **Amount Spike**: $330.93 transaction is significantly higher than recent transaction history ($10.81, $19.89, $265.46)\n- **Geographic Velocity**: Rapid movement from Denver to New York in impossibly short timeframe\n- **Channel Switch**: Move from card-not-present (device D023145) to card-present with no device identifier\n- **High Risk Score**: Alert scored 0.8636 with HIGH priority designation\n\n## Recommended Next Step\nImmediately block the card to prevent further unauthorized transactions and contact the cardholder urgently to verify whether they are currently in New York and authorized the $330.93 Rosvane Electronics purchase. If the cardholder confirms they were in Denver at 12:57 PM, file fraud claims for the New York transaction and issue a replacement card.",
+  "AL01929547": "## Case Note: AL01929547\n\n**Summary**\n\nOn November 8, 2026 at 15:46, a legitimate transaction for $18.02 occurred at Kestrin Pharmacy in St. Louis. Approximately 37 hours later on November 10, 2026 at 01:12, a high-risk card-present transaction for $268.83 was flagged at Tavron Electronics in Tampa. The alert scored 0.9626 (high priority) due to the transaction occurring during nighttime hours.\n\n**Signals**\n\n- **Night-time transaction**: Purchase occurred at 01:12 AM, triggering NIGHT_TIME reason code\n- **Geographic distance**: Transaction location shifted from St. Louis to Tampa (~1,000 miles) within 37 hours\n- **Merchant type**: Electronics merchant (higher fraud risk category)\n- **High fraud score**: Alert scored 0.9626, indicating strong fraud probability\n- **Linked entities**: Account shows connection to 2 devices and 1 linked account (A056078)\n\n**Recommended Next Step**\n\nContact the cardholder immediately via verified phone number to confirm whether they authorized the $268.83 Tampa transaction and are physically traveling from St. Louis to Florida. If the customer does not confirm authorization or cannot be reached, temporarily block the card and review account A056078 for similar suspicious activity.",
+  "AL02670282": "# Case Note: AL02670282\n\n**Summary**\n\nOn November 7-8, 2026, the cardholder made three transactions totaling $146.02 in Austin and Miami (Tavron Market $15.99, Tavron Fuel $17.14, and Rosvane Digital Online $112.89). On November 9, 2026 at 03:55:38, a card-present transaction for $245.44 was flagged at Lumenor Electronics in Minneapolis. The alert scored 0.9602 (HIGH priority) due to this suspicious activity.\n\n**Signals**\n\n- **Night-time transaction**: Flagged transaction occurred at 3:55 AM\n- **Rapid geographic impossible travel**: Customer moved from Miami (Nov 8, 16:14) to Minneapolis (Nov 9, 03:55), approximately 11.5 hours and ~1,500 miles\n- **Location break**: Previous pattern showed Austin-area transactions, then Miami online purchase, then sudden card-present in Minneapolis\n- **Linked accounts detected**: Graph shows connection to account A019074 with 2 devices and shared IP\n- **Amount escalation**: Flagged transaction ($245.44) significantly higher than recent baseline purchases\n\n**Recommended next step**\n\nContact the cardholder immediately via verified phone number to confirm they are in Minneapolis and authorized the Lumenor Electronics transaction. If cardholder denies the transaction or cannot be reached within 2 hours, block the card and review linked account A019074 for coordinated fraud activity."
+ },
+ "features": {
+  "AL9200001": {
+   "features": {
+    "AMOUNT": 1900,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 9,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 2186.2,
+    "AMT_TO_AVG": 31.405737332,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 2,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 1
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 121,
+   "source": "live"
+  },
+  "AL9400084": {
+   "features": {
+    "AMOUNT": 1494.93,
+    "IS_CNP": 1,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 14,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 1494.93,
+    "AMT_TO_AVG": 1.754574921,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 119,
+   "source": "live"
+  },
+  "AL9500002": {
+   "features": {
+    "AMOUNT": 639.99,
+    "IS_CNP": 0,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 14,
+    "CARD_TXN_1H": 2,
+    "ACCT_AMT_24H": 682.17,
+    "AMT_TO_AVG": 10.486925496,
+    "NEW_DEVICE": 0,
+    "DEVICE_ACCOUNTS": 0,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 2019.205242205,
+    "KMH_FROM_PREV": 4400.205128293,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 104,
+   "source": "live"
+  },
+  "AL90000200": {
+   "features": {
+    "AMOUNT": 1.85,
+    "IS_CNP": 1,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 2,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 1.85,
+    "AMT_TO_AVG": 0.03796148858,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 105,
+    "MERCH_SMALL_1H": 200,
+    "KM_FROM_PREV": 2535.997235705,
+    "KMH_FROM_PREV": 45.934119809,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 124,
+   "source": "live"
+  },
+  "AL9600948": {
+   "features": {
+    "AMOUNT": 179,
+    "IS_CNP": 1,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 19,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 179,
+    "AMT_TO_AVG": 3.308055763,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 1,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 4.534703581,
+    "KMH_FROM_PREV": 0.07312891299,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 112,
+   "source": "live"
+  },
+  "AL91000015": {
+   "features": {
+    "AMOUNT": 382.29,
+    "IS_CNP": 1,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 15,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 461.5,
+    "AMT_TO_AVG": 6.172908708,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 109,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 579.610704623,
+    "KMH_FROM_PREV": 358.892077166,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 124,
+   "source": "live"
+  },
+  "AL9200002": {
+   "features": {
+    "AMOUNT": 1850,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 9,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 4036.2,
+    "AMT_TO_AVG": 17.558114233,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 2,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 1
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 119,
+   "source": "live"
+  },
+  "AL9200003": {
+   "features": {
+    "AMOUNT": 1700,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 9,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 5736.2,
+    "AMT_TO_AVG": 11.572235711,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 2,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 1
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 98,
+   "source": "live"
+  },
+  "AL9200004": {
+   "features": {
+    "AMOUNT": 1600,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 9,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 7336.2,
+    "AMT_TO_AVG": 8.742125099,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 2,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 1
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 112,
+   "source": "live"
+  },
+  "AL9200005": {
+   "features": {
+    "AMOUNT": 1500,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 9,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 8836.2,
+    "AMT_TO_AVG": 6.969421137,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 2,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 1
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 105,
+   "source": "live"
+  },
+  "AL9400061": {
+   "features": {
+    "AMOUNT": 1470.97,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 19,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1470.97,
+    "AMT_TO_AVG": 1.294245899,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 154,
+   "source": "live"
+  },
+  "AL9400018": {
+   "features": {
+    "AMOUNT": 1464.75,
+    "IS_CNP": 1,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 15,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 1464.75,
+    "AMT_TO_AVG": 2.118527625,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 133,
+   "source": "live"
+  },
+  "AL9400040": {
+   "features": {
+    "AMOUNT": 1463.58,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 7,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1463.58,
+    "AMT_TO_AVG": 2.335847892,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 119,
+   "source": "live"
+  },
+  "AL9400063": {
+   "features": {
+    "AMOUNT": 1463.42,
+    "IS_CNP": 1,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 1,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 1463.42,
+    "AMT_TO_AVG": 1.321451211,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 122,
+   "source": "live"
+  },
+  "AL9400025": {
+   "features": {
+    "AMOUNT": 1454.85,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 12,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1454.85,
+    "AMT_TO_AVG": 1.612075748,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 117,
+   "source": "live"
+  },
+  "AL9400062": {
+   "features": {
+    "AMOUNT": 1445.62,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 22,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1445.62,
+    "AMT_TO_AVG": 1.631522161,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 4,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 133,
+   "source": "live"
+  },
+  "AL00811690": {
+   "features": {
+    "AMOUNT": 1081.37,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 4,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1344.61,
+    "AMT_TO_AVG": 14.577070993,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 1,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 122,
+   "source": "live"
+  },
+  "AL01080564": {
+   "features": {
+    "AMOUNT": 1060.69,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 16,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1614.35,
+    "AMT_TO_AVG": 11.068839571,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 1,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 152,
+   "source": "live"
+  },
+  "AL00879804": {
+   "features": {
+    "AMOUNT": 1049.7,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 17,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1049.7,
+    "AMT_TO_AVG": 13.542820064,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 1,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 108,
+   "source": "live"
+  },
+  "AL02693751": {
+   "features": {
+    "AMOUNT": 1029.94,
+    "IS_CNP": 0,
+    "IS_P2P": 1,
+    "HOUR_OF_DAY": 12,
+    "CARD_TXN_1H": 0,
+    "ACCT_AMT_24H": 1061.48,
+    "AMT_TO_AVG": 16.381921074,
+    "NEW_DEVICE": 1,
+    "DEVICE_ACCOUNTS": 1,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 0,
+    "KMH_FROM_PREV": 0,
+    "FIRST_TIME_PAYEE": 1,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 134,
+   "source": "live"
+  },
+  "AL01339011": {
+   "features": {
+    "AMOUNT": 330.93,
+    "IS_CNP": 0,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 13,
+    "CARD_TXN_1H": 2,
+    "ACCT_AMT_24H": 361.63,
+    "AMT_TO_AVG": 4.215944994,
+    "NEW_DEVICE": 0,
+    "DEVICE_ACCOUNTS": 0,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 771.442667915,
+    "KMH_FROM_PREV": 1278.045837318,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 137,
+   "source": "live"
+  },
+  "AL01929547": {
+   "features": {
+    "AMOUNT": 268.83,
+    "IS_CNP": 0,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 1,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 268.83,
+    "AMT_TO_AVG": 2.638702172,
+    "NEW_DEVICE": 0,
+    "DEVICE_ACCOUNTS": 0,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 1393.471689291,
+    "KMH_FROM_PREV": 41.678420776,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 157,
+   "source": "live"
+  },
+  "AL02670282": {
+   "features": {
+    "AMOUNT": 245.44,
+    "IS_CNP": 0,
+    "IS_P2P": 0,
+    "HOUR_OF_DAY": 3,
+    "CARD_TXN_1H": 1,
+    "ACCT_AMT_24H": 375.47,
+    "AMT_TO_AVG": 3.618657968,
+    "NEW_DEVICE": 0,
+    "DEVICE_ACCOUNTS": 0,
+    "MERCH_SMALL_1H": 0,
+    "KM_FROM_PREV": 1682.220700794,
+    "KMH_FROM_PREV": 143.923060099,
+    "FIRST_TIME_PAYEE": 0,
+    "PW_RESET_24H": 0
+   },
+   "view": "FEATURES.TXN_VELOCITY$1",
+   "ms": 223,
+   "source": "live"
+  }
+ },
+ "rescores": {
+  "AL9200001": {
+   "score": 0.9993283749,
+   "stored": 0.9993,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18778,
+   "source": "live"
+  },
+  "AL9400084": {
+   "score": 0.999753654,
+   "stored": 0.9998,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18539,
+   "source": "live"
+  },
+  "AL9500002": {
+   "score": 0.6525940895,
+   "stored": 0.6526,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18135,
+   "source": "live"
+  },
+  "AL90000200": {
+   "score": 0.4992454648,
+   "stored": 0.4992,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18843,
+   "source": "live"
+  },
+  "AL9600948": {
+   "score": 0.995383203,
+   "stored": 0.9954,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18196,
+   "source": "live"
+  },
+  "AL91000015": {
+   "score": 0.9999295473,
+   "stored": 0.9999,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18189,
+   "source": "live"
+  },
+  "AL9200002": {
+   "score": 0.9993283749,
+   "stored": 0.9993,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18990,
+   "source": "live"
+  },
+  "AL9200003": {
+   "score": 0.9993283749,
+   "stored": 0.9993,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18437,
+   "source": "live"
+  },
+  "AL9200004": {
+   "score": 0.9993283749,
+   "stored": 0.9993,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18710,
+   "source": "live"
+  },
+  "AL9200005": {
+   "score": 0.9994478822,
+   "stored": 0.9994,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18638,
+   "source": "live"
+  },
+  "AL9400061": {
+   "score": 0.9995375872,
+   "stored": 0.9995,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18596,
+   "source": "live"
+  },
+  "AL9400018": {
+   "score": 0.9996566772,
+   "stored": 0.9997,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18440,
+   "source": "live"
+  },
+  "AL9400040": {
+   "score": 0.9960461259,
+   "stored": 0.996,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18305,
+   "source": "live"
+  },
+  "AL9400063": {
+   "score": 0.999107182,
+   "stored": 0.9991,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 17765,
+   "source": "live"
+  },
+  "AL9400025": {
+   "score": 0.9992184639,
+   "stored": 0.9992,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18119,
+   "source": "live"
+  },
+  "AL9400062": {
+   "score": 0.9995585084,
+   "stored": 0.9996,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18070,
+   "source": "live"
+  },
+  "AL00811690": {
+   "score": 0.9996882677,
+   "stored": 0.9997,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 17909,
+   "source": "live"
+  },
+  "AL01080564": {
+   "score": 0.9996446371,
+   "stored": 0.9996,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 17985,
+   "source": "live"
+  },
+  "AL00879804": {
+   "score": 0.9995008707,
+   "stored": 0.9995,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18010,
+   "source": "live"
+  },
+  "AL02693751": {
+   "score": 0.9989815354,
+   "stored": 0.999,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18178,
+   "source": "live"
+  },
+  "AL01339011": {
+   "score": 0.8635841012,
+   "stored": 0.8636,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 18142,
+   "source": "live"
+  },
+  "AL01929547": {
+   "score": 0.9626305699,
+   "stored": 0.9626,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 17839,
+   "source": "live"
+  },
+  "AL02670282": {
+   "score": 0.9601682425,
+   "stored": 0.9602,
+   "model": "ML.FRAUD_XGB",
+   "version": "V1",
+   "ms": 17695,
+   "source": "live"
+  }
  },
  "answers": [
   {
    "question": "Which merchants had card-testing patterns this week?",
-   "text": "This week (Nov 8\u201314), **Zentrova Digital Goods** was the only merchant where the card-testing rule fired.\n\n- **396 card-testing alerts**, each on a different card and a different account.\n- The total alerted amount was just **$478.52**, about $1.21 per alert. That fits the rule's pattern of many tiny card-not-present authorizations at one merchant within an hour.\n- **All 396 are labeled Fraud**, meaning a chargeback or issuer confirmation exists for each one.\n\nBecause 396 different cards were tested at one Digital goods merchant, this looks like a concentrated attack. Those cards may be used for larger fraud next.",
-   "sql": "WITH __alerts AS (\n  SELECT\n    account_id AS account,\n    CAST(created_ts AS DATE) AS alert_date,\n    card_testing_flag AS card_testing,\n    label,\n    merchant_name AS merchant,\n    merchant_category,\n    alert_id,\n    amount,\n    card_id\n  FROM PAYMENT_FRAUD_WB.APP.ALERTS_ENRICHED\n)\nSELECT\n  merchant,\n  merchant_category,\n  COUNT(alert_id) AS alerts,\n  COUNT(DISTINCT card_id) AS cards,\n  COUNT(DISTINCT account) AS accounts,\n  SUM(amount) AS amt,\n  SUM(CASE WHEN label = 'Fraud' THEN 1 ELSE 0 END) AS fraud_alerts\nFROM __alerts\nWHERE\n  card_testing = 'Yes' AND alert_date BETWEEN '2026-11-08' AND '2026-11-14'\nGROUP BY\n  1,\n  2\nORDER BY\n  alerts DESC NULLS LAST /* Generated by Cortex */;"
+   "text": "Only one merchant had card-testing alerts this week (Nov 8–14): **Zentrova Digital Goods**, in the Digital goods category.\n\n- **396 alerts** came from the card-testing rule, which looks for many tiny card-not-present authorizations at one merchant within an hour. Each alert was on a different card (396 cards).\n- **Total amount was $478.52**, about $1.21 per authorization. That fits the usual card-testing pattern of small charges used to check whether stolen cards work.\n- **All 396 alerts are labeled Fraud.** That means each one has a chargeback or issuer confirmation.\n\nNo other merchant triggered the card-testing rule this week.",
+   "sql": "WITH __alerts AS (\n  SELECT\n    CAST(created_ts AS DATE) AS alert_date,\n    card_testing_flag AS card_testing,\n    label,\n    merchant_name AS merchant,\n    merchant_category,\n    alert_id,\n    card_id,\n    amount\n  FROM PAYMENT_FRAUD_WB.APP.ALERTS_ENRICHED\n)\nSELECT\n  merchant,\n  merchant_category,\n  COUNT(alert_id) AS card_testing_alerts,\n  COUNT(DISTINCT card_id) AS cards,\n  SUM(amount) AS alerted_amount,\n  SUM(CASE WHEN label = 'Fraud' THEN 1 ELSE 0 END) AS fraud_labeled\nFROM __alerts\nWHERE\n  card_testing = 'Yes' AND alert_date BETWEEN '2026-11-08' AND '2026-11-14'\nGROUP BY\n  1,\n  2\nORDER BY\n  3 DESC NULLS LAST /* Generated by Cortex */;"
   },
   {
    "question": "How many open high-priority alerts are there by channel?",
-   "text": "There are **785 open high-priority alerts** in total. Card-not-present has the most by far with **615** (about 78%). P2P has **91** and card-present has **79**.\n\n| CHANNEL | OPEN_HIGH_ALERTS |\n| --- | --- |\n| CARD_NOT_PRESENT | 615 |\n| P2P | 91 |\n| CARD_PRESENT | 79 |\n\nThese counts cover all alerts raised from November 1 to November 14, 2026 that are still open.",
+   "text": "There are **785 open high-priority alerts**:\n- **Card not present: 615** (about 78%)\n- **P2P: 91**\n- **Card present: 79**\n\nMost of the open high-priority work is in card-not-present payments.\n\n| CHANNEL | OPEN_HIGH_ALERTS |\n| --- | --- |\n| CARD_NOT_PRESENT | 615 |\n| P2P | 91 |\n| CARD_PRESENT | 79 |",
    "sql": "WITH __alerts AS (\n  SELECT\n    channel,\n    priority,\n    status,\n    alert_id\n  FROM PAYMENT_FRAUD_WB.APP.ALERTS_ENRICHED\n)\nSELECT\n  channel,\n  COUNT(alert_id) AS open_high_alerts\nFROM __alerts\nWHERE\n  status = 'OPEN' AND priority ILIKE 'HIGH'\nGROUP BY\n  channel\nORDER BY\n  open_high_alerts DESC NULLS LAST /* Generated by Cortex */;"
   },
   {
    "question": "Which merchant had the most false-positive alerts, and on which day?",
-   "text": "**Quillmont Outfitters had the most false-positive alerts: 434 on 2026-11-08.** No other merchant had more than 4 on any single day.\n\nThis was a one-day spike, not a normal level. All 434 alerts came from different accounts, all were card-not-present, the average amount was about $159, and none set off the card-testing rule. That looks like a burst of real online customers (a sale, for example) that set off alerts, not fraud.\n\nI counted alerts whose status is FALSE_POSITIVE. The data also has a \"Not fraud\" label, which counts alerts differently.\n\n| MERCHANT | ALERT_DATE | FP_ALERTS |\n| --- | --- | --- |\n| Quillmont Outfitters | 2026-11-08 | 434 |\n| Istrel Bistro | 2026-11-02 | 4 |\n| Harrowby Digital Online | 2026-11-09 | 4 |\n| Kestrin Travel Online | 2026-11-05 | 4 |\n| Pellmont Travel Online | 2026-11-11 | 3 |",
-   "sql": "WITH __alerts AS (\n  SELECT\n    account_id AS account,\n    CAST(created_ts AS DATE) AS alert_date,\n    card_testing_flag AS card_testing,\n    channel,\n    merchant_name AS merchant,\n    status,\n    alert_id,\n    amount\n  FROM PAYMENT_FRAUD_WB.APP.ALERTS_ENRICHED\n)\nSELECT\n  card_testing,\n  channel,\n  COUNT(alert_id) AS n,\n  COUNT(DISTINCT account) AS accts,\n  AVG(amount) AS avg_amt\nFROM __alerts\nWHERE\n  status = 'FALSE_POSITIVE'\n  AND merchant = 'Quillmont Outfitters'\n  AND alert_date = '2026-11-08'\nGROUP BY\n  1,\n  2\nORDER BY\n  n DESC /* Generated by Cortex */;"
+   "text": "Quillmont Outfitters had the most false-positive alerts: **434 on 2026-11-08**. That's far ahead of every other merchant-day; the next highest have only 3–4.\n\nA spike that size on one day looks like a single rule or model problem at that merchant, not normal alert volume. It would be worth checking which reason codes fired there that day.\n\nHere I've counted alerts that analysts closed with a false-positive status. P2P transfers have no merchant, so they aren't included.\n\n| MERCHANT | ALERT_DATE | FP_ALERTS |\n| --- | --- | --- |\n| Quillmont Outfitters | 2026-11-08 | 434 |\n| Kestrin Travel Online | 2026-11-05 | 4 |\n| Harrowby Digital Online | 2026-11-09 | 4 |\n| Istrel Bistro | 2026-11-02 | 4 |\n| Durnwick Digital Online | 2026-11-03 | 3 |",
+   "sql": "WITH __alerts AS (\n  SELECT\n    CAST(created_ts AS DATE) AS alert_date,\n    merchant_name AS merchant,\n    status,\n    alert_id\n  FROM PAYMENT_FRAUD_WB.APP.ALERTS_ENRICHED\n)\nSELECT\n  merchant,\n  alert_date,\n  COUNT(alert_id) AS fp_alerts\nFROM __alerts\nWHERE\n  status = 'FALSE_POSITIVE' AND NOT merchant IS NULL\nGROUP BY\n  1,\n  2\nORDER BY\n  3 DESC NULLS LAST\nLIMIT 5 /* Generated by Cortex */;"
   }
  ],
  "model": {
   "eval": {
    "algorithm": "XGBoost classifier",
    "auc": 0.9996,
-   "avgPrecision": 0.7218,
+   "avgPrecision": 0.7476,
    "featureView": "FEATURES.TXN_VELOCITY$1",
    "features": [
     "AMOUNT",
@@ -6621,51 +7343,47 @@
    "importance": [
     {
      "feature": "NEW_DEVICE",
-     "importance": 0.5912
+     "importance": 0.6064
     },
     {
      "feature": "HOUR_OF_DAY",
-     "importance": 0.1419
+     "importance": 0.1368
     },
     {
      "feature": "IS_P2P",
-     "importance": 0.1043
+     "importance": 0.1039
     },
     {
      "feature": "AMOUNT",
-     "importance": 0.0682
+     "importance": 0.0685
     },
     {
      "feature": "KM_FROM_PREV",
-     "importance": 0.0275
+     "importance": 0.0276
     },
     {
      "feature": "IS_CNP",
-     "importance": 0.0185
-    },
-    {
-     "feature": "KMH_FROM_PREV",
-     "importance": 0.0107
+     "importance": 0.02
     },
     {
      "feature": "DEVICE_ACCOUNTS",
-     "importance": 0.0105
+     "importance": 0.0118
+    },
+    {
+     "feature": "KMH_FROM_PREV",
+     "importance": 0.0101
     },
     {
      "feature": "CARD_TXN_1H",
-     "importance": 0.0104
-    },
-    {
-     "feature": "FIRST_TIME_PAYEE",
-     "importance": 0.0094
+     "importance": 0.0074
     },
     {
      "feature": "AMT_TO_AVG",
-     "importance": 0.0037
+     "importance": 0.0042
     },
     {
      "feature": "ACCT_AMT_24H",
-     "importance": 0.0036
+     "importance": 0.0032
     }
    ],
    "testFraud": 1292,
@@ -6679,155 +7397,155 @@
   "curve": [
    {
     "THRESHOLD": 0.05,
-    "ALERTS": 2176,
+    "ALERTS": 2190,
     "TRUE_POS": 1261,
-    "PRECISION": 0.5795,
+    "PRECISION": 0.5758,
     "RECALL": 0.976,
-    "ALERTS_PER_DAY": 155.4
+    "ALERTS_PER_DAY": 156.4
    },
    {
     "THRESHOLD": 0.1,
-    "ALERTS": 1999,
+    "ALERTS": 2020,
     "TRUE_POS": 1254,
-    "PRECISION": 0.6273,
+    "PRECISION": 0.6208,
     "RECALL": 0.9706,
-    "ALERTS_PER_DAY": 142.8
+    "ALERTS_PER_DAY": 144.3
    },
    {
     "THRESHOLD": 0.15,
-    "ALERTS": 1923,
+    "ALERTS": 1925,
     "TRUE_POS": 1247,
-    "PRECISION": 0.6485,
+    "PRECISION": 0.6478,
     "RECALL": 0.9652,
-    "ALERTS_PER_DAY": 137.4
+    "ALERTS_PER_DAY": 137.5
    },
    {
     "THRESHOLD": 0.2,
-    "ALERTS": 1857,
-    "TRUE_POS": 1234,
-    "PRECISION": 0.6645,
-    "RECALL": 0.9551,
-    "ALERTS_PER_DAY": 132.6
+    "ALERTS": 1868,
+    "TRUE_POS": 1240,
+    "PRECISION": 0.6638,
+    "RECALL": 0.9598,
+    "ALERTS_PER_DAY": 133.4
    },
    {
     "THRESHOLD": 0.25,
-    "ALERTS": 1819,
-    "TRUE_POS": 1229,
-    "PRECISION": 0.6756,
-    "RECALL": 0.9512,
-    "ALERTS_PER_DAY": 129.9
+    "ALERTS": 1821,
+    "TRUE_POS": 1224,
+    "PRECISION": 0.6722,
+    "RECALL": 0.9474,
+    "ALERTS_PER_DAY": 130.1
    },
    {
     "THRESHOLD": 0.3,
-    "ALERTS": 1794,
-    "TRUE_POS": 1227,
-    "PRECISION": 0.6839,
-    "RECALL": 0.9497,
-    "ALERTS_PER_DAY": 128.1
+    "ALERTS": 1772,
+    "TRUE_POS": 1207,
+    "PRECISION": 0.6812,
+    "RECALL": 0.9342,
+    "ALERTS_PER_DAY": 126.6
    },
    {
     "THRESHOLD": 0.35,
-    "ALERTS": 1770,
-    "TRUE_POS": 1224,
-    "PRECISION": 0.6915,
-    "RECALL": 0.9474,
-    "ALERTS_PER_DAY": 126.4
+    "ALERTS": 1741,
+    "TRUE_POS": 1187,
+    "PRECISION": 0.6818,
+    "RECALL": 0.9187,
+    "ALERTS_PER_DAY": 124.4
    },
    {
     "THRESHOLD": 0.4,
-    "ALERTS": 1751,
-    "TRUE_POS": 1219,
-    "PRECISION": 0.6962,
-    "RECALL": 0.9435,
-    "ALERTS_PER_DAY": 125.1
+    "ALERTS": 1699,
+    "TRUE_POS": 1163,
+    "PRECISION": 0.6845,
+    "RECALL": 0.9002,
+    "ALERTS_PER_DAY": 121.4
    },
    {
     "THRESHOLD": 0.45,
-    "ALERTS": 1729,
-    "TRUE_POS": 1204,
-    "PRECISION": 0.6964,
-    "RECALL": 0.9319,
-    "ALERTS_PER_DAY": 123.5
+    "ALERTS": 1662,
+    "TRUE_POS": 1138,
+    "PRECISION": 0.6847,
+    "RECALL": 0.8808,
+    "ALERTS_PER_DAY": 118.7
    },
    {
     "THRESHOLD": 0.5,
-    "ALERTS": 1688,
-    "TRUE_POS": 1174,
-    "PRECISION": 0.6955,
-    "RECALL": 0.9087,
-    "ALERTS_PER_DAY": 120.6
+    "ALERTS": 1608,
+    "TRUE_POS": 1102,
+    "PRECISION": 0.6853,
+    "RECALL": 0.8529,
+    "ALERTS_PER_DAY": 114.9
    },
    {
     "THRESHOLD": 0.55,
-    "ALERTS": 1652,
-    "TRUE_POS": 1146,
-    "PRECISION": 0.6937,
-    "RECALL": 0.887,
-    "ALERTS_PER_DAY": 118
+    "ALERTS": 1536,
+    "TRUE_POS": 1036,
+    "PRECISION": 0.6745,
+    "RECALL": 0.8019,
+    "ALERTS_PER_DAY": 109.7
    },
    {
     "THRESHOLD": 0.6,
-    "ALERTS": 1597,
-    "TRUE_POS": 1103,
-    "PRECISION": 0.6907,
-    "RECALL": 0.8537,
-    "ALERTS_PER_DAY": 114.1
+    "ALERTS": 1447,
+    "TRUE_POS": 954,
+    "PRECISION": 0.6593,
+    "RECALL": 0.7384,
+    "ALERTS_PER_DAY": 103.4
    },
    {
     "THRESHOLD": 0.65,
-    "ALERTS": 1496,
-    "TRUE_POS": 1008,
-    "PRECISION": 0.6738,
-    "RECALL": 0.7802,
-    "ALERTS_PER_DAY": 106.9
+    "ALERTS": 1342,
+    "TRUE_POS": 857,
+    "PRECISION": 0.6386,
+    "RECALL": 0.6633,
+    "ALERTS_PER_DAY": 95.9
    },
    {
     "THRESHOLD": 0.7,
-    "ALERTS": 1378,
-    "TRUE_POS": 894,
-    "PRECISION": 0.6488,
-    "RECALL": 0.692,
-    "ALERTS_PER_DAY": 98.4
-   },
-   {
-    "THRESHOLD": 0.75,
-    "ALERTS": 1301,
-    "TRUE_POS": 827,
-    "PRECISION": 0.6357,
-    "RECALL": 0.6401,
+    "ALERTS": 1300,
+    "TRUE_POS": 819,
+    "PRECISION": 0.63,
+    "RECALL": 0.6339,
     "ALERTS_PER_DAY": 92.9
    },
    {
+    "THRESHOLD": 0.75,
+    "ALERTS": 1267,
+    "TRUE_POS": 796,
+    "PRECISION": 0.6283,
+    "RECALL": 0.6161,
+    "ALERTS_PER_DAY": 90.5
+   },
+   {
     "THRESHOLD": 0.8,
-    "ALERTS": 1259,
-    "TRUE_POS": 794,
-    "PRECISION": 0.6307,
-    "RECALL": 0.6146,
-    "ALERTS_PER_DAY": 89.9
+    "ALERTS": 1252,
+    "TRUE_POS": 789,
+    "PRECISION": 0.6302,
+    "RECALL": 0.6107,
+    "ALERTS_PER_DAY": 89.4
    },
    {
     "THRESHOLD": 0.85,
-    "ALERTS": 1240,
-    "TRUE_POS": 786,
+    "ALERTS": 1232,
+    "TRUE_POS": 781,
     "PRECISION": 0.6339,
-    "RECALL": 0.6084,
-    "ALERTS_PER_DAY": 88.6
+    "RECALL": 0.6045,
+    "ALERTS_PER_DAY": 88
    },
    {
     "THRESHOLD": 0.9,
-    "ALERTS": 1224,
-    "TRUE_POS": 778,
-    "PRECISION": 0.6356,
-    "RECALL": 0.6022,
-    "ALERTS_PER_DAY": 87.4
+    "ALERTS": 1218,
+    "TRUE_POS": 771,
+    "PRECISION": 0.633,
+    "RECALL": 0.5967,
+    "ALERTS_PER_DAY": 87
    },
    {
     "THRESHOLD": 0.95,
-    "ALERTS": 1194,
-    "TRUE_POS": 756,
-    "PRECISION": 0.6332,
-    "RECALL": 0.5851,
-    "ALERTS_PER_DAY": 85.3
+    "ALERTS": 1191,
+    "TRUE_POS": 754,
+    "PRECISION": 0.6331,
+    "RECALL": 0.5836,
+    "ALERTS_PER_DAY": 85.1
    }
   ],
   "registry": {
@@ -6835,7 +7553,7 @@
    "version": "V1",
    "created": "Fri Nov 20"
   },
-  "ms": 354,
+  "ms": 516,
   "source": "live"
  }
 }
