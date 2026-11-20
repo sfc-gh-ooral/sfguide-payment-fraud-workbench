@@ -11,7 +11,7 @@ import type { AiText, AlertQueue, CaseDetail, ModelInfo, Overview } from '@/lib/
 
 interface SampleBundle {
   capturedAt: string; overview: Overview; queues: Record<string, AlertQueue>; cases: Record<string, CaseDetail>;
-  model: ModelInfo; summaries: Record<string, string>; answers: { question: string; text: string }[];
+  model: ModelInfo; summaries: Record<string, string>; answers: { question: string; text: string; sql?: string }[];
 }
 const S = sample as unknown as SampleBundle;
 export const CAPTURED_AT = S.capturedAt;
@@ -91,5 +91,5 @@ export async function ask(question: string): Promise<AiText> {
   const hit = S.answers.find((a) => a.question.toLowerCase() === question.trim().toLowerCase());
   await wait(jitter(SAMPLE_DELAY_MS.ask));
   if (!hit) return { text: 'This hosted example only has scripted answers for the suggested questions. Pick one of them, or run Live mode to ask the Cortex Agent anything about the alerts.', latencyMs: 0, model: 'scripted', source: 'sample' };
-  return { text: hit.text, latencyMs: 0, model: 'scripted', source: 'sample' };
+  return { text: hit.text, sql: hit.sql, latencyMs: 0, model: 'scripted', source: 'sample' };
 }

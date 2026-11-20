@@ -31,32 +31,34 @@ export function ModeChip() {
 
   return (
     <>
-      <div className={`mode-switch ${live ? 'is-live' : 'is-sample'}`} role="radiogroup" aria-label="Data source">
+      <div className="seg" role="radiogroup" aria-label="Data source">
         <button role="radio" aria-checked={!live} onClick={() => choose('sample')}
           title="Bundled synthetic data; AI answers are scripted samples">
-          <FlaskConical className="w-3.5 h-3.5" aria-hidden />Sample
+          <FlaskConical className="w-3.5 h-3.5 text-warn" aria-hidden /><span className="hidden sm:inline">Sample</span>
         </button>
         <button role="radio" aria-checked={live} onClick={() => choose('live')}
           title={configured ? 'Data and AI answers from your Snowflake account' : 'Needs a Snowflake connection'}>
-          {live && <span className="mode-dot" aria-hidden />}<Database className="w-3.5 h-3.5" aria-hidden />Live
+          {live ? <span className="pulse text-clear" aria-hidden /> : <Database className="w-3.5 h-3.5" aria-hidden />}<span className="hidden sm:inline">Live</span>
         </button>
       </div>
+      <span className={`mono text-[10.5px] font-bold px-2 py-1 rounded border ${live ? 'text-clear border-[color-mix(in_srgb,var(--clear)_45%,transparent)]' : 'text-warn border-[color-mix(in_srgb,var(--warn)_45%,transparent)]'}`}
+        title={live ? 'Connected to Snowflake' : 'Synthetic data bundled with the app'}>{live ? 'ENV · LIVE' : 'ENV · SAMPLE'}</span>
 
       {help && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={() => setHelp(false)}>
-          <div role="dialog" aria-modal="true" aria-labelledby="live-help-title" className="card fade-up max-w-lg w-full p-5"
+          <div role="dialog" aria-modal="true" aria-labelledby="live-help-title" className="panel rise max-w-lg w-full p-5"
             onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start justify-between gap-3 mb-3">
               <h2 id="live-help-title" className="text-base font-semibold">Connect Snowflake to use Live mode</h2>
               <button className="btn !px-2" onClick={() => setHelp(false)} aria-label="Close"><X className="w-4 h-4" /></button>
             </div>
             {HOSTED_EXAMPLE ? (
-              <p className="text-sm text-2">This hosted example runs only on synthetic data in your browser. To use Live mode,
+              <p className="text-sm muted">This hosted example runs only on synthetic data in your browser. To use Live mode,
                 clone the <a className="underline" href={REPO} target="_blank" rel="noreferrer">repository</a> and follow
                 &ldquo;Live mode: deploy to your account&rdquo; in the README.</p>
             ) : (
               <>
-                <p className="text-sm text-2 mb-3">No Snowflake connection is configured on this server. For security, the app
+                <p className="text-sm muted mb-3">No Snowflake connection is configured on this server. For security, the app
                   doesn&apos;t take credentials in the browser. Set them up once on the machine running the app:</p>
                 <ol className="text-sm space-y-2 list-decimal pl-5 mb-3">
                   <li>Run <code>sql/setup.sql</code> in a Snowsight worksheet as ACCOUNTADMIN.</li>
@@ -66,7 +68,7 @@ export function ModeChip() {
                 <pre className="text-xs rounded-lg p-3 mb-3 overflow-x-auto" style={{ background: 'var(--surface-2)' }}>{`SNOWFLAKE_ACCOUNT=<orgname>-<account_name>
 SNOWFLAKE_USERNAME=<YOUR_USER>
 SNOWFLAKE_PRIVATE_KEY_PATH=/absolute/path/to/pfw_rsa_key.p8`}</pre>
-                <p className="text-sm text-2">Then restart with <code>npm run dev</code> and switch to Live.{' '}
+                <p className="text-sm muted">Then restart with <code>npm run dev</code> and switch to Live.{' '}
                   <a className="underline" href={`${REPO}#live-mode-deploy-to-your-account`} target="_blank" rel="noreferrer">Full guide</a></p>
               </>
             )}

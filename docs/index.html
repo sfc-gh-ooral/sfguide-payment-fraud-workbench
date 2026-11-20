@@ -7,200 +7,230 @@
 <meta name="description" content="Help fraud analysts score card and real-time payments, see linked accounts and devices, and close cases faster with an AI case summary. A Snowflake example on synthetic data.">
 <style>
 :root {
-  color-scheme: light dark;
-  --bg: light-dark(#f6f7fb, #0d1220);
-  --card: light-dark(#ffffff, #141b2d);
-  --card-2: light-dark(#f0f2f8, #1b2439);
-  --border: light-dark(#dde1ec, #2a3550);
-  --text: light-dark(#141a2e, #e8ecf6);
-  --text-2: light-dark(#4a5373, #aab3cc);
-  --muted: light-dark(#6b7493, #8590ad);
-  --accent: light-dark(#1a6fd1, #5aa7f5);
-  --accent-soft: light-dark(rgba(26,111,209,.1), rgba(90,167,245,.14));
-  --warn-soft: light-dark(#fff6e6, #2b2414);
-  --warn-border: light-dark(#f0c36d, #6b5420);
+  color-scheme: dark light;
+  --bg: #0A0C0F; --surface: #12161B; --surface-2: #1A2027; --line: #262E38; --ink: #E8EDF2; --muted: #97A3B0;
+  --signal: #C8F542; --fraud: #FF5C97; --link: #46D2FF; --warn: #FFB547; --ai: #B49CFF; --on-signal: #0A0C0F; --dot: rgba(255,255,255,.045);
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #F4F6F2; --surface: #FFFFFF; --surface-2: #EDF1EA; --line: #D6DCD2; --ink: #0E1216; --muted: #535E69;
+    --signal: #4C6E00; --fraud: #BE1858; --link: #086C93; --warn: #875600; --ai: #6236D1; --on-signal: #FFFFFF; --dot: rgba(14,18,22,.06); }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
-a { color: var(--accent); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 32px 32px; }
+a { color: var(--link); }
 img, svg { max-width: 100%; height: auto; }
-.wrap { max-width: 1080px; width: 100%; margin: 0 auto; padding: 0 clamp(16px, 4vw, 28px); }
-header.top { border-bottom: 1px solid var(--border); background: var(--card); }
-header.top .wrap { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
-.mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); display: grid; place-items: center; }
-.brand { font-weight: 650; }
-.brand small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
-nav.links { margin-left: auto; display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
-nav.links a { text-decoration: none; color: var(--text-2); }
-nav.links a:hover { color: var(--accent); }
-.hero { padding-top: clamp(36px, 7vw, 72px); padding-bottom: 28px; }
-.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
-h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.15; margin: 10px 0 16px; letter-spacing: -.01em; }
-.lede { font-size: clamp(17px, 2.2vw, 19px); color: var(--text-2); max-width: 760px; margin: 0 0 24px; }
-.cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
-.btn { display: inline-block; padding: 10px 16px; border-radius: 9px; border: 1px solid var(--border); background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px; }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
-.fact { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 14px; }
-.fact b { display: block; font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
-.note { background: var(--warn-soft); border: 1px solid var(--warn-border); border-radius: 10px; padding: 12px 16px; font-size: 14px; margin: 22px 0 0; }
-section { padding: 44px 0; border-top: 1px solid var(--border); }
-h2 { font-size: clamp(24px, 3.4vw, 30px); margin: 0 0 10px; }
-h3 { font-size: 18px; margin: 0 0 6px; }
-.sub { color: var(--text-2); max-width: 760px; margin: 0 0 24px; }
-.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
-.card p { margin: 0; color: var(--text-2); font-size: 15px; }
-figure { margin: 0 0 34px; }
-figure img { display: block; width: 100%; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
-figcaption { margin-top: 10px; font-size: 15px; color: var(--text-2); }
-figcaption .cap { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 1px 9px; margin-right: 6px; }
-.step { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
-.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; align-items: start; }
-.table-wrap { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-th { background: var(--card-2); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
-code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
-code { background: var(--card-2); padding: 1px 5px; border-radius: 4px; }
-pre { background: var(--card-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 0 0 14px; }
-pre code { background: none; padding: 0; }
-ul { padding-left: 20px; }
-li { margin: 4px 0; }
-footer { border-top: 1px solid var(--border); padding: 28px 0 44px; color: var(--muted); font-size: 14px; }
-@media (max-width: 560px) { nav.links { margin-left: 0; width: 100%; gap: 12px; } }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); }
+.mono { font-family: var(--mono); }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+header.top { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); }
+header.top .wrap { display: flex; align-items: center; gap: 14px; height: 56px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand b { display: block; font-size: 15px; letter-spacing: -.01em; line-height: 1; }
+.brand small { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+nav.links { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+nav.links a { color: var(--muted); text-decoration: none; }
+nav.links a:hover { color: var(--ink); }
+@media (max-width: 640px) { nav.links a.opt { display: none; } }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 5px; font-weight: 650; font-size: 15px; text-decoration: none; border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+.btn.primary { background: var(--signal); color: var(--on-signal); border-color: transparent; box-shadow: 0 0 0 1px color-mix(in srgb, var(--signal) 35%, transparent), 0 0 28px -8px var(--signal); }
+.hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 32px; align-items: center; padding: clamp(36px, 7vw, 84px) 0 40px; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+h1 { font-size: clamp(32px, 5.2vw, 56px); line-height: 1.06; letter-spacing: -.025em; margin: 14px 0 18px; }
+h1 em { font-style: normal; color: var(--fraud); }
+.lede { font-size: clamp(17px, 2vw, 19px); color: var(--muted); margin: 0 0 26px; max-width: 600px; }
+.cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.constellation { border: 1px solid var(--line); border-radius: 8px; background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), var(--bg)); padding: 10px; }
+.ticker { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+.chip { font-family: var(--mono); font-size: 12px; border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 4px 9px; }
+.chip i { font-style: normal; color: var(--fraud); }
+.note { border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); background: color-mix(in srgb, var(--warn) 8%, var(--surface)); border-radius: 6px; padding: 12px 16px; font-size: 14px; }
+section { padding: 56px 0; border-top: 1px solid var(--line); }
+h2 { font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -.02em; margin: 8px 0 10px; line-height: 1.15; }
+.sub { color: var(--muted); max-width: 760px; margin: 0 0 28px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+@media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+.steps > div { padding: 22px; border-right: 1px solid var(--line); }
+.steps > div:last-child { border-right: 0; }
+@media (max-width: 800px) { .steps > div { border-right: 0; border-bottom: 1px solid var(--line); } }
+.steps .n { font-family: var(--mono); font-size: 12px; color: var(--signal); font-weight: 700; }
+.steps h3 { margin: 6px 0 6px; font-size: 18px; }
+.steps p { margin: 0; color: var(--muted); font-size: 15px; }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+@media (max-width: 800px) { .gallery { grid-template-columns: 1fr; } }
+figure { margin: 0; }
+figure.wide { grid-column: 1 / -1; }
+figure img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+figcaption { margin-top: 10px; font-size: 15px; color: var(--muted); }
+figcaption .cap { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--signal); border: 1px solid color-mix(in srgb, var(--signal) 40%, transparent); border-radius: 4px; padding: 1px 7px; margin-right: 6px; }
+.phone { display: grid; grid-template-columns: 260px 1fr; gap: 28px; align-items: center; }
+@media (max-width: 700px) { .phone { grid-template-columns: 1fr; } .phone img { max-width: 260px; } }
+table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); }
+.tablewrap { overflow-x: auto; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+.card h3 { margin: 0 0 8px; font-size: 18px; }
+.card p, .card li { color: var(--muted); font-size: 15px; }
+pre { font-family: var(--mono); font-size: 13px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow-x: auto; color: var(--ink); }
+footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 14px; color: var(--muted); }
+.pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--fraud); box-shadow: 0 0 10px var(--fraud); margin-right: 6px; vertical-align: 1px; }
+@media (prefers-reduced-motion: no-preference) { .glow { animation: glow 2.4s ease-in-out infinite; } @keyframes glow { 50% { opacity: .45; } } }
 </style>
 </head>
 <body>
-
 <header class="top">
   <div class="wrap">
-    <div class="mark" aria-hidden="true">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-    </div>
-    <div class="brand">Payment Fraud Investigation Workbench<small>A Snowflake example on synthetic data</small></div>
-    <nav class="links" aria-label="Page sections">
-      <a href="#walkthrough">Walkthrough</a><a href="#how">How it works</a><a href="#run">Run it</a>
-      <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">Repository</a>
+    <a class="brand" href="#top" aria-label="Payment Fraud Investigation Workbench">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M16 2.5 28 9.25v13.5L16 29.5 4 22.75V9.25Z" fill="var(--surface)" stroke="var(--signal)" stroke-width="1.6"/><path d="M10 21.5 21.5 10M14.5 10H21.5V17" fill="none" stroke="var(--signal)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21.5" r="2.2" fill="var(--fraud)"/></svg>
+      <span><b>Ferrovane</b><small>Fraud Desk · Snowflake example</small></span>
+    </a>
+    <nav class="links" aria-label="Page">
+      <a class="opt" href="#walkthrough">Walkthrough</a>
+      <a class="opt" href="#how">How it works</a>
+      <a href="#run">Run it</a>
+      <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">GitHub</a>
     </nav>
   </div>
 </header>
 
-<main>
-<div class="wrap hero">
-  <div class="eyebrow">Payments · Risk · Financial crime</div>
-  <h1>Catch payment fraud faster, from first alert to closed case</h1>
-  <p class="lede">A fraud analyst at a bank starts the day with hundreds of alerts across card and instant payments. This example puts the score, the reasons, the linked accounts and devices, and an AI-drafted case note on one screen, so the analyst can confirm fraud, clear a false positive, or escalate with the evidence in front of them. Model training, feature engineering, link analysis, and AI all run in Snowflake on the same data.</p>
-  <div class="cta">
-    <a class="btn primary" href="try/">Try the example</a>
-    <a class="btn" href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">View the repository</a>
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>Payment Fraud Investigation Workbench</div>
+      <h1>Fraud rings hide in the links between accounts. <em>Find them before the money moves.</em></h1>
+      <p class="lede">Fraud analysts work alerts one payment at a time while card testers, account takeovers, and mule rings act across many. This Snowflake example scores card and instant payments, shows the accounts, devices, and IPs behind each alert, and drafts the case note with AI so the analyst can decide faster.</p>
+      <div class="cta">
+        <a class="btn primary" href="try/">Try the example (no account) →</a>
+        <a class="btn" href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">View the repository</a>
+      </div>
+      <div class="ticker" aria-label="Planted stories in the synthetic data">
+        <span class="chip"><i>●</i> card testing · 420 cards</span>
+        <span class="chip"><i>●</i> account takeover · $9,800 P2P</span>
+        <span class="chip"><i>●</i> mule ring · 12 accounts</span>
+        <span class="chip"><i>●</i> impossible travel · 2,025 km</span>
+        <span class="chip">promo false positives · 434</span>
+      </div>
+    </div>
+    <div class="constellation">
+      <svg viewBox="0 0 520 400" role="img" aria-label="Illustration of a link graph: an account that was taken over connects through a shared device to a ring of mule accounts, highlighted in magenta.">
+        <g stroke="var(--line)" fill="none" stroke-dasharray="2 6"><circle cx="260" cy="200" r="70"/><circle cx="260" cy="200" r="130"/><circle cx="260" cy="200" r="185"/></g>
+        <g stroke="var(--muted)" stroke-opacity=".45" stroke-width="1">
+          <line x1="260" y1="200" x2="330" y2="160"/><line x1="260" y1="200" x2="205" y2="250"/><line x1="330" y1="160" x2="420" y2="110"/><line x1="330" y1="160" x2="430" y2="210"/>
+          <line x1="330" y1="160" x2="372" y2="295"/><line x1="420" y1="110" x2="470" y2="170"/><line x1="430" y1="210" x2="470" y2="170"/><line x1="372" y1="295" x2="430" y2="210"/>
+          <line x1="205" y1="250" x2="120" y2="300"/><line x1="205" y1="250" x2="150" y2="170"/><line x1="150" y1="170" x2="90" y2="120"/><line x1="372" y1="295" x2="300" y2="355"/>
+        </g>
+        <g stroke="var(--fraud)" stroke-width="1.6" stroke-opacity=".85" class="glow">
+          <line x1="330" y1="160" x2="420" y2="110"/><line x1="330" y1="160" x2="430" y2="210"/><line x1="330" y1="160" x2="372" y2="295"/><line x1="420" y1="110" x2="470" y2="170"/><line x1="430" y1="210" x2="470" y2="170"/><line x1="372" y1="295" x2="430" y2="210"/>
+        </g>
+        <rect x="322" y="152" width="16" height="16" rx="2" fill="var(--warn)"/>
+        <circle cx="205" cy="250" r="7" fill="var(--link)"/><circle cx="150" cy="170" r="7" fill="var(--signal)"/><circle cx="90" cy="120" r="6" fill="var(--signal)"/><circle cx="120" cy="300" r="6" fill="var(--signal)"/><circle cx="300" cy="355" r="6" fill="var(--link)"/>
+        <g fill="var(--fraud)"><circle cx="420" cy="110" r="9"/><circle cx="430" cy="210" r="9"/><circle cx="372" cy="295" r="9"/><circle cx="470" cy="170" r="9"/></g>
+        <circle cx="260" cy="200" r="16" fill="var(--fraud)" style="filter: drop-shadow(0 0 10px var(--fraud))"/>
+        <g font-family="ui-monospace, Menlo, monospace" font-size="11" fill="var(--ink)">
+          <text x="260" y="234" text-anchor="middle">A012345 · takeover</text>
+          <text x="344" y="148">DATO1 · new device</text>
+          <text x="440" y="96">mule</text><text x="446" y="232">mule</text><text x="386" y="318">mule</text>
+          <text x="20" y="30" fill="var(--muted)">LINK GRAPH · ACCOUNTS · DEVICES · IPS</text>
+        </g>
+      </svg>
+    </div>
   </div>
-  <div class="facts">
-    <div class="fact"><b>No account needed</b>The example runs in your browser on synthetic data</div>
-    <div class="fact"><b>Live mode setup</b>About 3 minutes on an XSMALL warehouse</div>
-    <div class="fact"><b>Measured cost</b>0.41 warehouse credits for setup plus a full walkthrough, plus AI tokens</div>
-    <div class="fact"><b>Requires</b>Standard Edition, Cortex AI in your region or cross-region inference</div>
-  </div>
-  <p class="note"><strong>Synthetic data, illustrative logic.</strong> Not a production fraud system, and not regulatory, compliance, or legal advice. Every name, account, and payment is invented. Model results describe this synthetic data set only.</p>
+  <p class="note"><strong>Synthetic data and illustrative logic only.</strong> Ferrovane, Northwind Financial, and every person, merchant, and account are fictional. This is not a production fraud system and not regulatory, compliance, or legal advice. It is an example, not an official Snowflake product, and is not supported by Snowflake Support.</p>
 </div>
 
 <section>
   <div class="wrap">
-    <h2>What analysts can do</h2>
-    <p class="sub">Five screens cover the daily workflow. The synthetic data has five planted stories so the walkthrough has something to find.</p>
-    <div class="grid3">
-      <div class="card"><h3>See where fraud is</h3><p>Fraud rate in basis points, losses, alert volume, and precision on worked alerts, with a map of fraud by H3 cell.</p></div>
-      <div class="card"><h3>Work the queue</h3><p>Alerts ranked by priority with model score, reason codes, rule hits, and an SLA timer. Confirm, clear, or escalate in one click.</p></div>
-      <div class="card"><h3>Investigate a case</h3><p>A timeline of payments and logins, a map of the card&rsquo;s swipes, and a link graph of the accounts, devices, and IPs around it.</p></div>
-      <div class="card"><h3>Close with an AI case note</h3><p>AI_COMPLETE drafts a summary, the signals, and a next step from the case facts, for the analyst to review.</p></div>
-      <div class="card"><h3>Tune the threshold</h3><p>See how precision, recall, and alert volume move as the model threshold changes, on labeled data.</p></div>
-      <div class="card"><h3>Ask in plain language</h3><p>&ldquo;Which merchants had card-testing patterns this week?&rdquo; answered by a Cortex Agent over a semantic view of alerts.</p></div>
+    <div class="eyebrow">The workflow</div>
+    <h2>Signal, evidence, decision</h2>
+    <p class="sub">Five screens follow one analyst through a shift: what is happening, what to work first, why a payment looks wrong, and what to do about it.</p>
+    <div class="steps">
+      <div><div class="n">01 · SIGNAL</div><h3>Score and queue</h3><p>An XGBoost model from the Model Registry scores every payment on Feature Store velocity features; three SQL rules add card testing, impossible travel, and shared devices. Alerts land in a queue ranked by score with an SLA timer.</p></div>
+      <div><div class="n">02 · EVIDENCE</div><h3>See the links</h3><p>Each case shows the payment and login timeline, a map of in-store swipes with distances from <span class="mono">ST_DISTANCE</span>, and a link graph of accounts, devices, and IPs found with a recursive CTE.</p></div>
+      <div><div class="n">03 · DECISION</div><h3>Draft, then decide</h3><p><span class="mono">AI_COMPLETE</span> drafts the case summary and next step from the facts on the page, citing what it used. The analyst confirms fraud, marks a false positive, or escalates; the decision is written back to Snowflake.</p></div>
     </div>
   </div>
 </section>
 
 <section id="walkthrough">
   <div class="wrap">
-    <h2>Walkthrough</h2>
-    <p class="sub">Screenshots of the running app in Sample mode. Every number comes from the synthetic data set, and the AI text was captured from a live run.</p>
-    <figure>
-      <img src="images/01-fraud-overview.png" width="2000" height="1250" alt="Fraud overview: 14.0 bps fraud rate, $282K losses, 2,774 alerts, 30% precision on worked alerts, a daily chart with alert spikes on Nov 8 and Nov 12, and a US map of fraud bubbles by H3 cell">
-      <figcaption><span class="cap">Snowflake SQL · Geospatial H3</span>The overview: fraud rate, losses, alert volume, and precision on worked alerts. Alerts spike on Nov 8 (a legitimate promotion) and Nov 12 (a card-testing burst). The map aggregates confirmed fraud to H3 cells with H3_LATLNG_TO_CELL_STRING.</figcaption>
-    </figure>
-    <figure>
-      <img src="images/02-alert-queue.png" width="2000" height="1250" alt="Alert queue: story cases to start with, then open alerts with amount, channel, model score, reason codes such as new device and recent password reset, an overdue SLA tag, and confirm, false positive, and escalate buttons">
-      <figcaption><span class="cap">Snowpark ML · Model Registry</span>The alert queue. Scores come from an XGBoost model registered in the Model Registry and run in batch with model.run. Reason codes come from the feature values, and rules for card testing, impossible travel, and shared devices run alongside the model.</figcaption>
-    </figure>
-    <figure>
-      <img src="images/03-case-takeover.png" width="2000" height="1250" alt="Account takeover case: a sample AI case summary describing a new-device login, a password reset, three new payees, and six P2P transfers totaling $9,800, with signals and a recommended next step, next to the decision panel">
-      <figcaption><span class="cap">Cortex AI_COMPLETE</span>An account takeover: a new device, a password reset, then a $9,800 P2P drain. AI_COMPLETE drafts the case note and next step from the facts on the page. The analyst records the decision, which Live mode writes to an actions table.</figcaption>
-    </figure>
-    <figure>
-      <img src="images/04-case-impossible-travel.png" width="2000" height="1250" alt="Impossible travel case: a link graph for the account and a map showing swipes in Boston at 14:02 and Miami at 14:30, joined by a dashed line, with the timeline below">
-      <figcaption><span class="cap">ST_DISTANCE · Recursive CTE</span>Impossible travel: two swipes 2,025 km apart in 28 minutes, measured with ST_DISTANCE. The link graph walks accounts, devices, and IPs with a recursive CTE; on the takeover case it reaches a 12-account mule ring.</figcaption>
-    </figure>
-    <figure>
-      <img src="images/05-model-threshold.png" width="2000" height="1250" alt="Model and rules: a threshold slider with precision, recall, alerts per day, and fraud caught, a precision and recall curve, feature importance led by new device, and the three rules">
-      <figcaption><span class="cap">Feature Store · Dynamic Tables</span>Model &amp; rules: move the threshold to see the precision / recall trade-off and alert volume. The 14 velocity features live in a Feature Store view backed by a Dynamic Table.</figcaption>
-    </figure>
-    <figure>
-      <img src="images/06-ask-agent.png" width="2000" height="1250" alt="Ask screen: the question which merchants had card-testing patterns this week, answered with Zentrova Digital Goods, 396 card-testing alerts on 396 cards, labeled as a sample AI response">
-      <figcaption><span class="cap">Cortex Agents · Semantic view</span>Ask: a Cortex Agent uses Cortex Analyst over the ALERTS_SV semantic view to answer questions about alerts, merchants, channels, and rules.</figcaption>
-    </figure>
+    <div class="eyebrow">Walkthrough</div>
+    <h2>What the analyst sees</h2>
+    <p class="sub">Screenshots from the no-account example on the bundled synthetic data. Every number describes this synthetic data set only.</p>
+    <div class="gallery">
+      <figure class="wide"><img src="images/01-fraud-overview.jpg" width="1440" height="900" loading="lazy" alt="Fraud overview in dark theme: KPI tiles for fraud rate of 14.0 basis points, losses, alerts raised, and precision on worked alerts, a daily chart of alerts and fraud rate, and a ranked list of reason codes.">
+        <figcaption><span class="cap">Snowflake SQL · Geospatial H3</span>Fraud overview: fraud rate in basis points, losses, alert volume, and precision on worked alerts. The Nov 8 alert spike with no fraud is a legitimate promotion; the Nov 12 fraud spike is a card-testing burst.</figcaption></figure>
+      <figure><img src="images/02-alert-queue.jpg" width="1440" height="900" loading="lazy" alt="Alert queue table with priority, payment, amount, score bars, reason code tags, overdue SLA pills, and action buttons, with a detail drawer open on the right.">
+        <figcaption><span class="cap">Snowpark ML · Model Registry</span>Alert queue: sort and filter by score, amount, and SLA; open a drawer for the reasons, then confirm fraud, mark a false positive, or escalate.</figcaption></figure>
+      <figure><img src="images/03a-case-reasoning.jpg" width="1440" height="900" loading="lazy" alt="Case for an account takeover with the AI case summary panel showing staged reasoning steps: reading 15 timeline items, linking 9 accounts, weighing 4 signals, drafting the summary.">
+        <figcaption><span class="cap">Cortex AI_COMPLETE</span>The AI case summary shows its steps while it reads the timeline, link graph, and reason codes for the case.</figcaption></figure>
+      <figure class="wide"><img src="images/03-case-takeover.jpg" width="1440" height="900" loading="lazy" alt="Account takeover case: an AI case summary labeled Sample AI response describing a new device login, a password reset, three new payees, and six P2P transfers totaling 9,800 dollars, with evidence citations, next to the analyst decision panel and checklist.">
+        <figcaption><span class="cap">Cortex AI_COMPLETE</span>Account takeover: a new device, a password reset, three new payees, then a $9,800 P2P drain in 34 minutes. The draft cites the evidence it used; the analyst decides.</figcaption></figure>
+      <figure><img src="images/04-case-mule-ring.jpg" width="1440" height="900" loading="lazy" alt="Link graph for a mule-ring case: 13 accounts in magenta connected through shared devices and IP addresses, laid out in rings by hops from the alerted account.">
+        <figcaption><span class="cap">Recursive CTE in SQL</span>Mule ring: twelve new accounts share three devices and two IPs. The graph walks two hops through shared devices and IPs.</figcaption></figure>
+      <figure><img src="images/05-case-impossible-travel.jpg" width="1440" height="900" loading="lazy" alt="Impossible travel case: a US map with a dashed path from a Boston swipe at 14:02 to a flagged Miami swipe, and the card's single-account link graph.">
+        <figcaption><span class="cap">Geospatial ST_DISTANCE</span>Impossible travel: a Boston swipe, then a Miami swipe 28 minutes later, 2,025 km apart by <span class="mono">ST_DISTANCE</span>.</figcaption></figure>
+      <figure><img src="images/06-model-threshold.jpg" width="1440" height="900" loading="lazy" alt="Model and rules screen with the threshold slider at 0.80, precision, recall, alerts per day, and fraud caught compared with the 0.50 baseline, and a chart of precision, recall, and alert volume by threshold.">
+        <figcaption><span class="cap">Feature Store · Model Registry</span>Model &amp; rules: move the threshold to see precision, recall, and daily alert volume change, measured on labeled synthetic payments.</figcaption></figure>
+      <figure><img src="images/07-ask-agent.jpg" width="1440" height="900" loading="lazy" alt="Ask screen: the question which merchants had card-testing patterns this week, and an answer labeled Sample AI response naming one digital goods merchant with 396 card-testing alerts, with the semantic view cited as the source.">
+        <figcaption><span class="cap">Cortex Agents · Cortex Analyst</span>Ask: “Which merchants had card-testing patterns this week?” The agent answers from a semantic view of alerts and shows the SQL it ran.</figcaption></figure>
+    </div>
+    <div class="phone" style="margin-top:32px">
+      <img src="images/08-phone-case.jpg" width="780" height="1688" loading="lazy" alt="The account takeover case on a phone: Ferrovane header with a Sample environment badge, the case title, reason code tags, and a bottom tab bar.">
+      <div><div class="eyebrow">On a phone</div><h3 style="font-size:22px;margin:6px 0">Works at 390 px</h3><p style="color:var(--muted)">Tabs move to a bottom bar, tables become row cards, and nothing scrolls sideways, so an on-call lead can check a case from anywhere.</p></div>
+    </div>
   </div>
 </section>
 
 <section id="how">
   <div class="wrap">
-    <h2>How it works in Snowflake</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Step</th><th>Snowflake capability</th><th>What it does here</th></tr></thead>
-        <tbody>
-          <tr><td>Features</td><td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/feature-store/overview">Feature Store</a> on <a href="https://docs.snowflake.com/en/user-guide/dynamic-tables-about">Dynamic Tables</a></td><td>14 velocity features per payment: card and account velocity, amount versus the 30-day average, new and shared devices, merchant small-authorization bursts, first-time payees, recent password resets, and distance and speed since the last swipe</td></tr>
-          <tr><td>Model</td><td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/overview">Snowpark ML</a> and the <a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/overview">Model Registry</a></td><td>XGBoost trained in a Snowpark Python procedure on October labels, tested on November, registered as FRAUD_XGB, and run in batch with model.run. A daily task (created suspended) re-scores.</td></tr>
-          <tr><td>Geospatial</td><td><a href="https://docs.snowflake.com/en/sql-reference/functions/st_distance">ST_DISTANCE</a>, <a href="https://docs.snowflake.com/en/sql-reference/functions/h3_latlng_to_cell_string">H3 functions</a></td><td>Impossible travel between consecutive swipes, and the fraud map by H3 cell</td></tr>
-          <tr><td>Link analysis</td><td><a href="https://docs.snowflake.com/en/user-guide/queries-cte">Recursive CTEs</a></td><td>Walks account to device or IP to account to find linked accounts and mule rings</td></tr>
-          <tr><td>Case note</td><td><a href="https://docs.snowflake.com/en/sql-reference/functions/ai_complete">AI_COMPLETE</a></td><td>Drafts a summary, the signals, and a next step from the case facts</td></tr>
-          <tr><td>Ask</td><td><a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents">Cortex Agents</a>, <a href="https://docs.snowflake.com/en/user-guide/views-semantic/overview">semantic views</a></td><td>Answers questions with SQL that Cortex Analyst generates over ALERTS_SV</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="sub" style="margin-top:18px">Scoring is batch in this example. Real-time authorization scoring would use <a href="https://docs.snowflake.com/en/user-guide/snowpipe-streaming/data-load-snowpipe-streaming-overview">Snowpipe Streaming</a> and model serving on Snowpark Container Services, which this example doesn&rsquo;t build.</p>
+    <div class="eyebrow">How it works</div>
+    <h2>Snowflake capabilities this example runs</h2>
+    <p class="sub">Every capability below ran in Live mode on the synthetic data. Real-time scoring is out of scope: payments are scored in batch, and the README explains how Snowpipe Streaming and model serving on Snowpark Container Services would fit.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Capability</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/feature-store/overview">Feature Store</a> on <a href="https://docs.snowflake.com/en/user-guide/dynamic-tables-about">Dynamic Tables</a></td><td>14 card, account, device, merchant, and geo velocity features</td></tr>
+        <tr><td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/overview">Snowpark ML</a> and the <a href="https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/overview">Model Registry</a></td><td>Train an XGBoost classifier, register it, and score payments in batch with <span class="mono">model.run</span></td></tr>
+        <tr><td><a href="https://docs.snowflake.com/en/sql-reference/functions/st_distance">ST_DISTANCE</a> and <a href="https://docs.snowflake.com/en/sql-reference/functions/h3_latlng_to_cell_string">H3 functions</a></td><td>Impossible-travel rule and the fraud map by H3 cell</td></tr>
+        <tr><td><a href="https://docs.snowflake.com/en/user-guide/queries-cte">Recursive CTE</a></td><td>Link graph of accounts, devices, and IPs</td></tr>
+        <tr><td><a href="https://docs.snowflake.com/en/sql-reference/functions/ai_complete">AI_COMPLETE</a></td><td>AI case summary and next step</td></tr>
+        <tr><td><a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents">Cortex Agents</a> with Cortex Analyst over a <a href="https://docs.snowflake.com/en/user-guide/views-semantic/overview">semantic view</a></td><td>Plain-English questions about alerts</td></tr>
+      </tbody>
+    </table></div>
   </div>
 </section>
 
 <section id="run">
   <div class="wrap">
-    <h2>Run it</h2>
+    <div class="eyebrow">Run it</div>
+    <h2>Two ways to run it</h2>
     <div class="two">
-      <div>
-        <h3>Sample mode, no account</h3>
-<pre><code>git clone https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench.git
+      <div class="card"><h3>Sample mode: no account</h3><p>Open the <a href="try/">hosted example</a>, or run it locally on the bundled synthetic data:</p>
+        <pre>git clone https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench.git
 cd sfguide-payment-fraud-workbench
-npm install
-npm run dev</code></pre>
-        <p class="sub">Or open the <a href="try/">hosted example</a>. AI answers are labeled Sample AI response.</p>
-      </div>
-      <div>
-        <h3>Live mode, your account</h3>
-        <ol>
-          <li>Run <code>sql/setup.sql</code> in a Snowsight worksheet as ACCOUNTADMIN. It creates its own database, an XSMALL warehouse, and a least-privilege role.</li>
-          <li>Set up key-pair auth and copy <code>.env.example</code> to <code>.env.local</code>.</li>
-          <li><code>npm run dev</code> and switch the header to Live.</li>
-          <li>When you&rsquo;re done, run <code>sql/cleanup.sql</code>.</li>
-        </ol>
-      </div>
+npm install &amp;&amp; npm run dev</pre>
+        <p>AI answers are labeled <strong>Sample AI response</strong>: they were captured from live runs.</p></div>
+      <div class="card"><h3>Live mode: your Snowflake account</h3><ol>
+        <li>Run <span class="mono">sql/setup.sql</span> as ACCOUNTADMIN (about 3 minutes on an XSMALL warehouse).</li>
+        <li>Register a key pair on your user and fill in <span class="mono">.env.local</span>.</li>
+        <li>Run <span class="mono">npm run dev</span> and switch to <strong>Live</strong>.</li>
+        <li>Run <span class="mono">sql/cleanup.sql</span> when you're done.</li></ol>
+        <p>Steps, objects created, cost, and limitations are in the <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench#readme">README</a>.</p></div>
     </div>
-    <p class="sub">The <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench#readme">README</a> lists every object created, measured cost and time, known limitations, and Cortex Code prompts to adapt it to your own authorization feed and chargeback labels.</p>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    Owner: Oz Oral · Last reviewed: November 2026 · Apache 2.0. An illustrative example on synthetic data: not an official Snowflake product, not supported by Snowflake Support, and not production, regulatory, or compliance advice.
+    Synthetic data and illustrative logic only; not a production fraud system, and not regulatory, compliance, or legal advice. An example, not an official Snowflake product, and not supported by Snowflake Support. Apache 2.0.
+    · <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">Repository</a> · Owner: Oz Oral
   </div>
 </footer>
 </body>

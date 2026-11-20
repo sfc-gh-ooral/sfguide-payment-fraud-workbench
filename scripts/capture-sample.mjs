@@ -36,7 +36,7 @@ for (const s of Object.keys(out.queues)) {
 }
 for (const question of QUESTIONS) {
   const a = await get('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question }) });
-  out.answers.push({ question, text: a.text });
+  out.answers.push({ question, text: a.text, sql: a.sql });
   console.log('answered', question, a.latencyMs, 'ms');
 }
 writeFileSync('lib/mock/sample.json', JSON.stringify(out, null, 1) + '\n');

@@ -1,10 +1,12 @@
 'use client';
 
-// Model & rules: the registered XGBoost model, its features from the Feature Store, and a
-// threshold slider showing the precision / recall trade-off and alert volume on labeled data.
+// Model & rules: the registered XGBoost model, its Feature Store features, and a threshold slider that
+// shows the precision / recall trade-off and alert volume on labeled synthetic data.
+import { Boxes, Cpu, Database, Layers } from 'lucide-react';
 import { useState } from 'react';
-import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Card, ErrorBox, Kpi, PoweredBy, SourceChip, Thinking, nice } from '@/components/ui';
+import { Area, Bar, CartesianGrid, ComposedChart, Legend, Line, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { ChartTip } from '@/components/ChartTip';
+import { ErrorBox, PageHead, PageSkeleton, Panel, PoweredBy, SourceChip, Tag, nice } from '@/components/ui';
 import { useAsync } from '@/components/useAsync';
 import { fetchModel } from '@/lib/client';
 
@@ -14,65 +16,94 @@ const RULES = [
   ['Shared device', 'The device has been used by five or more accounts, a common sign of a mule ring.'],
 ];
 
+function Stat({ label, value, base, unit = '', good }: { label: string; value: number; base: number; unit?: string; good: 'up' | 'down' }) {
+  const d = value - base, ok = good === 'up' ? d >= 0 : d <= 0;
+  return (
+    <div className="inset p-3">
+      <div className="eyebrow">{label}</div>
+      <div className="mono text-[22px] font-bold leading-tight mt-1">{value.toLocaleString(undefined, { maximumFractionDigits: 1 })}{unit}</div>
+      <div className={`mono text-[11px] ${Math.abs(d) < 0.05 ? 'muted' : ok ? 'text-clear' : 'text-fraud'}`}>{Math.abs(d) < 0.05 ? 'at baseline 0.50' : `${d > 0 ? '+' : '−'}${Math.abs(d).toLocaleString(undefined, { maximumFractionDigits: 1 })}${unit} vs 0.50`}</div>
+    </div>
+  );
+}
+
 export default function ModelPage() {
   const m = useAsync(fetchModel, []);
   const [t, setT] = useState(0.5);
   if (m.error) return <ErrorBox error={m.error} />;
-  if (m.loading || !m.data) return <Thinking label="Loading the model" />;
-  const { eval: e, curve } = m.data;
-  const p = curve.reduce((best, c) => (Math.abs(c.THRESHOLD - t) < Math.abs(best.THRESHOLD - t) ? c : best), curve[0]);
-  const data = curve.map((c) => ({ t: c.THRESHOLD, Precision: +(c.PRECISION * 100).toFixed(1), Recall: +(c.RECALL * 100).toFixed(1) }));
+  if (m.loading || !m.data) return <PageSkeleton label="Loading the model" />;
+  const { eval: e, curve, registry } = m.data;
+  const near = (x: number) => curve.reduce((best, c) => (Math.abs(c.THRESHOLD - x) < Math.abs(best.THRESHOLD - x) ? c : best), curve[0]);
+  const p = near(t), b = near(0.5);
+  const data = curve.map((c) => ({ t: c.THRESHOLD.toFixed(2), Precision: +(c.PRECISION * 100).toFixed(1), Recall: +(c.RECALL * 100).toFixed(1), 'Alerts / day': Math.round(c.ALERTS_PER_DAY) }));
+
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3 flex-wrap">
-        <div>
-          <h1 className="text-xl font-bold">Model &amp; rules</h1>
-          <p className="text-sm muted">{e.algorithm} {m.data.registry.name} {m.data.registry.version}: trained on {e.trainingWindow}, tested on {e.testWindow}.</p>
-        </div>
-        <div className="flex gap-2 flex-wrap"><PoweredBy>Model Registry</PoweredBy><PoweredBy>Feature Store</PoweredBy><SourceChip ms={m.data.ms} source={m.data.source} /></div>
+      <PageHead eyebrow="Model risk" title="Model & rules"
+        sub={`${e.algorithm} ${registry.name} ${registry.version}: trained on ${e.trainingWindow}, tested on ${e.testWindow}. Measured on labeled synthetic payments.`}
+        right={<SourceChip ms={m.data.ms} source={m.data.source} />} />
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        {[
+          { icon: Boxes, k: 'Model Registry', v: `${registry.name} · ${registry.version}` },
+          { icon: Layers, k: 'Feature Store view', v: e.featureView },
+          { icon: Cpu, k: 'AUC · avg precision', v: `${e.auc.toFixed(4)} · ${e.avgPrecision.toFixed(3)}` },
+          { icon: Database, k: 'Training rows', v: `${e.trainRows.toLocaleString()} (${e.trainFraud.toLocaleString()} fraud)` },
+        ].map(({ icon: I, k, v }) => (
+          <div key={k} className="panel rise p-3.5 flex items-center gap-3 min-w-0"><I className="w-5 h-5 text-signal shrink-0" aria-hidden /><div className="min-w-0"><div className="eyebrow">{k}</div><div className="mono text-[13px] font-semibold truncate" title={v}>{v}</div></div></div>
+        ))}
       </div>
-      <Card title="Alert threshold" right={<span className="text-sm font-semibold tabular">{p.THRESHOLD.toFixed(2)}</span>}>
-        <input type="range" min={0.05} max={0.95} step={0.05} value={t} onChange={(ev) => setT(Number(ev.target.value))} className="w-full" aria-label="Model score threshold" />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
-          <Kpi label="Precision" value={`${(p.PRECISION * 100).toFixed(1)}%`} sub="alerts that were fraud" />
-          <Kpi label="Recall" value={`${(p.RECALL * 100).toFixed(1)}%`} sub={`of ${e.testFraud.toLocaleString()} fraud payments caught`} />
-          <Kpi label="Alerts per day" value={p.ALERTS_PER_DAY.toFixed(0)} sub={`${p.ALERTS.toLocaleString()} over 14 days`} />
-          <Kpi label="Fraud caught" value={p.TRUE_POS.toLocaleString()} sub="true positives" />
+
+      <Panel eyebrow="Threshold tuning" title="Precision, recall, and alert volume" right={<PoweredBy>Snowpark ML · Model Registry</PoweredBy>}>
+        <div className="flex items-center gap-4 flex-wrap">
+          <label htmlFor="thr" className="eyebrow">Alert when score ≥</label>
+          <span className="mono text-[28px] font-bold text-signal">{p.THRESHOLD.toFixed(2)}</span>
+          <input id="thr" type="range" min={0.05} max={0.95} step={0.05} value={t} onChange={(ev) => setT(Number(ev.target.value))} className="flex-1 min-w-[200px]" />
         </div>
-        <div className="h-[260px] mt-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-3">
+          <Stat label="Precision" value={p.PRECISION * 100} base={b.PRECISION * 100} unit="%" good="up" />
+          <Stat label="Recall" value={p.RECALL * 100} base={b.RECALL * 100} unit="%" good="up" />
+          <Stat label="Alerts per day" value={p.ALERTS_PER_DAY} base={b.ALERTS_PER_DAY} good="down" />
+          <Stat label="Fraud caught" value={p.TRUE_POS} base={b.TRUE_POS} good="up" />
+        </div>
+        <div className="h-[300px] mt-4">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ left: -10, right: 8, top: 6 }}>
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-              <XAxis dataKey="t" type="number" domain={[0.05, 0.95]} tick={{ fontSize: 11, fill: 'var(--muted)' }} />
-              <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: 'var(--muted)' }} unit="%" />
-              <Tooltip contentStyle={{ background: 'var(--surface)', border: '1px solid var(--border)', fontSize: 12 }} />
-              <ReferenceLine x={p.THRESHOLD} stroke="var(--accent)" strokeDasharray="4 3" />
-              <Line isAnimationActive={false} dataKey="Precision" stroke="var(--brand)" strokeWidth={2} dot={false} />
-              <Line isAnimationActive={false} dataKey="Recall" stroke="var(--negative)" strokeWidth={2} dot={false} />
-            </LineChart>
+            <ComposedChart data={data} margin={{ left: -14, right: -6, top: 8 }}>
+              <defs><linearGradient id="gr" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="var(--fraud)" stopOpacity={0.25} /><stop offset="1" stopColor="var(--fraud)" stopOpacity={0} /></linearGradient></defs>
+              <CartesianGrid vertical={false} />
+              <XAxis dataKey="t" tickLine={false} axisLine={false} />
+              <YAxis yAxisId="pct" domain={[0, 100]} unit="%" tickLine={false} axisLine={false} />
+              <YAxis yAxisId="n" orientation="right" tickLine={false} axisLine={false} />
+              <Tooltip content={<ChartTip />} cursor={{ stroke: 'var(--line-strong)' }} />
+              <Legend iconType="square" iconSize={9} wrapperStyle={{ fontSize: 12 }} />
+              <Bar yAxisId="n" dataKey="Alerts / day" fill="var(--link)" fillOpacity={0.35} barSize={14} isAnimationActive={false} />
+              <Area yAxisId="pct" dataKey="Recall" stroke="var(--fraud)" strokeWidth={1.5} fill="url(#gr)" isAnimationActive={false} />
+              <Line yAxisId="pct" dataKey="Precision" stroke="var(--signal)" strokeWidth={2} dot={false} isAnimationActive={false} />
+              <ReferenceLine yAxisId="pct" x={p.THRESHOLD.toFixed(2)} stroke="var(--warn)" strokeDasharray="4 3" label={{ value: 'threshold', fill: 'var(--warn)', fontSize: 10, position: 'insideTopRight' }} />
+            </ComposedChart>
           </ResponsiveContainer>
         </div>
-        <p className="text-xs muted mt-2">Model alerts only (rules add more), measured on {e.testRows.toLocaleString()} labeled November payments in this synthetic data set. Real portfolios are noisier, and labels arrive weeks late.</p>
-      </Card>
-      <div className="grid lg:grid-cols-2 gap-4">
-        <Card className="min-w-0" title={`Feature importance · AUC ${e.auc.toFixed(3)} · average precision ${e.avgPrecision.toFixed(3)}`}>
+        <p className="text-xs muted mt-2">Model alerts only (rules add more), on {e.testRows.toLocaleString()} labeled November payments ({e.testFraud.toLocaleString()} fraud) in this synthetic data set. Real portfolios are noisier, and labels arrive weeks late.</p>
+      </Panel>
+
+      <div className="grid lg:grid-cols-2 gap-3">
+        <Panel eyebrow="Explainability" title="Feature importance" right={<PoweredBy>Feature Store · Dynamic Tables</PoweredBy>}>
           <ul className="space-y-2">
-            {e.importance.slice(0, 10).map((f) => (
-              <li key={f.feature} className="text-sm">
-                <div className="flex justify-between"><span>{nice(f.feature)}</span><span className="tabular muted">{(f.importance * 100).toFixed(1)}%</span></div>
-                <div className="h-1.5 rounded-full mt-1" style={{ background: 'var(--surface-2)' }}>
-                  <div className="h-1.5 rounded-full" style={{ width: `${(f.importance / e.importance[0].importance) * 100}%`, background: 'var(--brand)' }} /></div>
+            {e.importance.slice(0, 10).map((f, i) => (
+              <li key={f.feature} className="text-[13px]">
+                <div className="flex justify-between gap-2"><span><span className="mono muted mr-2">{String(i + 1).padStart(2, '0')}</span>{nice(f.feature)}</span><span className="mono muted">{(f.importance * 100).toFixed(1)}%</span></div>
+                <div className="scorebar mt-1"><span style={{ width: `${(f.importance / e.importance[0].importance) * 100}%`, background: 'linear-gradient(90deg, var(--signal), var(--link))' }} /></div>
               </li>
             ))}
           </ul>
-          <p className="text-xs muted mt-3">{e.features.length} velocity features from the Feature Store view {e.featureView} (a Dynamic Table refreshed daily). Trained on {e.trainRows.toLocaleString()} rows ({e.trainFraud.toLocaleString()} fraud).</p>
-        </Card>
-        <Card className="min-w-0" title="Rules that run alongside the model" right={<PoweredBy>Snowflake SQL</PoweredBy>}>
+          <p className="text-xs muted mt-3">{e.features.length} velocity features from the Feature Store view <span className="mono">{e.featureView}</span>, a Dynamic Table.</p>
+        </Panel>
+        <Panel eyebrow="Deterministic controls" title="Rules that run alongside the model" right={<PoweredBy>Snowflake SQL</PoweredBy>}>
           <ul className="space-y-3">
-            {RULES.map(([n, d]) => <li key={n} className="text-sm"><strong>{n}</strong><div className="text-2">{d}</div></li>)}
+            {RULES.map(([n, d]) => <li key={n} className="inset p-3"><Tag tone="warn">Rule · {n}</Tag><p className="text-[13px] mt-1.5">{d}</p></li>)}
           </ul>
-          <p className="text-xs muted mt-3">Scoring runs in batch with the registered model (model.run in the warehouse); a daily task is created suspended. Real-time scoring would use Snowpipe Streaming and model serving on Snowpark Container Services, which this example doesn&apos;t build.</p>
-        </Card>
+          <p className="text-xs muted mt-3">Scoring runs in batch with the registered model (<span className="mono">model.run</span> in the warehouse); a daily task is created suspended. Real-time scoring would use Snowpipe Streaming and model serving on Snowpark Container Services, which this example doesn&apos;t build.</p>
+        </Panel>
       </div>
     </div>
   );

@@ -1,84 +1,101 @@
 'use client';
 
-// App frame: navigation, the Sample/Live switch, mode notice, and the disclaimer.
-import { Bot, LayoutDashboard, ListChecks, Menu, ShieldAlert, SlidersHorizontal, X } from 'lucide-react';
+// App shell: top bar (logo, tabs, environment badge, role chip, theme), a ticker of the newest open
+// alerts, a bottom tab bar on phones, and the disclaimer. No sidebar by design (docs/DESIGN.md).
+import { Bot, Gauge, LayoutDashboard, ListChecks, Moon, SlidersHorizontal, Sun, UserRound } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { Wordmark } from '@/components/Brand';
 import { ModeChip } from '@/components/ModeChip';
-import { HOSTED_EXAMPLE } from '@/lib/hosted';
-
+import { nice, usd } from '@/components/ui';
+import { fetchAlerts } from '@/lib/client';
+import type { Alert } from '@/lib/types';
 
 const NAV = [
-  { href: '/', label: 'Fraud overview', icon: LayoutDashboard },
-  { href: '/alerts', label: 'Alert queue', icon: ListChecks },
-  { href: '/model', label: 'Model & rules', icon: SlidersHorizontal },
-  { href: '/ask', label: 'Ask', icon: Bot },
+  { href: '/', label: 'Overview', short: 'Overview', icon: LayoutDashboard },
+  { href: '/alerts/', label: 'Alert queue', short: 'Queue', icon: ListChecks },
+  { href: '/case/', label: 'Case', short: 'Case', icon: Gauge },
+  { href: '/model/', label: 'Model & rules', short: 'Model', icon: SlidersHorizontal },
+  { href: '/ask/', label: 'Ask', short: 'Ask', icon: Bot },
 ];
 
-export default function Shell({ children }: { children: ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  useEffect(() => setOpen(false), [pathname]);
-  // Mobile drawer: Escape closes, focus moves into the drawer on open and back to the toggle on close.
-  const toggleRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const wasOpen = useRef(false);
-  useEffect(() => {
-    if (open) closeRef.current?.focus();
-    else if (wasOpen.current) toggleRef.current?.focus();
-    wasOpen.current = open;
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open]);
-  const active = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href) || (href === '/alerts' && pathname.startsWith('/case')));
-  const title = pathname.startsWith('/case') ? 'Case detail' : NAV.find((n) => active(n.href))?.label ?? 'Fraud overview';
-
+function ThemeToggle() {
+  const [light, setLight] = useState(false);
+  useEffect(() => setLight(document.documentElement.dataset.theme === 'light'), []);
+  const flip = () => {
+    const next = !light; setLight(next);
+    if (next) document.documentElement.dataset.theme = 'light'; else delete document.documentElement.dataset.theme;
+    try { localStorage.setItem('pfw-theme', next ? 'light' : 'dark'); } catch { /* private mode */ }
+  };
   return (
-    <div className="min-h-screen flex">
-      <aside id="main-nav" className={`sidebar fixed inset-y-0 left-0 z-40 w-60 flex flex-col border-r md:translate-x-0 md:visible ${open ? 'translate-x-0 transition-transform' : '-translate-x-full invisible transition-[transform,visibility]'}`}
-        aria-label="Main navigation">
-        <div className="px-5 py-5 border-b flex items-center gap-3" style={{ borderColor: 'rgba(255,255,255,.08)' }}>
-          <div className="icon-tile w-9 h-9 rounded-xl flex items-center justify-center"><ShieldAlert className="w-4 h-4" aria-hidden /></div>
-          <div>
-            <div className="text-sm font-semibold leading-tight text-white">Payment Fraud Workbench</div>
-            <div className="text-[11px] muted">Example on synthetic data</div>
-          </div>
-          <button ref={closeRef} className="md:hidden ml-auto btn !px-2" onClick={() => setOpen(false)} aria-label="Close menu"><X className="w-4 h-4" /></button>
-        </div>
-        <nav className="flex-1 px-3 py-3 space-y-1">
-          {NAV.map(({ href, label, icon: Icon }) => (
-            <Link key={href} href={href} aria-current={active(href) ? 'page' : undefined}
-              className="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium no-underline">
-              <Icon className="w-4 h-4" aria-hidden />{label}
-            </Link>
-          ))}
-        </nav>
-        <div className="px-4 py-4 border-t text-[11px] muted leading-relaxed" style={{ borderColor: 'rgba(255,255,255,.08)' }}>
-          Synthetic data and illustrative logic. Not a production fraud system, and not regulatory, compliance, or legal advice. Model results describe this synthetic data set only.
-        </div>
-      </aside>
+    <button className="btn btn-sm !p-2" onClick={flip} aria-label={light ? 'Switch to dark theme' : 'Switch to light theme'} title="Theme">
+      {light ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+    </button>
+  );
+}
 
-      <div className="flex-1 md:ml-60 min-w-0">
-        {HOSTED_EXAMPLE && (
-          <div role="note" className="px-4 md:px-8 py-2 text-xs border-b" style={{ background: 'var(--sample-soft)', borderColor: 'var(--border)', color: 'var(--text-2)' }}>
-            <strong style={{ color: 'var(--text)' }}>Sample data mode.</strong> Runs entirely in your browser on synthetic data captured from a live run; no Snowflake account needed. AI answers are scripted samples, not live Cortex output.{' '}
-            <a href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench" className="underline underline-offset-2">Run it in your own account</a>
-          </div>
-        )}
-        <header className="glass sticky top-0 z-30 flex items-center gap-3 px-4 md:px-8 py-3 border-b" style={{ borderColor: 'var(--border)' }}>
-          <button ref={toggleRef} className="md:hidden btn !px-2" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open} aria-controls="main-nav"><Menu className="w-4 h-4" /></button>
-          <div className="min-w-0">
-            <div className="text-sm font-semibold truncate">{title}</div>
-            <div className="text-xs muted truncate">Northwind Financial · fraud operations · data as of Nov 15, 2026 09:00</div>
-          </div>
-          <div className="ml-auto"><ModeChip /></div>
-        </header>
-        <main key={pathname} className="fade-up px-4 md:px-8 py-6 max-w-[1400px]">{children}</main>
+function Ticker() {
+  const [rows, setRows] = useState<Alert[]>([]);
+  useEffect(() => { fetchAlerts('OPEN').then((q) => setRows(q.rows.slice(0, 12))).catch(() => setRows([])); }, []);
+  if (!rows.length) return <div className="h-9 border-b border-line" />;
+  const chip = (a: Alert, k: string) => (
+    <Link key={k} href={`/case/?id=${a.ALERT_ID}`} className="mono text-[11.5px] flex items-center gap-2 px-2.5 py-1 rounded inset no-underline whitespace-nowrap hover:border-[var(--line-strong)]">
+      <span className={a.PRIORITY === 'HIGH' ? 'text-fraud' : 'text-warn'}>●</span>
+      <span className="font-semibold">{a.ALERT_ID}</span>
+      <span className="muted">{nice(a.CHANNEL)}</span>
+      <span>{usd(a.AMOUNT)}</span>
+      <span className="text-signal">{a.SCORE.toFixed(2)}</span>
+    </Link>
+  );
+  return (
+    <div className="border-b border-line bg-[color-mix(in_srgb,var(--surface)_70%,transparent)] h-9 flex items-center gap-3 px-4">
+      <span className="eyebrow flex items-center gap-2 shrink-0 text-fraud"><span className="pulse" />Open signals</span>
+      <div className="ticker overflow-hidden flex-1" aria-label="Newest open alerts">
+        <div className="ticker-track">{rows.map((a) => chip(a, a.ALERT_ID))}{rows.map((a) => chip(a, a.ALERT_ID + '-dup'))}</div>
       </div>
-      {open && <div className="fixed inset-0 z-30 bg-black/40 md:hidden" onClick={() => setOpen(false)} aria-hidden />}
+    </div>
+  );
+}
+
+export default function Shell({ children }: { children: ReactNode }) {
+  const path = usePathname() || '/';
+  const active = (href: string) => (href === '/' ? path === '/' : path.startsWith(href.replace(/\/$/, '')));
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="sticky top-0 z-40 border-b border-line backdrop-blur-md bg-[color-mix(in_srgb,var(--bg)_82%,transparent)]">
+        <div className="max-w-[1440px] mx-auto px-4 flex items-center gap-4 h-[52px]">
+          <Link href="/" className="no-underline shrink-0" aria-label="Ferrovane Fraud Desk home"><Wordmark /></Link>
+          <nav className="hidden md:flex items-center ml-4" aria-label="Main">
+            {NAV.map(({ href, label, icon: I }) => (
+              <Link key={href} href={href} className="tab" aria-current={active(href) ? 'page' : undefined}><I className="w-4 h-4" aria-hidden />{label}</Link>
+            ))}
+          </nav>
+          <div className="ml-auto flex items-center gap-2">
+            <ModeChip />
+            <span className="hidden lg:inline-flex items-center gap-2 inset px-2.5 py-1 text-xs" title="Persona for this example">
+              <UserRound className="w-3.5 h-3.5 muted" aria-hidden /><span className="font-semibold">R. Okafor</span><span className="muted">Fraud analyst · Tier 2</span>
+            </span>
+            <ThemeToggle />
+          </div>
+        </div>
+        <Ticker />
+      </header>
+
+      <main className="flex-1 w-full max-w-[1440px] mx-auto px-4 py-5 pb-24 md:pb-8">{children}</main>
+
+      <footer className="border-t border-line text-xs muted px-4 py-4 pb-24 md:pb-4">
+        <div className="max-w-[1440px] mx-auto flex flex-wrap gap-x-6 gap-y-1 justify-between">
+          <span>Ferrovane and Northwind Financial are fictional. Synthetic data and illustrative logic only: not a production fraud system, and not regulatory, compliance, or legal advice.</span>
+          <span className="mono">Data as of 2026-11-15 09:00 · <a className="underline" href="https://github.com/sfc-gh-ooral/sfguide-payment-fraud-workbench">Repository</a></span>
+        </div>
+      </footer>
+
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 flex border-t border-line bg-[color-mix(in_srgb,var(--surface)_94%,transparent)] backdrop-blur-md" aria-label="Main">
+        {NAV.map(({ href, short, icon: I }) => (
+          <Link key={href} href={href} className="btab" aria-current={active(href) ? 'page' : undefined}><I className="w-5 h-5" aria-hidden />{short}</Link>
+        ))}
+      </nav>
     </div>
   );
 }
