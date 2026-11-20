@@ -9,7 +9,7 @@ export const COMPLETE_MODEL = process.env.SNOWFLAKE_COMPLETE_MODEL ?? 'claude-so
 
 export function isSnowflakeConfigured(): boolean {
   return !!(process.env.SNOWFLAKE_ACCOUNT && process.env.SNOWFLAKE_USERNAME &&
-    (process.env.SNOWFLAKE_PRIVATE_KEY_PATH || process.env.SNOWFLAKE_TOKEN));
+    process.env.SNOWFLAKE_PRIVATE_KEY_PATH);
 }
 
 function options(): snowflake.ConnectionOptions {
@@ -22,8 +22,8 @@ function options(): snowflake.ConnectionOptions {
     schema: 'APP',
     clientSessionKeepAlive: true,
   };
-  if (process.env.SNOWFLAKE_PRIVATE_KEY_PATH) return { ...base, authenticator: 'SNOWFLAKE_JWT', privateKeyPath: process.env.SNOWFLAKE_PRIVATE_KEY_PATH };
-  return { ...base, authenticator: 'PROGRAMMATIC_ACCESS_TOKEN', token: process.env.SNOWFLAKE_TOKEN };
+  // Key-pair authentication only.
+  return { ...base, authenticator: 'SNOWFLAKE_JWT', privateKeyPath: process.env.SNOWFLAKE_PRIVATE_KEY_PATH };
 }
 
 type Pool = ReturnType<typeof snowflake.createPool>;
