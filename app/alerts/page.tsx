@@ -77,7 +77,7 @@ export default function AlertQueue() {
 
       <div className="flex flex-wrap items-center gap-2">
         <div className="seg" role="tablist" aria-label="Alert status">
-          {TABS.map(([id, label]) => <button key={id} role="tab" aria-selected={status === id} aria-pressed={status === id} onClick={() => { setStatus(id); setSel(undefined); }}>{label}</button>)}
+          {TABS.map(([id, label]) => <button key={id} role="tab" aria-selected={status === id} onClick={() => { setStatus(id); setSel(undefined); }}>{label}</button>)}
         </div>
         <label className="relative flex-1 min-w-[180px] max-w-sm">
           <Search className="w-4 h-4 muted absolute left-2.5 top-1/2 -translate-y-1/2" aria-hidden />

@@ -80,7 +80,7 @@ a { color: inherit; }
 /* Segmented controls */
 .seg { display: inline-flex; padding: 2px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface-2); }
 .seg button { padding: 5px 10px; font-size: 12px; font-weight: 600; color: var(--muted); border-radius: 3px; display: inline-flex; gap: 6px; align-items: center; }
-.seg button[aria-pressed="true"], .seg button[aria-checked="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong); }
+.seg button[aria-pressed="true"], .seg button[aria-checked="true"], .seg button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong); }
 
 /* Ticker */
 .ticker { mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }

@@ -8,7 +8,6 @@
     "build:example": "node scripts/build-hosted-example.mjs",
     "start": "next start",
     "lint": "eslint",
-    "generate-data": "node scripts/generate-data.mjs",
     "capture": "node scripts/capture-screenshots.mjs"
   },
   "dependencies": {

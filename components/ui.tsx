@@ -205,7 +205,6 @@ export function StreamText({ text, onDone }: { text: string; onDone?: () => void
       return nx;
     }), 28);
     return () => window.clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
   const done = n >= words.current.length;
   useEffect(() => { if (done && n > 0) onDone?.(); }, [done]); // eslint-disable-line react-hooks/exhaustive-deps
